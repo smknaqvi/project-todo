@@ -2,7 +2,7 @@
 
 | Full Name            | UTORID     | Student ID | Email                            | Best Way To Contact |
 |----------------------|------------|------------|----------------------------------|---------------------|
-| Syed Kazim Naqvi     |            | 1004099206 | k.naqvi@mail.utoronto.ca         | +1 647 835 5825     |
+| Syed Kazim Naqvi     | naqvis37   | 1004099206 | k.naqvi@mail.utoronto.ca         | +1 647 835 5825     |
 | Daniel Wang          | wangda63   | 1004361344 | dnel.wang@mail.utoronto.ca       | +1 647 778 8572     |
 | Sendooran Sitsabesan |            | 1004356911 |                                  | +1 647 575 5624     |
 | Tony Attalla         | attalla8   | 1003974158 |tony.attalla@mail.utoronto.ca     | +1 647 907 9659     | 
