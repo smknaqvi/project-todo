@@ -6,7 +6,7 @@
 | Daniel Wang          | wangda63   | 1004361344 | dnel.wang@mail.utoronto.ca            | +1 647 778 8572     |
 | Sendooran Sitsabesan | sitsabe3   | 1004356911 | sendooran.sitsabesan@mail.utoronto.ca | +1 647 575 5624     |
 | Tony Attalla         | attalla8   | 1003974158 |tony.attalla@mail.utoronto.ca          | +1 647 907 9659     | 
-| Roozbeh Yadollahi    |            | 1005230992 |                                       |                     |
+| Roozbeh Yadollahi    | yadolla6   | 1005230992 |roozbeh.yadollahi@mail.utoronto.ca     | +1 647 979 2800     |
 | Antony Tang          | tanganto   | 1004030372 |antony.tang@mail.utoronto.ca           | +1 647 588 6294     |
 | Siavash Yassemi      | yassemis   | 1005179628 |siavash.yassemi@mail.utoronto.ca       | +1 647 687 5868     |
 
