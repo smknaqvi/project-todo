@@ -1,9 +1,5 @@
-import {
-  CLOSE_ERROR,
-  SIGNUP_STARTED,
-  SIGNUP_SUCCEEDED,
-  SIGNUP_FAILED,
-} from "../constants";
+import { SIGNUP_STARTED, SIGNUP_SUCCEEDED, SIGNUP_FAILED } from "../constants";
+import { toggleAuthPage } from "./auth-page";
 import { signupRequest } from "../api/signup-page";
 
 export const signupStarted = () => ({
@@ -20,16 +16,13 @@ export const signupFailed = (reason) => ({
   reason,
 });
 
-export const closeError = () => ({
-  type: CLOSE_ERROR,
-});
-
 export function signup(data) {
   return function (dispatch) {
     dispatch(signupStarted());
     return signupRequest(data)
       .then(function (response) {
         dispatch(signupSuccess(data.username));
+        dispatch(toggleAuthPage());
       })
       .catch(function (error) {
         if (error.response) {

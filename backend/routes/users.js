@@ -8,7 +8,8 @@ router.route("/").get((_, res) => {
 });
 
 router.route("/").post((req, res) => {
-  const username = req.body.username;
+  const displayName = req.body.username;
+  const username = displayName.toLowerCase();
   const password = req.body.password;
   const age = req.body.age;
   const favSport = req.body.favSport;
@@ -18,6 +19,7 @@ router.route("/").post((req, res) => {
   const acs = 100;
 
   const newUser = new User({
+    displayName,
     username,
     password,
     bioInfo: {

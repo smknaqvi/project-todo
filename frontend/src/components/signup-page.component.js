@@ -32,4 +32,5 @@ SignupPage.propTypes = {
   closeError: PropTypes.func,
   signup: PropTypes.func,
   errorReason: PropTypes.string,
+  togglePage: PropTypes.func,
 };

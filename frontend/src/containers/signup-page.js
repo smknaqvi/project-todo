@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
-import { signup, closeError } from "../actions/signup-page";
+import { signup } from "../actions/signup-page";
+import { closeError } from "../actions/error";
 import { toggleAuthPage } from "../actions/auth-page";
 
 import SignupPage from "../components/signup-page.component";
 
 const mapStateToProps = (state) => ({
-  showError: state.signupPage.get("showError"),
-  errorReason: state.signupPage.get("errorReason"),
+  showError: state.error.get("showError"),
+  errorReason: state.error.get("errorReason"),
 });
 
 const mapDispatchToProps = (dispatch) => ({

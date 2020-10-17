@@ -1,0 +1,14 @@
+@import "signup-page.css";
+@import "login-page.css";
+
+.auth-page {
+  height: 90vh;
+}
+
+.auth-page #toggle-page-button {
+  color: gray;
+}
+
+.Mui-error::first-letter {
+  text-transform: capitalize;
+}

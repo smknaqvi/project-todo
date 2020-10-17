@@ -2,7 +2,7 @@ const router = require("express").Router();
 let User = require("../models/user.model");
 
 router.route("/login").post((req, res) => {
-  const username = req.body.username;
+  const username = req.body.username.toLowerCase();
   const password = req.body.password;
 
   User.findOne({ username, password }, (err, user) => {

@@ -1,4 +1,4 @@
-import { SIGNUP_FAILED, CLOSE_ERROR } from "../constants";
+import { SIGNUP_FAILED, LOGIN_FAILED, CLOSE_ERROR } from "../constants";
 
 import { Map } from "immutable";
 
@@ -7,8 +7,9 @@ const initState = Map({
   errorReason: "",
 });
 
-export const signupPage = (state = initState, action) => {
+export const error = (state = initState, action) => {
   switch (action.type) {
+    case LOGIN_FAILED:
     case SIGNUP_FAILED:
       return state.set("showError", true).set("errorReason", action.reason);
     case CLOSE_ERROR:
