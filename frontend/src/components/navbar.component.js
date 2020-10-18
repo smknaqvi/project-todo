@@ -23,15 +23,8 @@ export default class Navbar extends Component {
           </NavLink>
         </li>
       );
-    } else {
-      return (
-        <li className="navbar-item" key="login">
-          <NavLink exact to={"/login"} className="nav-link">
-            Login
-          </NavLink>
-        </li>
-      );
     }
+    return null;
   }
 
   render() {
