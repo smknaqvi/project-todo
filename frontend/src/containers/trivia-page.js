@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import TriviaPage from "../components/trivia-page.component"
+import TriviaPage from "../components/trivia-page.component";
 
 const mapStateToProps = (state) => ({});
 
