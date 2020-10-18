@@ -13,6 +13,6 @@ export const LOGOUT = "LOGOUT";
 
 export const TOGGLE_AUTH_PAGE = "TOGGLE_AUTH_PAGE";
 //  MISC
-export const NAV_ELEMENTS = [{ link: "/", name: "Placeholder" }];
+export const NAV_ELEMENTS = [];
 
 export const API_ENDPOINT = "http://localhost:5000";
