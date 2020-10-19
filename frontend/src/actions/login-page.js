@@ -1,18 +1,14 @@
-import { LOGIN_STARTED, LOGIN_SUCCEEDED, LOGIN_FAILED } from "../constants";
+import { LOGIN_STARTED, LOGIN_SUCCEEDED } from "../constants";
 import { loginRequest } from "../api/login-page";
+import { showError } from "./error";
 
 export const loginStarted = () => ({
   type: LOGIN_STARTED,
 });
 
-export const loginSuccess = (username) => ({
+export const loginSuccess = (username, id) => ({
   type: LOGIN_SUCCEEDED,
-  username,
-});
-
-export const loginFailed = (reason) => ({
-  type: LOGIN_FAILED,
-  reason,
+  user: { username, id },
 });
 
 export function login(data) {
@@ -20,15 +16,15 @@ export function login(data) {
     dispatch(loginStarted());
     return loginRequest(data)
       .then(function (response) {
-        dispatch(loginSuccess(data.username));
+        dispatch(loginSuccess(response.data.displayName, response.data._id));
       })
       .catch(function (error) {
         if (error.response) {
-          dispatch(loginFailed(error.response.data));
+          dispatch(showError(error.response.data));
         } else if (error.request) {
-          dispatch(loginFailed("Unable to reach server"));
+          dispatch(showError("Unable to reach server"));
         } else {
-          dispatch(loginFailed("Internal server error"));
+          dispatch(showError("Internal server error"));
         }
       });
   };

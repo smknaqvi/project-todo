@@ -1,19 +1,15 @@
-import { SIGNUP_STARTED, SIGNUP_SUCCEEDED, SIGNUP_FAILED } from "../constants";
+import { SIGNUP_STARTED, SIGNUP_SUCCEEDED } from "../constants";
 import { toggleAuthPage } from "./auth-page";
 import { signupRequest } from "../api/signup-page";
+import { showError } from "./error";
 
 export const signupStarted = () => ({
   type: SIGNUP_STARTED,
 });
 
-export const signupSuccess = (username) => ({
+export const signupSuccess = (username, id) => ({
   type: SIGNUP_SUCCEEDED,
-  username,
-});
-
-export const signupFailed = (reason) => ({
-  type: SIGNUP_FAILED,
-  reason,
+  user: { username, id },
 });
 
 export function signup(data) {
@@ -21,16 +17,16 @@ export function signup(data) {
     dispatch(signupStarted());
     return signupRequest(data)
       .then(function (response) {
-        dispatch(signupSuccess(data.username));
+        dispatch(signupSuccess(response.data.displayName, response.data._id));
         dispatch(toggleAuthPage());
       })
       .catch(function (error) {
         if (error.response) {
-          dispatch(signupFailed(error.response.data));
+          dispatch(showError(error.response.data));
         } else if (error.request) {
-          dispatch(signupFailed("Unable to reach server"));
+          dispatch(showError("Unable to reach server"));
         } else {
-          dispatch(signupFailed("Internal server error"));
+          dispatch(showError("Internal server error"));
         }
       });
   };

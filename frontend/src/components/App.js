@@ -6,6 +6,7 @@ import Navbar from "../containers/navbar";
 import LogoutPage from "../containers/logout-page";
 import LandingPage from "../containers/landing-page";
 import AuthPage from "../containers/auth-page";
+import AcsInfraDemo from "../containers/acs-infra-demo";
 import TriviaPage from "../containers/trivia-page";
 import DebatePage from "../containers/debate-page";
 import OpenCourtPage from "../containers/opencourt-page";
@@ -56,6 +57,9 @@ function App() {
       <Route path="/logout" exact>
         <LogoutPage />
       </Route>
+      <PrivateRoute path="/acs" exact>
+        <AcsInfraDemo />
+      </PrivateRoute>
       <PrivateRoute path="/" exact>
         <LandingPage />
       </PrivateRoute>

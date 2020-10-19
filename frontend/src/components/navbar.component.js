@@ -14,7 +14,7 @@ export default class Navbar extends Component {
     ));
   }
 
-  createLoginButtons() {
+  createLogoutButtons() {
     if (this.props.username !== null) {
       return (
         <li className="navbar-item" key="logout">
@@ -35,9 +35,9 @@ export default class Navbar extends Component {
         </NavLink>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
-            {this.createNavElements(NAV_ELEMENTS)}
+            {this.props.username && this.createNavElements(NAV_ELEMENTS)}
           </ul>
-          <ul className="navbar-nav">{this.createLoginButtons()}</ul>
+          <ul className="navbar-nav">{this.createLogoutButtons()}</ul>
         </div>
       </nav>
     );

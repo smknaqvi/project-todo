@@ -23,9 +23,11 @@ connection.once("open", () => {
 
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const acsRouter = require("./routes/acs");
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
+app.use("/acs", acsRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
