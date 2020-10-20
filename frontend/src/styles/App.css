@@ -2,3 +2,11 @@
 @import "buttons.css";
 @import "landing-page.css";
 @import "acs-infra-demo.css";
+
+body {
+  height: 100vh;
+}
+
+body #root {
+  height: 100%;
+}
