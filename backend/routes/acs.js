@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const acsValidators = require("../middleware/acsValidators");
-let User = require("../models/user.model");
+const User = require("../models/user.model");
 
 router.route("/:id").get((req, res) => {
   User.findById(req.params.id)
@@ -14,7 +14,7 @@ router.route("/:id").put(acsValidators.validate(), (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
     { acs: req.body.updatedACS },
-    { useFindAndModify: false, new: true, runValidators: true }
+    { useFindAndModify: false, new: true }
   )
     .then((updatedUser) => {
       if (updatedUser === null) {

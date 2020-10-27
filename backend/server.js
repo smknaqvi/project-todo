@@ -8,7 +8,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 
 const uri = process.env.DB_URI;
 mongoose.connect(uri, {
@@ -24,10 +24,12 @@ connection.once("open", () => {
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const acsRouter = require("./routes/acs");
+const postsRouter = require("./routes/posts");
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/acs", acsRouter);
+app.use("/posts", postsRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

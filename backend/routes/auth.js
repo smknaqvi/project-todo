@@ -1,5 +1,5 @@
 const router = require("express").Router();
-let User = require("../models/user.model");
+const User = require("../models/user.model");
 
 router.route("/login").post((req, res) => {
   const username = req.body.username.toLowerCase();
