@@ -28,6 +28,9 @@ export const STARTED = "STARTED";
 export const SUCCEEDED = "SUCCEEDED";
 export const FAILED = "FAILED";
 
+// LocalStorage
+export const USER_KEY = "user"
+
 //  MISC
 export const NAV_ELEMENTS = [{ name: "ACS (Demo)", link: "/acs" }];
 

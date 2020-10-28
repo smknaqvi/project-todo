@@ -1,7 +1,8 @@
-import { SIGNUP_STARTED, SIGNUP_SUCCEEDED } from "../constants";
+import { SIGNUP_STARTED, SIGNUP_SUCCEEDED, USER_KEY } from "../constants";
 import { toggleAuthPage } from "./auth-page";
 import { signupRequest } from "../api/signup-page";
 import { showError } from "./error";
+import { addItem, removeItem } from "../utils/localStorage";
 
 export const signupStarted = () => ({
   type: SIGNUP_STARTED,
@@ -17,10 +18,15 @@ export function signup(data) {
     dispatch(signupStarted());
     return signupRequest(data)
       .then(function (response) {
-        dispatch(signupSuccess(response.data.displayName, response.data._id));
+        const { username, id } = addItem(USER_KEY, {
+          username: response.data.displayName,
+          id: response.data._id,
+        });
+        dispatch(signupSuccess(username, id));
         dispatch(toggleAuthPage());
       })
       .catch(function (error) {
+        removeItem(USER_KEY);
         if (error.response) {
           dispatch(showError(error.response.data));
         } else if (error.request) {
