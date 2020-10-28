@@ -1,7 +1,6 @@
-import { LOGIN_STARTED, LOGIN_SUCCEEDED, USER_KEY } from "../constants";
+import { LOGIN_STARTED, LOGIN_SUCCEEDED } from "../constants";
 import { loginRequest } from "../api/login-page";
 import { showError } from "./error";
-import { addItem, removeItem } from "../utils/localStorage";
 
 export const loginStarted = () => ({
   type: LOGIN_STARTED,
@@ -17,14 +16,9 @@ export function login(data) {
     dispatch(loginStarted());
     return loginRequest(data)
       .then(function (response) {
-        const { username, id } = addItem(USER_KEY, {
-          username: response.data.displayName,
-          id: response.data._id,
-        });
-        dispatch(loginSuccess(username, id));
+        dispatch(loginSuccess(response.data.displayName, response.data._id));
       })
       .catch(function (error) {
-        removeItem(USER_KEY);
         if (error.response) {
           dispatch(showError(error.response.data));
         } else if (error.request) {

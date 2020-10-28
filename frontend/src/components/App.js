@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import "../styles/App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
@@ -13,30 +13,13 @@ import OpenCourtPage from "../containers/opencourt-page";
 import PicksnPredictsPage from "../containers/picksnpredicts-page";
 import Auth from "../containers/auth";
 import store from "../store";
-import { getItem } from "../utils/localStorage";
-import { USER_KEY } from "../constants";
-import { loginSuccess } from "../actions/login-page";
 
 function PrivateRoute({ children, ...rest }) {
-  const userId = store.getState().auth.get("id");
-
-  const isAuthorized = useMemo(() => {
-    if (userId) {
-      return true;
-    }
-    const user = getItem(USER_KEY);
-    if (user) {
-      store.dispatch(loginSuccess(user.username, user.id));
-      return true;
-    }
-    return false;
-  }, [userId]);
-
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isAuthorized ? (
+        store.getState().auth.get("username") !== null ? (
           children
         ) : (
           <Redirect

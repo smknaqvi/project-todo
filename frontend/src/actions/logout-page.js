@@ -1,9 +1,5 @@
-import { removeItem } from "../utils/localStorage";
-import { LOGOUT, USER_KEY } from "../constants";
+import { LOGOUT } from "../constants";
 
-export const logout = () => {
-  removeItem(USER_KEY);
-  return {
-    type: LOGOUT,
-  };
-};
+export const logout = () => ({
+  type: LOGOUT,
+});
