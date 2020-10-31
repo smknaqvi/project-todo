@@ -1,0 +1,37 @@
+.oc-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oc-timeline .post-view {
+  margin: 2%;
+  width: 50%;
+  height: 30%;
+}
+
+.oc-timeline .post-view .post-view-media {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.oc-timeline .post-view .post-view-media img {
+  height: 200px;
+  width: auto;
+}
+
+.oc-timeline .post-view .comments .inner-comment-box {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.oc-timeline .post-view .comments .avatar {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}

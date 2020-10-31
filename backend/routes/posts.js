@@ -7,6 +7,7 @@ const { Post, Comment } = require("../models/post.model");
 
 router.route("/").get((_, res) => {
   Post.find()
+    .sort({ updatedAt: -1 })
     .then((posts) => res.status(200).json(posts))
     .catch((err) => res.status(400).json("Error: " + err));
 });

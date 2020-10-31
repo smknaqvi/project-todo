@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 export default class AuthPage extends Component {
   getPage() {
     if (this.props.redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to="/thezone" />;
     } else if (this.props.showSignup) {
       return <SignupPage />;
     } else {

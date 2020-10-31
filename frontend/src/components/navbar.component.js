@@ -30,7 +30,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
-        <NavLink exact to="/" className="navbar-brand">
+        <NavLink exact to="/thezone" className="navbar-brand">
           SPORTCRED
         </NavLink>
         <div className="collapse navbar-collapse">

@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Navbar from "../containers/navbar";
 import LogoutPage from "../containers/logout-page";
-import LandingPage from "../containers/landing-page";
 import AuthPage from "../containers/auth-page";
 import AcsInfraDemo from "../containers/acs-infra-demo";
 import TriviaPage from "../containers/trivia-page";
@@ -48,9 +47,6 @@ function App() {
       <PrivateRoute path="/debate" exact>
         <DebatePage />
       </PrivateRoute>
-      <PrivateRoute path="/opencourt" exact>
-        <OpenCourtPage />
-      </PrivateRoute>
       <PrivateRoute path="/picksnpredictions" exact>
         <PicksnPredictsPage />
       </PrivateRoute>
@@ -60,9 +56,10 @@ function App() {
       <PrivateRoute path="/acs" exact>
         <AcsInfraDemo />
       </PrivateRoute>
-      <PrivateRoute path="/" exact>
-        <LandingPage />
+      <PrivateRoute path="/thezone" exact>
+        <OpenCourtPage />
       </PrivateRoute>
+      <Route render={() => <Redirect to="/thezone" />} />
     </Router>
   );
 }

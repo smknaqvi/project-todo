@@ -66,16 +66,20 @@ router.route("/:id").put((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/:id").get((req, res) => {
-  User.findById(req.params.id)
-    .then((user) => {
-      if (user === null) {
-        res.status(404).json("Error: could not find user");
+router.route("/:ids").get((req, res) => {
+  const ids = req.params.ids.split(",");
+  User.find()
+    .where("_id")
+    .in(ids)
+    .exec((err, records) => {
+      if (err) {
+        res.status(400).json("Error: " + err);
+      } else if (records.length === 0) {
+        res.status(404).json(records);
       } else {
-        res.status(200).json(user);
+        res.status(200).json(records);
       }
-    })
-    .catch((err) => res.status(400).json("Error: " + err));
+    });
 });
 
 module.exports = router;
