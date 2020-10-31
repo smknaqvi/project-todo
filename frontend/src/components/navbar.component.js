@@ -15,7 +15,7 @@ export default class Navbar extends Component {
   }
 
   createLogoutButtons() {
-    if (this.props.username !== null) {
+    if (this.props.isAuthorized) {
       return (
         <li className="navbar-item" key="logout">
           <NavLink exact to={"/logout"} className="nav-link">
@@ -35,7 +35,7 @@ export default class Navbar extends Component {
         </NavLink>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
-            {this.props.username && this.createNavElements(NAV_ELEMENTS)}
+            {this.props.isAuthorized && this.createNavElements(NAV_ELEMENTS)}
           </ul>
           <ul className="navbar-nav">{this.createLogoutButtons()}</ul>
         </div>
@@ -45,5 +45,5 @@ export default class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  username: PropTypes.string,
+  isAuthorized: PropTypes.bool,
 };

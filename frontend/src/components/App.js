@@ -11,14 +11,14 @@ import DebatePage from "../containers/debate-page";
 import OpenCourtPage from "../containers/opencourt-page";
 import PicksnPredictsPage from "../containers/picksnpredicts-page";
 import Auth from "../containers/auth";
-import store from "../store";
+import { isAuthorized } from "../utils/isAuthorized";
 
 function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        store.getState().auth.get("username") !== null ? (
+        isAuthorized() ? (
           children
         ) : (
           <Redirect
@@ -59,7 +59,7 @@ function App() {
       <PrivateRoute path="/thezone" exact>
         <OpenCourtPage />
       </PrivateRoute>
-      <Route render={() => <Redirect to="/thezone" />} />
+      <Route path="/" render={() => <Redirect to="/thezone" />} exact />
     </Router>
   );
 }

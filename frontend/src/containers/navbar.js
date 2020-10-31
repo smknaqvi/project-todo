@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import Navbar from "../components/navbar.component";
+import { isAuthorized } from "../utils/isAuthorized";
 
 const mapStateToProps = (state) => ({
-  username: state.auth.get("username"),
+  isAuthorized: isAuthorized(),
 });
 
 const mapDispatchToProps = (dispatch) => ({});

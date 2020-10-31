@@ -55,6 +55,9 @@ export const STARTED = "STARTED";
 export const SUCCEEDED = "SUCCEEDED";
 export const FAILED = "FAILED";
 
+// LocalStorage
+export const USER_KEY = "user";
+
 // NAVBAR
 export const NAV_ELEMENTS = [
   { name: "The Zone", link: "/thezone" },

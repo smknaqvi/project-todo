@@ -1,9 +1,10 @@
 import { connect } from "react-redux";
 import AuthPage from "../components/auth-page.component";
+import { isAuthorized } from "../utils/isAuthorized";
 
 const mapStateToProps = (state) => ({
   showSignup: state.authPage.get("showSignup"),
-  redirect: state.auth.get("username") !== null,
+  redirect: isAuthorized(),
 });
 
 const mapDispatchToProps = (dispatch) => ({});
