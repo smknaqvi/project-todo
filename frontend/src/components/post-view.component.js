@@ -19,7 +19,7 @@ export default class PostView extends Component {
   createCardMedia() {
     if (this.props.picture) {
       return (
-        <div className="post-view-media">
+        <div className="post-media">
           <CardMedia
             component="img"
             src={`data:image/png;base64, ${this.props.picture}`}

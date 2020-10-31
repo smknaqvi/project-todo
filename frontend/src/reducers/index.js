@@ -5,6 +5,7 @@ import { acs } from "./acs";
 import { authPage } from "./auth-page";
 import { error } from "./error";
 import { openCourtTimeline } from "./opencourt-timeline";
+import { createPost } from "./create-post";
 
 export default combineReducers({
   auth,
@@ -12,5 +13,6 @@ export default combineReducers({
   error,
   acs,
   openCourtTimeline,
+  createPost,
   form: formReducer,
 });
