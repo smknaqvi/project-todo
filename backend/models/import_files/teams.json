@@ -1,0 +1,152 @@
+[
+    {
+        "name": "Toronto Raptors",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Kyle Lowry",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/lowryky01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Pascal Siakam",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/siakapa01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Fred Vanfleet",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/vanvlfr01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "OG Anunoby",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/anunoog01.jpg",
+                "rookie": false
+            }
+        ]
+    },
+    
+    {
+        "name": "Los Angeles Lakers",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Lebron James",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/jamesle01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Anthony Davis",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/davisan02.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Rajon Rondo",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/rondora01.jpg",
+                "rookie": false
+            }
+        ]
+    },
+    {
+        "name": "Phoenix Suns",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO.png",
+        "players" : 
+        [
+            {
+                "name": "Devin Booker",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/bookede01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Deandre Ayton",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/aytonde01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Kelly Oubre Jr.",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/oubreke01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Ricky Rubio",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/rubiori01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Cameron Johnson",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/johnsca02.jpg",
+                "rookie": true
+            }
+        ]
+    },
+    {
+        "name": "New Orleans Pelicans",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/NOP-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Zion Williamson",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/willizi01.jpg",
+                "rookie": true
+            },
+            {
+                "name": "Nickeil Alexander-Walker",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/alexani01.jpg",
+                "rookie": true
+            },
+            {
+                "name": "Jaxson Hayes",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/hayesja02.jpg",
+                "rookie": true
+            },
+            {
+                "name": "Brandon Ingram",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/ingrabr01.jpg",
+                "rookie": false
+            },
+            {
+                "name": "Lonzo Ball",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/balllo01.jpg",
+                "rookie": false
+            }
+        ]
+    },
+    {
+        "name": "Memphis Grizzlies",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MEM-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Ja Morant",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/moranja01.jpg",
+                "rookie": true
+            }
+        ]
+    },
+    {
+        "name": "Los Angeles Clippers",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Montrezl Harrell",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/harremo01.jpg",
+                "rookie": false
+            }
+        ]
+    },
+    {
+        "name": "Milwaukee Bucks",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MIL-2020.png",
+        "players" : 
+        [
+            {
+                "name": "Giannis Antetokounmpo",
+                "picture": "https://www.basketball-reference.com/req/202010211/images/players/antetgi01.jpg",
+                "rookie": false
+            }
+        ]
+    }
+]

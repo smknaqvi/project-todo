@@ -45,9 +45,30 @@ export const SET_CONTENT = "SET_CONTENT";
 export const CLOSE_ERROR = "CLOSE_ERROR";
 export const SHOW_ERROR = "SHOW_ERROR";
 
+export const CLOSE_SUCCESS = "CLOSE_SUCCESS";
+export const SHOW_SUCCESS = "SHOW_SUCCESS";
+
 export const LOGOUT = "LOGOUT";
 
 export const TOGGLE_AUTH_PAGE = "TOGGLE_AUTH_PAGE";
+
+export const FETCH_PLAYERS_STARTED = "FETCH_PLAYERS_STARTED";
+export const FETCH_PLAYERS_FAILED = "FETCH_PLAYERS_FAILED";
+export const FETCH_PLAYERS_SUCCEEDED = "FETCH_PLAYERS_SUCCEEDED";
+
+export const UPDATE_PICKS = "UPDATE_PICKS";
+
+export const SEND_PREDICTS_SUCCEEDED = "SEND_PREDICTS_SUCCEEDED";
+export const SEND_PREDICTS_STARTED = "SEND_PREDICTS_STARTED";
+export const SENDPREDICTS_FAILED = "SENDPREDICTS_FAILED";
+
+export const GET_PREDICTS_SUCCEEDED = "GET_PREDICTS_SUCCEEDED";
+export const GET_PREDICTS_STARTED = "GET_PREDICTS_STARTED";
+export const GET_PREDICTS_FAILED = "GET_PREDICTS_FAILED";
+
+export const GET_WINNERS_STARTED = "GET_WINNERS_STARTED";
+export const GET_WINNERS_SUCCEEDED = "GET_WINNERS_SUCCEEDED";
+export const GET_WINNERS_FAILED = "GET_WINNERS_FAILED";
 
 // API STATUS
 export const UNINITIALIZED = "UNINITIALIZED";
@@ -63,7 +84,6 @@ export const NAV_ELEMENTS = [
   { name: "The Zone", link: "/thezone" },
   { name: "Debate", link: "/debate" },
   { name: "Trivia", link: "/trivia" },
-  { name: "Picks and Predictions", link: "/picksnpredictions" },
 ];
 
 // Endpoints
@@ -79,3 +99,11 @@ export const EXPERT_ANALYST_RANGE = { maxScore: 1100, name: EXPERT_ANALYST };
 export const PRO_ANALYST_RANGE = { maxScore: 900, name: PRO_ANALYST };
 export const ANALYST_RANGE = { maxScore: 600, name: ANALYST };
 export const FANALYST_RANGE = { maxScore: 300, name: FANALYST };
+
+// All awards
+export const AWARDS = [{ award: "Most Valuable Player", key: "mvp"}, 
+{ award: "Rookie of The Year", key: "rookieOTY"},
+{ award: "Most Improved Player", key: "MIP"},
+{ award: "Sixth-man Of the Year", key: "sixMan"},
+{ award: "Defensive Player of the Year", key: "defensivePOTY"}]
+

@@ -20,7 +20,7 @@ export default class LandingPage extends Component {
             <div className="zone-text">OPENCOURT</div>
           </div>
         </NavLink>
-        <NavLink to={"/picksnpredictions"} className="nav-link">
+        <NavLink to={"/picks"} className="nav-link">
           <div className="zone-pic">
             <div className="zone-text">PICKS AND PREDICTIONS</div>
           </div>

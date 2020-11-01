@@ -24,11 +24,17 @@ connection.once("open", () => {
 const usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const acsRouter = require("./routes/acs");
+const userPicksRouter = require("./routes/user-picks");
+const teamsRouter = require("./routes/team");
+const winnersRouter = require("./routes/winners");
 const postsRouter = require("./routes/posts");
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/acs", acsRouter);
+app.use("/user-picks", userPicksRouter);
+app.use("/team", teamsRouter);
+app.use("/winners", winnersRouter);
 app.use("/posts", postsRouter);
 
 app.listen(port, () => {

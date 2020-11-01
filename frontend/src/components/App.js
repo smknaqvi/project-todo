@@ -9,7 +9,9 @@ import AcsInfraDemo from "../containers/acs-infra-demo";
 import TriviaPage from "../containers/trivia-page";
 import DebatePage from "../containers/debate-page";
 import OpenCourtPage from "../containers/opencourt-page";
-import PicksnPredictsPage from "../containers/picksnpredicts-page";
+import PicksPage from "../containers/picks-page";
+import PredictionsPage from "../containers/predictions-page";
+import PlayoffsPage from "../containers/playoffs-page";
 import Auth from "../containers/auth";
 import { isAuthorized } from "../utils/isAuthorized";
 
@@ -47,8 +49,17 @@ function App() {
       <PrivateRoute path="/debate" exact>
         <DebatePage />
       </PrivateRoute>
-      <PrivateRoute path="/picksnpredictions" exact>
-        <PicksnPredictsPage />
+      <PrivateRoute path="/" exact>
+        <OpenCourtPage />
+      </PrivateRoute>
+      <PrivateRoute path="/picks" exact>
+        <PicksPage />
+      </PrivateRoute>
+      <PrivateRoute path="/predictions" exact>
+        <PredictionsPage />
+      </PrivateRoute>
+      <PrivateRoute path="/playoffs" exact>
+        <PlayoffsPage />
       </PrivateRoute>
       <Route path="/logout" exact>
         <LogoutPage />

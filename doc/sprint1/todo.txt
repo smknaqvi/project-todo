@@ -121,6 +121,6 @@ System Design - (PDF or MD file or another suitable format) (Max 10 marks)
   [0 marks: No diagram present or the presented document does not look like a software architecture diagram]
 
 10/10
--Sprint Demo: [10 marks] evaluated using a different rubric, but mark included here.
+-Sprint Demo: [10 marks] Evaluated using a different rubric, but mark included here.
 
 Total: 82/85 (96.47%)

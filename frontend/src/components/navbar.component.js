@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { NAV_ELEMENTS } from "../constants";
 import PropTypes from "prop-types";
+import PnPDropDown from "./picks-dropdown.component";
 
 export default class Navbar extends Component {
   createNavElements(elementMap) {
@@ -36,7 +37,9 @@ export default class Navbar extends Component {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
             {this.props.isAuthorized && this.createNavElements(NAV_ELEMENTS)}
+            {this.props.isAuthorized && <PnPDropDown />}
           </ul>
+          <ul className="navbar-nav mr-auto"></ul>
           <ul className="navbar-nav">{this.createLogoutButtons()}</ul>
         </div>
       </nav>

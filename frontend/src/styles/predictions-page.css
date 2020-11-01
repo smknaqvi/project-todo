@@ -1,0 +1,48 @@
+.predicts-page {
+  display: grid;
+  background-color: #6b6e70;
+}
+.award {
+  display: flex;
+  margin: 20px;
+  min-height: 220px;
+  background-color: white;
+}
+.award-title {
+  flex-grow: 1;
+  max-width: 33%;
+  font-size: 150%;
+  padding: 20px;
+  align-self: center;
+  min-width: 240px;
+}
+.award-dropdown {
+  flex-grow: 1;
+  max-width: 33%;
+  align-self: center;
+}
+.winner-image {
+  flex-grow: 1;
+  max-width: 33%;
+  padding: 20px;
+}
+
+.winner-image img {
+  border-style: solid;
+}
+
+.correct {
+  border-style: solid;
+  border-color: green;
+  border-width: 2px;
+}
+.wrong {
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
+}
+
+.user-acs {
+  display: flex;
+  justify-content: space-between;
+}
