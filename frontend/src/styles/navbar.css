@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #333333;
+}
+
+.navbar .left-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar li {
+  list-style-type: none;
+  flex-grow: 1;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+.navbar a {
+  color: gray;
+}
+
+.navbar .active {
+  color: #ffffff;
+}

@@ -5,7 +5,7 @@
 @import "predictions-page.css";
 @import "opencourt-timeline.css";
 @import "text-input.css";
-@import "picks-dropdown.css";
+@import "navbar.css";
 
 body {
   height: 100vh;

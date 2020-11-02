@@ -84,6 +84,9 @@ export const NAV_ELEMENTS = [
   { name: "The Zone", link: "/thezone" },
   { name: "Debate", link: "/debate" },
   { name: "Trivia", link: "/trivia" },
+  { name: "Daily Picks", link: "/picks" },
+  { name: "Award Predictions", link: "/predictions" },
+  { name: "Playoff Brackets", link: "/playoffs" },
 ];
 
 // Endpoints
@@ -101,9 +104,10 @@ export const ANALYST_RANGE = { maxScore: 600, name: ANALYST };
 export const FANALYST_RANGE = { maxScore: 300, name: FANALYST };
 
 // All awards
-export const AWARDS = [{ award: "Most Valuable Player", key: "mvp"}, 
-{ award: "Rookie of The Year", key: "rookieOTY"},
-{ award: "Most Improved Player", key: "MIP"},
-{ award: "Sixth-man Of the Year", key: "sixMan"},
-{ award: "Defensive Player of the Year", key: "defensivePOTY"}]
-
+export const AWARDS = [
+  { award: "Most Valuable Player", key: "mvp" },
+  { award: "Rookie of The Year", key: "rookieOTY" },
+  { award: "Most Improved Player", key: "MIP" },
+  { award: "Sixth-man Of the Year", key: "sixMan" },
+  { award: "Defensive Player of the Year", key: "defensivePOTY" },
+];
