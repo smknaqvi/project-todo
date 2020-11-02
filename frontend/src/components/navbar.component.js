@@ -4,6 +4,9 @@ import { NAV_ELEMENTS } from "../constants";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import PropTypes from "prop-types";
+import Button from "@material-ui/core/Button";
+import PnPDropdown from "./pnp-dropdown.component";
+import { Typography } from "@material-ui/core";
 
 export default class Navbar extends Component {
   createNavElements(elementMap) {
@@ -11,11 +14,14 @@ export default class Navbar extends Component {
       return null;
     }
     return elementMap.map((navItem) => (
-      <li className="navbar-item" key={navItem.name}>
-        <NavLink exact to={navItem.link} className="nav-link">
-          {navItem.name}
-        </NavLink>
-      </li>
+      <Button
+        component={NavLink}
+        className="navbar-item"
+        to={navItem.link}
+        key={navItem.name}
+      >
+        <Typography variant="h6">{navItem.name}</Typography>
+      </Button>
     ));
   }
 
@@ -24,12 +30,22 @@ export default class Navbar extends Component {
       return null;
     }
     return (
-      <li className="navbar-item" key="logout">
-        <NavLink exact to={"/logout"} className="nav-link">
-          Logout
-        </NavLink>
-      </li>
+      <Button
+        component={NavLink}
+        className="navbar-item"
+        to="/logout"
+        key="logout"
+      >
+        <Typography variant="subtitle1">Logout</Typography>
+      </Button>
     );
+  }
+
+  createPnPDropdown() {
+    if (!this.props.isAuthorized) {
+      return null;
+    }
+    return <PnPDropdown />;
   }
 
   render() {
@@ -37,10 +53,11 @@ export default class Navbar extends Component {
       <AppBar position="static">
         <Toolbar className="navbar">
           <NavLink exact to="/" className="nav-brand active">
-            SPORTCRED
+            <Typography variant="h6">SPORTCRED</Typography>
           </NavLink>
           <div className="left-navbar">
             {this.createNavElements(NAV_ELEMENTS)}
+            {this.createPnPDropdown()}
           </div>
           <div className="right-navbar">{this.createLogoutButtons()}</div>
         </Toolbar>

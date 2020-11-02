@@ -84,9 +84,6 @@ export const NAV_ELEMENTS = [
   { name: "The Zone", link: "/thezone" },
   { name: "Debate", link: "/debate" },
   { name: "Trivia", link: "/trivia" },
-  { name: "Daily Picks", link: "/picks" },
-  { name: "Award Predictions", link: "/predictions" },
-  { name: "Playoff Brackets", link: "/playoffs" },
 ];
 
 // Endpoints
