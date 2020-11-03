@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/user.model");
+const constants = require("../constants");
+const { DEFAULT_PICTURE } = require("../constants");
 
 router.route("/").get((_, res) => {
   User.find()
@@ -17,6 +19,7 @@ router.route("/").post((req, res) => {
   const oddSport = req.body.oddSport;
   const favTeam = req.body.favTeam;
   const acs = 100;
+  const picture = DEFAULT_PICTURE;
 
   const newUser = new User({
     displayName,
@@ -30,6 +33,7 @@ router.route("/").post((req, res) => {
       favTeam,
     },
     acs,
+    picture,
   });
 
   newUser
@@ -51,6 +55,19 @@ router.route("/:id").delete((req, res) => {
 });
 
 router.route("/:id").put((req, res) => {
+  const bioInfoToInsert = {
+    bioInfo: {
+      age: req.body.age,
+      favSport: req.body.favSport,
+      oddSport: req.body.oddSport,
+      favTeam: req.body.favTeam,
+      levelOfPlay: req.body.levelOfPlay,
+      bio: req.body.bio,
+    },
+  };
+
+  req.body = bioInfoToInsert;
+
   User.findByIdAndUpdate(req.params.id, req.body, {
     runValidators: true,
     new: true,
@@ -80,6 +97,27 @@ router.route("/:ids").get((req, res) => {
         res.status(200).json(records);
       }
     });
+});
+
+router.route("/:id/profilepic").put((req, res) => {
+  const picture = req.body.picture;
+
+  req.body = picture;
+
+  User.updateOne(
+    { _id: req.params.id },
+    {
+      picture: picture,
+    }
+  )
+    .then((updatedUser) => {
+      if (updatedUser === null) {
+        res.status(404).json("Error: could not find user");
+      } else {
+        res.status(200).json(updatedUser);
+      }
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;

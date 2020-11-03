@@ -15,6 +15,12 @@ export const FETCH_ACS_STARTED = "FETCH_ACS_STARTED";
 export const FETCH_ACS_SUCCEEDED = "FETCH_ACS_SUCCEEDED";
 export const FETCH_ACS_FAILED = "FETCH_ACS_FAILED";
 
+export const FETCH_PROFILE_STARTED = "FETCH_PROFILE_STARTED ";
+export const FETCH_PROFILE_SUCCEEDED = "FETCH_PROFILE_SUCCEEDED";
+
+export const UPDATE_PROFILE_STARTED = "UPDATE_PROFILE_STARTED";
+export const UPDATE_PROFILE_SUCCEEDED = "UPDATE_PROFILE_SUCCEEDED ";
+
 export const FETCH_OC_POSTS_STARTED = "FETCH_OC_POSTS_STARTED";
 export const FETCH_OC_POSTS_SUCCEEDED = "FETCH_OC_POSTS_SUCCEEDED";
 export const FETCH_OC_POSTS_FAILED = "FETCH_OC_POSTS_FAILED";
@@ -35,9 +41,16 @@ export const ADD_POST_STARTED = "ADD_POST_STARTED";
 export const ADD_POST_SUCCEEDED = "ADD_POST_SUCCEEDED";
 export const ADD_POST_FAILED = "ADD_POST_FAILED";
 
+export const UPLOAD_PHOTO_STARTED = "UPLOAD_PHOTO_STARTED";
+export const UPLOAD_PHOTO_SUCCEEDED = "UPLOAD_PHOTO_SUCCEEDED";
+
 export const SET_BASE64_IMAGE_STARTED = "SET_BASE64_IMAGE_STARTED";
 export const SET_BASE64_IMAGE_SUCCEEDED = "SET_BASE64_IMAGE_SUCCEEDED";
 export const SET_BASE64_IMAGE_FAILED = "SET_BASE64_IMAGE_FAILED";
+
+export const SET_PROFILE_PHOTO_STARTED = "SET_PROFILE_PHOTO_STARTED";
+export const SET_PROFILE_PHOTO_SUCCEEDED = "SET_PROFILE_PHOTO_SUCCEEDED";
+export const SET_PROFILE_PHOTO_FAILED = "SET_PROFILE_PHOTO_FAILED";
 
 export const CLEAR_BASE64_IMAGE = "CLEAR_BASE64_IMAGE";
 
@@ -58,6 +71,9 @@ export const SHOW_SUCCESS = "SHOW_SUCCESS";
 export const LOGOUT = "LOGOUT";
 
 export const TOGGLE_AUTH_PAGE = "TOGGLE_AUTH_PAGE";
+
+export const INIT_PHOTO_STARTED = "INIT_PHOTO_STARTED";
+export const INIT_PHOTO_SUCCEEDED = "INIT_PHOTO_SUCCEEDED";
 
 export const FETCH_PLAYERS_STARTED = "FETCH_PLAYERS_STARTED";
 export const FETCH_PLAYERS_FAILED = "FETCH_PLAYERS_FAILED";
@@ -83,6 +99,8 @@ export const STARTED = "STARTED";
 export const SUCCEEDED = "SUCCEEDED";
 export const FAILED = "FAILED";
 
+//  MISC
+
 // LocalStorage
 export const USER_KEY = "user";
 
@@ -91,6 +109,10 @@ export const NAV_ELEMENTS = [
   { name: "The Zone", link: "/thezone" },
   { name: "Debate", link: "/debate" },
   { name: "Trivia", link: "/trivia" },
+];
+
+export const MY_PROFILE_NAV_ELEMENT = [
+  { name: "My Profile", link: "/profile" },
 ];
 
 // Endpoints

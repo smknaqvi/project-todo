@@ -13,6 +13,7 @@ import PicksPage from "../containers/picks-page";
 import PredictionsPage from "../containers/predictions-page";
 import PlayoffsPage from "../containers/playoffs-page";
 import Auth from "../containers/auth";
+import MyProfile from "../containers/my-profile";
 import { isAuthorized } from "../utils/isAuthorized";
 
 function PrivateRoute({ children, ...rest }) {
@@ -67,9 +68,16 @@ function App() {
       <PrivateRoute path="/acs" exact>
         <AcsInfraDemo />
       </PrivateRoute>
+      <PrivateRoute path="/profile" exact>
+        <MyProfile />
+      </PrivateRoute>
+
+      <PrivateRoute path="/" exact></PrivateRoute>
+
       <PrivateRoute path="/thezone" exact>
         <OpenCourtPage />
       </PrivateRoute>
+
       <Route path="/" render={() => <Redirect to="/thezone" />} exact />
     </Router>
   );

@@ -27,6 +27,11 @@ const userSchema = new Schema(
       minlength: 4,
       maxlength: 128,
     },
+    picture: {
+      type: String,
+      trim: true,
+      required: true,
+    },
     bioInfo: {
       age: {
         type: Number,
@@ -51,6 +56,11 @@ const userSchema = new Schema(
         unique: false,
       },
       favTeam: {
+        type: String,
+        required: false,
+        unique: false,
+      },
+      bio: {
         type: String,
         required: false,
         unique: false,

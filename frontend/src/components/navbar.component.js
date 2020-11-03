@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { NAV_ELEMENTS } from "../constants";
+import { MY_PROFILE_NAV_ELEMENT } from "../constants";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import PropTypes from "prop-types";
@@ -58,6 +59,7 @@ export default class Navbar extends Component {
           <div className="left-navbar">
             {this.createNavElements(NAV_ELEMENTS)}
             {this.createPnPDropdown()}
+            {this.createNavElements(MY_PROFILE_NAV_ELEMENT)}
           </div>
           <div className="right-navbar">{this.createLogoutButtons()}</div>
         </Toolbar>

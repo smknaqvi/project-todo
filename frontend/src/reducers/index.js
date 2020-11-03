@@ -4,10 +4,13 @@ import { auth } from "./auth";
 import { acs } from "./acs";
 import { authPage } from "./auth-page";
 import { error } from "./error";
+import { profile } from "./profile";
 import { success } from "./success";
 import { player } from "./team";
 import { openCourtTimeline } from "./opencourt-timeline";
 import { createPost } from "./create-post";
+import { uploadProfilePhoto } from "./upload-profile-photo";
+
 import { LOGOUT } from "../constants";
 import { createComment } from "./create-comment";
 
@@ -16,10 +19,12 @@ const appReducer = combineReducers({
   authPage,
   error,
   acs,
+  profile,
   player,
   success,
   openCourtTimeline,
   createPost,
+  uploadProfilePhoto,
   createComment,
   form: formReducer,
 });

@@ -1,0 +1,115 @@
+.my-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+
+.upload-profile {
+  padding-top: 1%;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+.upload-profile .post-media img {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  border-radius: 100%;
+}
+.my-profile-page .upload-profile {
+  height: 100%;
+}
+
+.my-profile-page .my-profile-form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.my-profile-page .my-profile-form .fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.my-profile-page .my-profile-form .sbs-buttons {
+  align-items: center;
+  justify-content: center;
+}
+
+.my-profile-page .my-profile-form .MuiFormControl-root {
+  width: 100%;
+  margin: 2%;
+}
+
+.my-profile-page .my-profile-form .opt-fields {
+  justify-content: flex-start;
+  width: 80%;
+  height: 100%;
+}
+
+.my-profile-page .my-profile-form .required-fields {
+  height: 100%;
+  width: 100%;
+  margin-right: 5%;
+  justify-content: flex-start;
+}
+
+.upload-profile .oc-create-post {
+  width: 50%;
+  height: 30%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-self: center;
+}
+
+.upload-profile .oc-create-post .create-post-media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.upload-profile .oc-create-post .create-post-media .remove-img-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upload-profile .oc-create-post .action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.upload-profile .oc-create-post .action-buttons .hidden-input {
+  display: none;
+}
+
+.upload-profile .oc-create-post .action-buttons .upload-container {
+  position: relative;
+}
+
+.upload-profile
+  .oc-create-post
+  .action-buttons
+  .upload-container
+  .upload-loader {
+  position: absolute;
+  left: 50%;
+}
