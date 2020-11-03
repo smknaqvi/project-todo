@@ -12,3 +12,13 @@
 .Mui-error::first-letter {
   text-transform: capitalize;
 }
+
+#signup-button {
+  background-color: green;
+  color: white;
+}
+
+#login-button {
+  background-color: green;
+  color: white;
+}
