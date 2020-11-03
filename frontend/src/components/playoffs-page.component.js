@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Box } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 
 export default class PlayoffsPage extends Component {
   componentDidMount() {

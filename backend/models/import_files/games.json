@@ -1,50 +1,50 @@
 [
-    {
-        "homeName" : "Toronto Raptors",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR.png",
-        "awayName" : "Phoenix Suns",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
-        "winner": "Toronto Raptors",
-        "date": "1604170850"
-    },
-    {
-        "homeName" : "Los Angeles Lakers",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL.png",
-        "awayName" : "Los Angeles Clippers",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
-        "winner": "Los Angeles Lakers",
-        "date": "1604181650"
-    },
-    {
-        "homeName" : "Toronto Raptors",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR.png",
-        "awayName" : "Los Angeles Clippers",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
-        "winner": "Toronto Raptors",
-        "date": "1604257250"
-    },
-    {
-        "homeName" : "Los Angeles Lakers",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL.png",
-        "awayName" : "Phoenix Suns",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
-        "winner": "Phoenix Suns",
-        "date": "1604268050"
-    },
-    {
-        "homeName" : "Milwaukee Bucks",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MIL.png",
-        "awayName" : "Los Angeles Clippers",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
-        "winner": "Milwaukee Bucks",
-        "date": "1604343650"
-    },
-    {
-        "homeName" : "Detroit Pistons",
-        "homeImage" : "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/DET.png",
-        "awayName" : "Phoenix Suns",
-        "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
-        "winner": "Phoenix Suns",
-        "date": "1604354450"
-    }
+  {
+    "homeName": "Toronto Raptors",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR.png",
+    "awayName": "Phoenix Suns",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
+    "winner": "Toronto Raptors",
+    "date": "1604431800"
+  },
+  {
+    "homeName": "Los Angeles Lakers",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL.png",
+    "awayName": "Los Angeles Clippers",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
+    "winner": "Los Angeles Lakers",
+    "date": "1604440800"
+  },
+  {
+    "homeName": "Toronto Raptors",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR.png",
+    "awayName": "Los Angeles Clippers",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
+    "winner": "Toronto Raptors",
+    "date": "1604518200"
+  },
+  {
+    "homeName": "Los Angeles Lakers",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL.png",
+    "awayName": "Phoenix Suns",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
+    "winner": "Phoenix Suns",
+    "date": "1604527200"
+  },
+  {
+    "homeName": "Milwaukee Bucks",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MIL.png",
+    "awayName": "Los Angeles Clippers",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC.png",
+    "winner": "Milwaukee Bucks",
+    "date": "1604604600"
+  },
+  {
+    "homeName": "Detroit Pistons",
+    "homeImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/DET.png",
+    "awayName": "Phoenix Suns",
+    "awayImage": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO-2020.png",
+    "winner": "Phoenix Suns",
+    "date": "1604613600"
+  }
 ]

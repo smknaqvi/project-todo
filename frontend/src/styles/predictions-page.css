@@ -34,12 +34,12 @@
 .correct {
   border-style: solid;
   border-color: green;
-  border-width: 2px;
+  border-width: 3px;
 }
 .wrong {
   border-style: solid;
   border-color: red;
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .user-acs {

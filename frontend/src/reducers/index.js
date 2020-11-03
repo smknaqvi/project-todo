@@ -6,11 +6,11 @@ import { authPage } from "./auth-page";
 import { error } from "./error";
 import { profile } from "./profile";
 import { success } from "./success";
-import { player } from "./team";
+import { player } from "./player";
 import { openCourtTimeline } from "./opencourt-timeline";
 import { createPost } from "./create-post";
 import { uploadProfilePhoto } from "./upload-profile-photo";
-
+import { dailyPicks } from "./daily-picks";
 import { LOGOUT } from "../constants";
 import { createComment } from "./create-comment";
 
@@ -21,6 +21,7 @@ const appReducer = combineReducers({
   acs,
   profile,
   player,
+  dailyPicks,
   success,
   openCourtTimeline,
   createPost,

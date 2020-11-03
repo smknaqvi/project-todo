@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Box, Snackbar } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
+import PropTypes from "prop-types";
+import Box from "@material-ui/core/Box";
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "./alert.component";
 import { AWARDS } from "../constants";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -79,6 +81,31 @@ export default class PredictionsPage extends Component {
     ) {
       return <img src={this.props.awards[award.key].picture} alt="player" />;
     }
+  }
+
+  createAlerts() {
+    return (
+      <>
+        <Snackbar
+          open={this.props.showSuccess}
+          autoHideDuration={5000}
+          onClose={this.props.closeSuccess}
+        >
+          <Alert severity="success" onClose={this.props.closeSuccess}>
+            {this.props.successReason}
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={this.props.showError}
+          autoHideDuration={5000}
+          onClose={this.props.closeSuccess}
+        >
+          <Alert severity="error" onClose={this.props.closeError}>
+            {this.props.errorReason}
+          </Alert>
+        </Snackbar>
+      </>
+    );
   }
 
   submitPicks = () => {
@@ -173,16 +200,34 @@ export default class PredictionsPage extends Component {
         >
           SUBMIT
         </Button>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
+        {this.createAlerts()}
       </div>
     );
   }
 }
+
+PredictionsPage.propTypes = {
+  username: PropTypes.string,
+  userId: PropTypes.string,
+  acsScore: PropTypes.number,
+  players: PropTypes.array,
+  rookies: PropTypes.array,
+  awards: PropTypes.object,
+  madePicks: PropTypes.bool,
+  results: PropTypes.bool,
+  showSuccess: PropTypes.bool,
+  successReason: PropTypes.bool,
+  showError: PropTypes.bool,
+  errorReason: PropTypes.string,
+  winners: PropTypes.array,
+  isEvaluated: PropTypes.bool,
+  getACS: PropTypes.func,
+  getPlayers: PropTypes.func,
+  updatePicks: PropTypes.func,
+  sendPicksToDB: PropTypes.func,
+  getPicksFromDB: PropTypes.func,
+  closeSuccess: PropTypes.func,
+  closeError: PropTypes.func,
+  getWinnersFromDB: PropTypes.func,
+  updateACS: PropTypes.func,
+};
