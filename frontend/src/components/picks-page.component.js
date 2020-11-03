@@ -10,11 +10,6 @@ import Alert from "./alert.component";
 import { dateToISO } from "../utils/dateUtils";
 
 export default class PicksPage extends Component {
-  constructor(props) {
-    super(props);
-    this.date = new Date();
-    this.date.setDate(this.date.getDate() - 1);
-  }
 
   componentDidMount() {
     const {
@@ -86,10 +81,12 @@ export default class PicksPage extends Component {
   createGames(date) {
     const { games, dailyPicks } = this.props;
 
-    if (!games) {
+    if (!games || games.length === 0) {
       return <div className="game">No Games</div>;
     }
-
+    if (this.getGamesByDate(date, games).length === 0) {
+      return <div className="game">No Games</div>;
+    }
     return this.getGamesByDate(date, games).map((game) => (
       <PicksCard
         key={game._id}
@@ -107,7 +104,7 @@ export default class PicksPage extends Component {
           className="game-date"
           label="Game Date"
           type="date"
-          defaultValue={dateToISO(this.date)}
+          defaultValue={dateToISO(this.props.date)}
           onChange={this.handleChangedDate}
           InputLabelProps={{
             shrink: true,

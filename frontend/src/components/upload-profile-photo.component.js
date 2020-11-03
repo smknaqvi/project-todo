@@ -72,7 +72,7 @@ export default function UploadProfilePhoto({
         <Button component="label" disabled={isLoading}>
           <ImageIcon /> Change Profile Photo
           <input
-            class="hidden-input"
+            className="hidden-input"
             type="file"
             accept="image/*"
             ref={imagesInput}
