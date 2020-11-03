@@ -15,8 +15,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getOCPosts: () => {
-    dispatch(fetchOCPosts());
+  getOCPosts: (curUserId) => {
+    dispatch(fetchOCPosts(curUserId));
   },
   deleteOCPost: (postId) => {
     dispatch(deletePost(postId));

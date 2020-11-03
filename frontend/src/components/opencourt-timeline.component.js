@@ -5,7 +5,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default class OpenCourtTimeline extends Component {
   componentDidMount() {
-    this.props.getOCPosts();
+    this.props.getOCPosts(this.props.curUserId);
   }
 
   createTimeline() {

@@ -115,7 +115,7 @@ export function deletePost(postId) {
   };
 }
 
-export function fetchAllUsers(posts) {
+export function fetchAllUsers(posts, curUserId) {
   return function (dispatch) {
     dispatch(fetchOCUsersStarted());
     const users = new Set();
@@ -125,6 +125,7 @@ export function fetchAllUsers(posts) {
         users.add(comment.origPoster);
       });
     });
+    users.add(curUserId);
     return getUserByID(Array.from(users))
       .then(function (response) {
         const users = {};
@@ -151,14 +152,14 @@ export function fetchAllUsers(posts) {
   };
 }
 
-export function fetchOCPosts() {
+export function fetchOCPosts(curUserId) {
   return function (dispatch) {
     dispatch(fetchOCPostsStarted());
     return getOCPosts()
       .then(function (response) {
         const posts = response.data.map(mapPost);
         dispatch(fetchOCPostsSucceeded(posts));
-        dispatch(fetchAllUsers(posts));
+        dispatch(fetchAllUsers(posts, curUserId));
       })
       .catch(function (error) {
         dispatch(fetchOCPostsFailed());
