@@ -19,8 +19,8 @@ const teamSchema = new Schema(
       trim: false,
     },
     players: {
-      type: [playerSchema]
-    }
+      type: [playerSchema],
+    },
   },
   {
     timestamps: true,
@@ -29,4 +29,4 @@ const teamSchema = new Schema(
 
 const Team = mongoose.model("Team", teamSchema);
 
-module.exports = Team;
+module.exports = { Team };

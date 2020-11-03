@@ -28,6 +28,7 @@ const userPicksRouter = require("./routes/user-picks");
 const teamsRouter = require("./routes/team");
 const winnersRouter = require("./routes/winners");
 const postsRouter = require("./routes/posts");
+const bracketRouter = require("./routes/bracket");
 const gamesRouter = require("./routes/games");
 const gamePicksRouter = require("./routes/game-picks");
 
@@ -38,6 +39,7 @@ app.use("/user-picks", userPicksRouter);
 app.use("/team", teamsRouter);
 app.use("/winners", winnersRouter);
 app.use("/posts", postsRouter);
+app.use("/bracket", bracketRouter);
 app.use("/games", gamesRouter);
 app.use("/game-picks", gamePicksRouter);
 
