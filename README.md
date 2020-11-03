@@ -32,6 +32,32 @@ DB_URI=mongodb+srv://<username>:<password>@<example>.mongodb.net/<dbname>?retryW
 
 The data model can be found in `./backend/models`.
 
+#### Importing mock data
+
+There is mock data that needs to be imported in order for some features to work (ex: Picks and Predictions)
+
+To do this, you'll need mongoimport which is part of mongo-tools. (https://docs.mongodb.com/manual/reference/program/mongoimport/)
+
+From the root folder of this project (where backend, frontend, and the doc folders are contained), run the following commands.
+
+Local MongoDB Instance:
+
+```
+mongoimport --collection games --jsonArray --file backend/models/import_files/games.json
+mongoimport --collection teams --jsonArray --file backend/models/import_files/teams.json
+mongoimport --collection winners --jsonArray --file backend/models/import_files/winners.json
+```
+
+Atlas Instance:
+
+```
+mongoimport --uri "<connection_uri>" --collection games --file backend/models/import_files/games.json
+mongoimport --uri "<connection_uri>" --collection teams --jsonArray --file backend/models/import_files/teams.json
+mongoimport --uri "<connection_uri>" --collection winners --jsonArray --file backend/models/import_files/winners.json
+
+# Ex: mongoimport --uri "mongodb+srv://username:password@cluster0.4n4cu.mongodb.net/mydb" --collection winners --jsonArray --file backend/models/import_files/winners.json
+```
+
 **If you need help with this or would like to use a populated database instance please contact any of the contributors on discord.**
 
 ### Front End Setup
