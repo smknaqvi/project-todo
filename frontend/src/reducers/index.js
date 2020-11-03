@@ -9,6 +9,7 @@ import { player } from "./team";
 import { openCourtTimeline } from "./opencourt-timeline";
 import { createPost } from "./create-post";
 import { LOGOUT } from "../constants";
+import { createComment } from "./create-comment";
 
 const appReducer = combineReducers({
   auth,
@@ -19,6 +20,7 @@ const appReducer = combineReducers({
   success,
   openCourtTimeline,
   createPost,
+  createComment,
   form: formReducer,
 });
 

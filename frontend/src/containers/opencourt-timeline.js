@@ -5,11 +5,12 @@ import {
   deletePost,
   deleteComment,
 } from "../actions/opencourt-timeline";
+import { SUCCEEDED } from "../constants";
 
 const mapStateToProps = (state) => ({
   users: state.openCourtTimeline.get("users"),
   posts: state.openCourtTimeline.get("posts"),
-  fetchCompleted: state.openCourtTimeline.get("fetchCompleted"),
+  fetchCompleted: state.openCourtTimeline.get("apiStatus") === SUCCEEDED,
   curUserId: state.auth.get("id"),
 });
 

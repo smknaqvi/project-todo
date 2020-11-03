@@ -30,6 +30,7 @@ export const DELETE_OC_POST_FAILED = "DELETE_OC_POST_FAILED";
 export const DELETE_OC_COMMENT_STARTED = "DELETE_OC_COMMENT_STARTED";
 export const DELETE_OC_COMMENT_FAILED = "DELETE_OC_COMMENT_FAILED";
 export const DELETE_OC_COMMENT_SUCCEEDED = "DELETE_OC_COMMENT_SUCCEEDED";
+
 export const ADD_POST_STARTED = "ADD_POST_STARTED";
 export const ADD_POST_SUCCEEDED = "ADD_POST_SUCCEEDED";
 export const ADD_POST_FAILED = "ADD_POST_FAILED";
@@ -41,6 +42,12 @@ export const SET_BASE64_IMAGE_FAILED = "SET_BASE64_IMAGE_FAILED";
 export const CLEAR_BASE64_IMAGE = "CLEAR_BASE64_IMAGE";
 
 export const SET_CONTENT = "SET_CONTENT";
+
+export const ADD_COMMENT_STARTED = "ADD_COMMENT_STARTED";
+export const ADD_COMMENT_SUCCEEDED = "ADD_COMMENT_SUCCEEDED";
+export const ADD_COMMENT_FAILED = "ADD_COMMENT_FAILED";
+
+export const SET_COMMENT = "SET_COMMENT";
 
 export const CLOSE_ERROR = "CLOSE_ERROR";
 export const SHOW_ERROR = "SHOW_ERROR";
@@ -108,3 +115,6 @@ export const AWARDS = [
   { award: "Sixth-man Of the Year", key: "sixMan" },
   { award: "Defensive Player of the Year", key: "defensivePOTY" },
 ];
+
+// Keys
+export const ENTER = "Enter";

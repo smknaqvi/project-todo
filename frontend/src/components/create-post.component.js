@@ -29,6 +29,7 @@ export default function CreatePost({
   isPostUploading,
 }) {
   const imagesInput = useRef([]);
+  const trimmedContent = content.trim();
 
   const handleSetContent = ({ target: { value } }) => {
     setContent(value);
@@ -57,10 +58,7 @@ export default function CreatePost({
 
   return (
     <Card className="oc-create-post">
-      <CardHeader
-        title={username}
-        subheader={`${acsLevel} (${acsScore})`}
-      />
+      <CardHeader title={username} subheader={`${acsLevel} (${acsScore})`} />
       {isImageLoading ? (
         <Skeleton
           className="post-media"
@@ -69,20 +67,20 @@ export default function CreatePost({
           height="300px"
         />
       ) : (
-          base64Image && (
-            <CardContent className="post-media">
-              <div className="remove-img-container">
-                <IconButton onClick={handleDeleteImgae}>
-                  <DeleteIcon />
-                </IconButton>
-              </div>
-              <CardMedia
-                component="img"
-                image={`data:image/png;base64, ${base64Image}`}
-              />
-            </CardContent>
-          )
-        )}
+        base64Image && (
+          <CardContent className="post-media">
+            <div className="remove-img-container">
+              <IconButton onClick={handleDeleteImgae}>
+                <DeleteIcon />
+              </IconButton>
+            </div>
+            <CardMedia
+              component="img"
+              image={`data:image/png;base64, ${base64Image}`}
+            />
+          </CardContent>
+        )
+      )}
       <CardContent>
         <TextField
           id="outlined-textarea"
@@ -101,16 +99,19 @@ export default function CreatePost({
         <Button component="label" disabled={isLoading}>
           <ImageIcon /> Add Photo
           <input
+            className="hidden-input"
             type="file"
             accept="image/*"
             ref={imagesInput}
             onChange={handleSetImage}
             disabled={isLoading}
-            style={{ display: "none" }}
           />
         </Button>
         <div className="upload-container">
-          <Button onClick={handleMakePost} disabled={uploadDisabled}>
+          <Button
+            onClick={handleMakePost}
+            disabled={uploadDisabled || !trimmedContent}
+          >
             <SendIcon />
             Post
           </Button>

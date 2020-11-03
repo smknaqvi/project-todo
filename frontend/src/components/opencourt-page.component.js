@@ -7,7 +7,7 @@ import CreatePost from "../containers/create-post";
 
 export default class OpenCourtPage extends Component {
   componentDidMount() {
-    if (!this.currentUserACSScore) {
+    if (!this.props.currentUserACSScore) {
       this.props.getAcs(this.props.userId);
     }
   }

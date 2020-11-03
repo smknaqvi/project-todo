@@ -40,5 +40,6 @@ OpenCourtTimeline.propTypes = {
   users: PropTypes.object,
   posts: PropTypes.array,
   fetchCompleted: PropTypes.bool,
+  fetchUnintialized: PropTypes.bool,
   curUserId: PropTypes.string,
 };

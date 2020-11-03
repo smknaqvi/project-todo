@@ -20,6 +20,7 @@ import {
 } from "../api/opencourt-timeline";
 import { acsToLevel } from "../selectors/acsSelectors";
 import { showError } from "./error";
+import { mapPost } from "../operators/mapPosts";
 
 export const fetchOCPostsStarted = () => ({
   type: FETCH_OC_POSTS_STARTED,
@@ -117,10 +118,14 @@ export function deletePost(postId) {
 export function fetchAllUsers(posts) {
   return function (dispatch) {
     dispatch(fetchOCUsersStarted());
-    let users = posts.map((post) => {
-      return post.origPoster;
+    const users = new Set();
+    posts.forEach((post) => {
+      users.add(post.origPoster);
+      post.comments.forEach((comment) => {
+        users.add(comment.origPoster);
+      });
     });
-    return getUserByID(users)
+    return getUserByID(Array.from(users))
       .then(function (response) {
         const users = {};
         response.data.forEach((user) => {
@@ -128,6 +133,7 @@ export function fetchAllUsers(posts) {
             username: user.displayName,
             acs: user.acs,
             acsLevel: acsToLevel(user.acs),
+            picture: user.picture,
           };
         });
         dispatch(fetchOCUsersSucceeded(users));
@@ -150,21 +156,7 @@ export function fetchOCPosts() {
     dispatch(fetchOCPostsStarted());
     return getOCPosts()
       .then(function (response) {
-        const posts = response.data.map((post) => {
-          return {
-            postId: post._id,
-            origPoster: post.origPoster,
-            content: post.content,
-            picture: post.picture || "",
-            comments: post.comments.map((comment) => {
-              return {
-                commentId: comment._id,
-                content: comment.content,
-                origPoster: comment.origPoster,
-              };
-            }),
-          };
-        });
+        const posts = response.data.map(mapPost);
         dispatch(fetchOCPostsSucceeded(posts));
         dispatch(fetchAllUsers(posts));
       })

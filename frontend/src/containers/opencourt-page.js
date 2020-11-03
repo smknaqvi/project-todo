@@ -5,6 +5,7 @@ import {
   getCurrentUserACSScoreFromState,
   getCurrentUserACSLevelFromState,
 } from "../selectors/acsSelectors";
+import { closeError } from "../actions/error";
 
 const mapStateToProps = (state) => ({
   showError: state.error.get("showError"),
@@ -16,6 +17,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAcs: (id) => dispatch(getACS(id)),
+  closeError: () => dispatch(closeError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OpenCourtPage);

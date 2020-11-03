@@ -5,10 +5,12 @@ import {
   SET_BASE64_IMAGE_STARTED,
   SET_BASE64_IMAGE_SUCCEEDED,
   CLEAR_BASE64_IMAGE,
+  ADD_POST_FAILED,
 } from "../constants";
 import { uploadPost } from "../api/posts";
 import { showError } from "./error";
 import { fileToBase64 } from "../utils/fileToBase64";
+import { mapPost } from "../operators/mapPosts";
 
 export const addPostStarted = () => ({
   type: ADD_POST_STARTED,
@@ -19,15 +21,20 @@ export const addPostSuccess = (post) => ({
   post,
 });
 
+export const addPostFailed = () => ({
+  type: ADD_POST_FAILED,
+});
+
 export function addPost(data) {
   return function (dispatch) {
     dispatch(addPostStarted());
     return uploadPost(data)
       .then(function (response) {
-        // TODO - update timeline with new post
-        dispatch(addPostSuccess(response.data));
+        const post = mapPost(response.data);
+        dispatch(addPostSuccess(post));
       })
       .catch(function (error) {
+        dispatch(addPostFailed());
         if (error.response) {
           dispatch(showError(error.response.data));
         } else if (error.request) {

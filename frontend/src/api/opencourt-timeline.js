@@ -16,3 +16,10 @@ export function deleteOCPost(id) {
 export function deleteOCComment(pid, cid) {
   return axios.delete(API_ENDPOINT + "/posts/" + pid + "/comments/" + cid, {});
 }
+
+export function uploadOCComment(pid, uid, comment) {
+  return axios.post(API_ENDPOINT + "/posts/" + pid + "/comments/", {
+    origPosterID: uid,
+    content: comment,
+  });
+}

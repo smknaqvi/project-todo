@@ -10,10 +10,10 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ListItemText from "@material-ui/core/ListItemText";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Divider from "@material-ui/core/Divider";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import CreateComment from "../containers/create-comment";
 
 export default class PostView extends Component {
   createCardMedia() {
@@ -32,16 +32,14 @@ export default class PostView extends Component {
   createCommentDelete(origPoster, commentId) {
     if (origPoster === this.props.curUserId) {
       return (
-        <ListItemSecondaryAction>
-          <IconButton
-            edge="end"
-            onClick={() =>
-              this.props.deleteOCComment(this.props.postId, commentId)
-            }
-          >
-            <DeleteIcon />
-          </IconButton>
-        </ListItemSecondaryAction>
+        <IconButton
+          edge="end"
+          onClick={() =>
+            this.props.deleteOCComment(this.props.postId, commentId)
+          }
+        >
+          <DeleteIcon />
+        </IconButton>
       );
     }
   }
@@ -63,7 +61,7 @@ export default class PostView extends Component {
             <div className="inner-comment-box">
               <div className="avatar">
                 <ListItemAvatar>
-                  <Avatar />
+                  <Avatar src={`data:image/png;base64, ${commenter.picture}`} />
                 </ListItemAvatar>
               </div>
               <ListItemText
@@ -121,6 +119,11 @@ export default class PostView extends Component {
           <CardContent>
             <Typography paragraph>{this.props.content}</Typography>
           </CardContent>
+          <Divider />
+          <CreateComment
+            curUserId={this.props.curUserId}
+            postId={this.props.postId}
+          />
           {this.createComments()}
         </Card>
       </div>
