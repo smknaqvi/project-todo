@@ -33,12 +33,10 @@ const userSchema = new Schema(
       required: true,
     },
     bioInfo: {
-      age: {
-        type: Number,
+      birthday: {
+        type: Date,
         required: true,
         unique: false,
-        min: 13,
-        max: 200,
       },
       favSport: {
         type: String,

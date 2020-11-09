@@ -10,6 +10,12 @@ import PnPDropdown from "./pnp-dropdown.component";
 import { Typography } from "@material-ui/core";
 
 export default class Navbar extends Component {
+  componentDidMount() {
+    if (this.props.acsScore === 0 && this.props.userId) {
+      this.props.getACS(this.props.userId);
+    }
+  }
+
   createNavElements(elementMap) {
     if (!this.props.isAuthorized) {
       return null;
@@ -49,12 +55,21 @@ export default class Navbar extends Component {
     return <PnPDropdown />;
   }
 
+  createACSHeader() {
+    if (this.props.acsScore === 0) {
+      return null;
+    }
+    return "(" + this.props.acsScore + ")";
+  }
+
   render() {
     return (
       <AppBar position="static">
         <Toolbar className="navbar">
           <NavLink exact to="/" className="nav-brand active">
-            <Typography variant="h6">SPORTCRED</Typography>
+            <Typography variant="h6">
+              SPORTCRED {this.createACSHeader()}
+            </Typography>
           </NavLink>
           <div className="left-navbar">
             {this.createNavElements(NAV_ELEMENTS)}

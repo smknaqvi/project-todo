@@ -9,7 +9,7 @@ export function updateProfileRequest(id, data) {
     bio: data.bio,
     username: data.username,
     password: data.password,
-    age: data.age,
+    birthday: data.birthday,
     favSport: data.favSport || "",
     oddSport: data.oddSport || "",
     favTeam: data.favTeam || "",

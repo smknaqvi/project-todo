@@ -46,7 +46,6 @@ export function profileInfoRequest(id) {
 export function updateProfile(id, data) {
   return function (dispatch) {
     dispatch(updateProfileStarted());
-
     return updateProfileRequest(id, data)
       .then(function (response) {
         dispatch(

@@ -5,6 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import {
+  validateRequired,
+  validateFieldLengths,
+  validateAge,
+} from "../utils/formValidators";
 
 const renderTextField = ({
   label,
@@ -45,40 +50,23 @@ const renderSelectField = ({
 );
 
 const validate = (values) => {
-  const errors = {};
-  const requiredFields = ["username", "password", "cpassword", "age"];
-  requiredFields.forEach((field) => {
-    if (!values[field]) {
-      errors[field] = "Required";
-    }
-  });
+  const requiredFields = ["username", "password", "cpassword", "birthday"];
+  let errors = validateRequired(values, requiredFields);
 
-  const strLengthRestrictions = {
+  const fieldLengthRestrictions = {
     username: [3, 20],
     password: [4, 128],
   };
-
-  Object.entries(strLengthRestrictions).forEach(([field, limits]) => {
-    const min = limits[0];
-    const max = limits[1];
-    if (
-      values[field] &&
-      (values[field].length < min || values[field].length > max)
-    ) {
-      errors[field] =
-        field + " must be between " + min + " and " + max + " characters long";
-    }
-  });
+  errors = {
+    ...errors,
+    ...validateFieldLengths(values, fieldLengthRestrictions),
+  };
 
   if (values.cpassword !== values.password) {
     errors.cpassword = "Passwords do not match";
   }
 
-  if (values.age < 13) {
-    errors.age = "Must be at least 13 years old";
-  } else if (values.age > 200) {
-    errors.age = "Please enter a valid age";
-  }
+  errors = { ...errors, ...validateAge(values.birthday, 13, 200) };
   return errors;
 };
 
@@ -91,27 +79,30 @@ let SignupForm = ({ handleSubmit, togglePage }) => {
             name="username"
             component={renderTextField}
             type="text"
-            placeholder="Username"
+            label="Username*"
           />
           <Field
             name="password"
             component={renderTextField}
             type="password"
-            placeholder="Password"
+            label="Password*"
           />
           <Field
             name="cpassword"
             component={renderTextField}
             type="password"
-            placeholder="Confirm Password"
+            label="Confirm Password*"
           />
         </div>
         <div className="opt-fields">
           <Field
-            name="age"
+            name="birthday"
             component={renderTextField}
-            type="number"
-            placeholder="Age"
+            label="Birthday*"
+            type="date"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <Field
             name="favSport"

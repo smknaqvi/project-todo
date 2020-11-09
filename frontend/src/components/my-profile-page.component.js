@@ -5,10 +5,13 @@ import PropTypes from "prop-types";
 import Alert from "./alert.component";
 import { CircularProgress } from "@material-ui/core";
 import UploadProfilePhoto from "../containers/upload-profile-photo";
+import { dateToISO } from "../utils/dateUtils";
 
 export default class MyProfilePage extends Component {
   save = (values) => {
-    this.props.save(this.props.userId, values);
+    this.props.save(this.props.userId, {
+      ...values,
+    });
   };
 
   componentDidMount() {
@@ -18,7 +21,6 @@ export default class MyProfilePage extends Component {
   render() {
     if (this.props.fetchCompleted) {
       const { profile } = this.props;
-
       return (
         <div className="my-profile-container">
           <div className="upload-profile">
@@ -46,7 +48,6 @@ export default class MyProfilePage extends Component {
                 {this.props.successReason}
               </Alert>
             </Snackbar>
-
             <MyProfileForm
               onSubmit={this.save}
               togglePage={this.props.togglePage}
@@ -54,11 +55,11 @@ export default class MyProfilePage extends Component {
               initialValues={{
                 bio: profile.bioInfo.bio,
                 username: profile.username,
-                age: profile.bioInfo.age,
                 favSport: profile.bioInfo.favSport,
                 oddSport: profile.bioInfo.oddSport,
                 favTeam: profile.bioInfo.favTeam,
                 levelOfPlay: profile.bioInfo.levelOfPlay,
+                birthday: dateToISO(new Date(profile.bioInfo.birthday)),
               }}
             />
           </div>

@@ -5,6 +5,11 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import {
+  validateRequired,
+  validateFieldLengths,
+  validateAge,
+} from "../utils/formValidators";
 
 const renderTextField = ({
   label,
@@ -45,40 +50,22 @@ const renderSelectField = ({
 );
 
 const validate = (values) => {
-  const errors = {};
-  const requiredFields = ["username", "password", "cpassword", "age"];
-  requiredFields.forEach((field) => {
-    if (!values[field]) {
-      errors[field] = "Required";
-    }
-  });
+  const requiredFields = ["birthday"];
+  let errors = validateRequired(values, requiredFields);
 
-  const strLengthRestrictions = {
-    username: [3, 20],
+  const fieldLengthRestrictions = {
     bio: [0, 300],
   };
+  errors = {
+    ...errors,
+    ...validateFieldLengths(values, fieldLengthRestrictions),
+  };
 
-  Object.entries(strLengthRestrictions).forEach(([field, limits]) => {
-    const min = limits[0];
-    const max = limits[1];
-    if (
-      values[field] &&
-      (values[field].length < min || values[field].length > max)
-    ) {
-      errors[field] =
-        field + " must be between " + min + " and " + max + " characters long";
-    }
-  });
-
-  if (values.age < 13) {
-    errors.age = "Must be at least 13 years old";
-  } else if (values.age > 200) {
-    errors.age = "Please enter a valid age";
-  }
+  errors = { ...errors, ...validateAge(values.birthday, 13, 200) };
   return errors;
 };
 
-let MyProfileForm = ({ handleSubmit, togglePage, initialValues }) => {
+let MyProfileForm = ({ handleSubmit }) => {
   return (
     <form className="my-profile-form" onSubmit={handleSubmit}>
       <div className="fields">
@@ -91,11 +78,13 @@ let MyProfileForm = ({ handleSubmit, togglePage, initialValues }) => {
             label="Bio"
           />
           <Field
-            name="age"
+            name="birthday"
             component={renderTextField}
-            type="number"
-            placeholder="Age"
-            label="Age"
+            label="Birthday"
+            type="date"
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <Field
             name="favSport"
@@ -145,7 +134,6 @@ MyProfileForm = reduxForm({
 
 MyProfileForm.propTypes = {
   handleSubmit: PropTypes.func,
-  togglePage: PropTypes.func,
 };
 
 export default MyProfileForm;

@@ -5,7 +5,7 @@ export function signupRequest(data) {
   return axios.post(API_ENDPOINT + "/users", {
     username: data.username,
     password: data.password,
-    age: data.age,
+    birthday: data.birthday,
     favSport: data.favSport || "",
     oddSport: data.oddSport || "",
     favTeam: data.favTeam || "",

@@ -47,8 +47,9 @@ export default function UploadProfilePhoto({
   return (
     <Card className="oc-create-post">
       <CardHeader
-        title={profile.displayName}
-        subheader={acsLevel + ", " + profile.acs}
+        title={
+          profile.displayName + " - " + acsLevel + " (" + profile.acs + ")"
+        }
       />
       {isPhotoLoading ? (
         <Skeleton

@@ -13,7 +13,7 @@ router.route("/").post((req, res) => {
   const displayName = req.body.username;
   const username = displayName.toLowerCase();
   const password = req.body.password;
-  const age = req.body.age;
+  const birthday = req.body.birthday;
   const favSport = req.body.favSport;
   const levelOfPlay = req.body.levelOfPlay;
   const oddSport = req.body.oddSport;
@@ -26,7 +26,7 @@ router.route("/").post((req, res) => {
     username,
     password,
     bioInfo: {
-      age,
+      birthday,
       favSport,
       levelOfPlay,
       oddSport,
@@ -57,7 +57,7 @@ router.route("/:id").delete((req, res) => {
 router.route("/:id").put((req, res) => {
   const bioInfoToInsert = {
     bioInfo: {
-      age: req.body.age,
+      birthday: req.body.birthday,
       favSport: req.body.favSport,
       oddSport: req.body.oddSport,
       favTeam: req.body.favTeam,
