@@ -2,12 +2,6 @@ const router = require("express").Router();
 const { Bracket, BracketChoice } = require("../models/bracket.model");
 const { Team } = require("../models/team.model");
 
-router.route("/").get((_, res) => {
-  Bracket.find()
-    .then((brackets) => res.status(200).json(brackets))
-    .catch((err) => res.status(400).json("Error: " + err));
-});
-
 router.route("/teams").post((req, res) => {
   const name = req.body.name;
   const picture = req.body.picture || " ";
@@ -24,25 +18,9 @@ router.route("/teams").post((req, res) => {
     .catch((err) => res.status(400).json("Error: Team Already Exists! "));
 });
 
-router.route("/").post((req, res) => {
-  const bracket = req.body.bracket || [];
-  const newBracket = new Bracket({
-    bracket,
-  });
-
-  newBracket
-    .save()
-    .then((bracket) => res.status(200).json(bracket))
-    .catch((err) =>
-      res.status(400).json("Error: Bracket Already Exists! " + err)
-    );
-});
-
-router.route("/:id/team/:tid").post((req, res) => {
-  const bracketId = req.params.id;
+router.route("/:bracektid/team/:tid").post((req, res) => {
+  const bracketId = req.params.bracektid;
   const teamId = req.params.tid;
-
-  const newTeam = Team();
 
   Team.find({ _id: teamId }, (err, team) => {
     Bracket.findOneAndUpdate(
@@ -75,9 +53,11 @@ router.route("/bracketChoice").post((req, res) => {
   const winnerID = req.body.winnerID || "";
   const resultForWinner = req.body.resultForWinner || "";
   const userID = req.body.userID || "";
-  const isFirstMatch = req.body.isFirstMatch || false;
+  const isFirstMatch = false;
   const winnerScore = req.body.winnerScore || 0;
   const loserScore = req.body.loserScore || 0;
+  const isEvaluated = req.body.isEvaluated || false;
+  const matchNumber = req.body.matchNumber || 1;
 
   const newBracketChoice = new BracketChoice({
     teamOne,
@@ -88,6 +68,8 @@ router.route("/bracketChoice").post((req, res) => {
     isFirstMatch,
     winnerScore,
     loserScore,
+    isEvaluated,
+    matchNumber,
   });
 
   newBracketChoice
@@ -110,6 +92,8 @@ router.route("/bracketChoice/:id").put((req, res) => {
       isFirstMatch: req.body.isFirstMatch || false,
       winnerScore: req.body.winnerScore || 0,
       loserScore: req.body.loserScore || 0,
+      isEvaluated: req.body.isEvaluated || false,
+      matchNumber: req.body.matchNumber || 1,
     },
     {
       useFindAndModify: false,

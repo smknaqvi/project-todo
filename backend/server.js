@@ -31,6 +31,7 @@ const postsRouter = require("./routes/posts");
 const bracketRouter = require("./routes/bracket");
 const gamesRouter = require("./routes/games");
 const gamePicksRouter = require("./routes/game-picks");
+const bracketWinnersRouter = require("./routes/bracket-winners");
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
@@ -42,6 +43,7 @@ app.use("/posts", postsRouter);
 app.use("/bracket", bracketRouter);
 app.use("/games", gamesRouter);
 app.use("/game-picks", gamePicksRouter);
+app.use("/bracket-winners", bracketWinnersRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

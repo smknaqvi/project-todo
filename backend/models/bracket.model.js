@@ -9,6 +9,10 @@ const bracketSchema = new Schema(
       type: [TeamSchema],
       default: [],
     },
+    year: {
+      type: Number,
+      required: true,
+    },
   },
   {
     timestamps: true,
@@ -43,6 +47,14 @@ const bracketChoiceSchema = new Schema({
     type: Number,
     max: 7,
     min: 0,
+  },
+  isEvaluated: {
+    type: Boolean,
+  },
+  matchNumber: {
+    type: Number,
+    max: 15,
+    min: 1,
   },
 });
 
