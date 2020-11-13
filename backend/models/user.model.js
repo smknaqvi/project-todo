@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const Response = require("../models/response.model");
+const responseSchema = Response.schema;
+const Debate = require("../models/debate.model");
+const debateSchema = Debate.schema;
 
 const userSchema = new Schema(
   {
@@ -71,6 +75,12 @@ const userSchema = new Schema(
       min: 100,
       max: 1100,
     },
+    debates: {
+      type: [String],
+    },
+    assignedResponses: {
+      type: [String],
+    }
   },
   {
     timestamps: true,
