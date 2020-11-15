@@ -7,7 +7,7 @@ import {
   FETCH_RESPONSES_STARTED,
   FETCH_RESPONSES_SUCCEEDED,
 } from "../constants";
-import { getAllDebate, getDebateByUserId } from "../api/debate";
+import { getAllDebates, getDebateByUserId } from "../api/debate";
 import { getDebateResponses } from "../api/debate-responses";
 import { showError } from "./error";
 import { compareDates } from "../utils/dateUtils";
@@ -66,7 +66,7 @@ export function getDebatesByUserId(id) {
 export function getDebates() {
   return function (dispatch) {
     dispatch(debateRequestStarted());
-    return getAllDebate()
+    return getAllDebates()
       .then(function (response) {
         dispatch(debateRequestSucceeded(response.data));
       })
