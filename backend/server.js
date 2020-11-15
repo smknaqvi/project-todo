@@ -31,6 +31,9 @@ const postsRouter = require("./routes/posts");
 const bracketRouter = require("./routes/bracket");
 const gamesRouter = require("./routes/games");
 const gamePicksRouter = require("./routes/game-picks");
+const debateQuestionsRouter = require("./routes/debate-question");
+const debateResponseRouter = require("./routes/debate-response");
+const debateRouter = require("./routes/debate");
 const bracketWinnersRouter = require("./routes/bracket-winners");
 
 app.use("/users", usersRouter);
@@ -43,6 +46,9 @@ app.use("/posts", postsRouter);
 app.use("/bracket", bracketRouter);
 app.use("/games", gamesRouter);
 app.use("/game-picks", gamePicksRouter);
+app.use("/debate-questions", debateQuestionsRouter);
+app.use("/debate-responses", debateResponseRouter);
+app.use("/debate", debateRouter);
 app.use("/bracket-winners", bracketWinnersRouter);
 
 app.listen(port, () => {

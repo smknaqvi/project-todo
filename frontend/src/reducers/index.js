@@ -13,6 +13,7 @@ import { uploadProfilePhoto } from "./upload-profile-photo";
 import { dailyPicks } from "./daily-picks";
 import { LOGOUT } from "../constants";
 import { createComment } from "./create-comment";
+import { debatePage }  from "./debate-page"
 
 const appReducer = combineReducers({
   auth,
@@ -27,6 +28,7 @@ const appReducer = combineReducers({
   createPost,
   uploadProfilePhoto,
   createComment,
+  debatePage,
   form: formReducer,
 });
 

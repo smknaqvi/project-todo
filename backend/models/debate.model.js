@@ -3,31 +3,34 @@ const Schema = mongoose.Schema;
 const Response = require("../models/response.model");
 const responseSchema = Response.schema;
 
-
 const debateSchema = new Schema(
   {
+    debaterIds: {
+      type: [String],
+      required: true,
+    },
     tier: {
       type: String,
-      required: true
+      required: true,
     },
     question: {
       type: String,
-      required: true
+      required: true,
     },
-    responses: {
-      type: [responseSchema],
+    responseIds: {
+      type: [String],
     },
     date: {
       type: Date,
-      required: true
+      required: true,
     },
     isEvaluated: {
       type: Boolean,
-      required: true
+      required: true,
     },
     winner: {
       type: String,
-    }
+    },
   },
   {
     timestamps: true,

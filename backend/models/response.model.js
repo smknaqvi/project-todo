@@ -19,6 +19,10 @@ const responseSchema = new Schema(
     ratings: {
       type: Map,
       required: true
+    },
+    date: {
+      type: Date,
+      required: true
     }
   },
   {

@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Who is the greatest of all time?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "In the modern era 1990-2020 who is the best coach? Phil Jackson or Gregg Popovich",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Who’s A Better Point Guard: Kyrie, Steph, Westbrook or CP3?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Which brand of basketball was better 1990-2005 or 2005-2020?",
+    "tier": "Pro Analyst"
+  }
+]
