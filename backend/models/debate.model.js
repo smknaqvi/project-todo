@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Response = require("../models/response.model");
-const responseSchema = Response.schema;
 
 const debateSchema = new Schema(
   {
@@ -27,9 +25,6 @@ const debateSchema = new Schema(
     isEvaluated: {
       type: Boolean,
       required: true,
-    },
-    winner: {
-      type: String,
     },
   },
   {

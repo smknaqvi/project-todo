@@ -1,22 +1,17 @@
 import {
-  UPDATE_DATE,
   FETCH_DEBATES_FAILED,
   FETCH_DEBATES_STARTED,
   FETCH_DEBATES_SUCCEEDED,
   FETCH_RESPONSES_FAILED,
   FETCH_RESPONSES_STARTED,
   FETCH_RESPONSES_SUCCEEDED,
+  UPDATE_RETRIEVED_CUR_DEBATE,
 } from "../constants";
+import { updateCurrentDebate } from "./debate-write-page";
 import { getAllDebates, getDebateByUserId } from "../api/debate";
 import { getDebateResponses } from "../api/debate-responses";
 import { showError } from "./error";
 import { compareDates } from "../utils/dateUtils";
-
-export const updateDate = (date, curDebate) => ({
-  type: UPDATE_DATE,
-  date,
-  curDebate: curDebate,
-});
 
 export const debateRequestStarted = () => ({
   type: FETCH_DEBATES_STARTED,
@@ -37,6 +32,11 @@ export const responseRequestFailed = () => ({
 
 export const responseRequestStarted = () => ({
   type: FETCH_RESPONSES_STARTED,
+});
+
+export const updateRetrievedCurDebate = (retrievedCurDebate) => ({
+  type: UPDATE_RETRIEVED_CUR_DEBATE,
+  retrievedCurDebate,
 });
 
 export const responseRequestSucceeded = (responses) => ({
@@ -84,12 +84,13 @@ export function getDebates() {
 
 export function getDebatesFromUserIdAndDate(date, id) {
   return function (dispatch) {
+    dispatch(updateRetrievedCurDebate(false));
     return getDebateByUserId(id)
       .then(function (response) {
         const curDebate = response.data.filter((debate) => {
           return compareDates(debate.date, date);
         });
-        dispatch(updateDate(date, curDebate));
+        dispatch(updateCurrentDebate(curDebate));
       })
       .catch(function (error) {
         if (error.response) {

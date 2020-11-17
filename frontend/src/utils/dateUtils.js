@@ -28,6 +28,5 @@ export const compareDates = (date1, date2) => {
 export const convertDateFromPicker = (date) => {
   date.replaceAll("-", "/");
   const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + 1);
   return newDate;
 };

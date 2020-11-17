@@ -44,7 +44,6 @@ router.route("/").post((req, res) => {
   const responses = req.body.responseIds || [];
   const question = req.body.question;
   const date = req.body.date ? new Date(req.body.date) : new Date();
-  const winner = req.body.winner;
   const isEvaluated = false;
   const newDebate = new Debate({
     tier: tier,
@@ -52,7 +51,6 @@ router.route("/").post((req, res) => {
     responseIds: responses,
     question: question,
     date: date,
-    winner: winner,
     isEvaluated: isEvaluated,
   });
 
@@ -71,7 +69,6 @@ router.route("/:id").put((req, res) => {
       responseIds: req.body.responseIds || [],
       question: req.body.question,
       date: req.body.date ? new Date(req.body.date) : new Date(),
-      winner: req.body.winner,
       isEvaluated: req.body.isEvaluated || false,
     },
     {
@@ -87,6 +84,16 @@ router.route("/:id").put((req, res) => {
       }
     })
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/get-by-tier/:tier").get((req, res) => {
+  Debate.find({
+    tier: req.params.tier,
+  })
+    .then((debate) => {
+      res.status(200).json(debate);
+    })
+    .catch((error) => res.status(404).json("Error: No Debates Found"));
 });
 
 module.exports = router;

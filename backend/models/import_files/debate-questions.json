@@ -4,7 +4,71 @@
     "tier": "Fanalyst"
   },
   {
+    "question": "Is Dwight Howard a HOF’er?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "What should be the criteria for the HOF? Rings or accolades?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Is Carmelo Anthony a HOF’er?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Does Ja Morant win ROY if Zion plays a full season based on the numbers he put up in the games before and after the bubble?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Best team ever?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Who would you rather build around? Giannis Antetokounmpo or Ben Simmons?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Kyle Lowry or Russell Westbrook?",
+    "tier": "Fanalyst"
+  },
+  {
+    "question": "Should WNBA players be paid more?",
+    "tier": "Fanalyst"
+  },
+  {
     "question": "In the modern era 1990-2020 who is the best coach? Phil Jackson or Gregg Popovich",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Who is the greatest of all time?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Who’s A Better Point Guard: Kyrie, Steph, Westbrook or CP3?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Who was the real MVP Shaq or Kobe",
+    "tier": "Analyst"
+  },
+  {
+    "question": "What should be the criteria for the HOF? Rings or accolades?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Did Kobe Bryant deserve MVP in 2006-07 over Dirk?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Should college basketball players be paid?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Who was better of these two: Magic or Bird?",
+    "tier": "Analyst"
+  },
+  {
+    "question": "Is Chris Paul over or underrated?",
     "tier": "Analyst"
   },
   {
@@ -12,7 +76,87 @@
     "tier": "Pro Analyst"
   },
   {
-    "question": "Which brand of basketball was better 1990-2005 or 2005-2020?",
+    "question": "Who is the greatest of all time?",
     "tier": "Pro Analyst"
+  },
+  {
+    "question": "What should be the criteria for the HOF? Rings or accolades?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Did Kobe Bryant deserve MVP in 2006-07 over Dirk?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Who is the best Centre to ever play basketball?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Should college basketball players be paid?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Who was better of these two: Magic or Bird?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Most underrated player ever?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Most overrated player ever?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Are Lebron’s teammates really that bad or are they never credited?",
+    "tier": "Pro Analyst"
+  },
+  {
+    "question": "Which brand of basketball was better 1990-2005 or 2005-2020?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Who is the greatest of all time?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Who’s A Better Point Guard: Kyrie, Steph, Westbrook or CP3?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Is Carmelo Anthony a HOF’er?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Who was the real MVP Shaq or Kobe?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "What should be the criteria for the HOF? Rings or accolades?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Who is the best Centre to ever play basketball?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Should college basketball players be paid?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Who was better of these two: Magic or Bird?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Most underrated player ever?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Most overrated player ever?",
+    "tier": "Expert Analyst"
+  },
+  {
+    "question": "Are Lebron’s teammates that bad or are they never credited?",
+    "tier": "Expert Analyst"
   }
 ]
