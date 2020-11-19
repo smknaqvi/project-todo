@@ -48,6 +48,7 @@ mongoimport --collection teams --jsonArray --file backend/models/import_files/te
 mongoimport --collection winners --jsonArray --file backend/models/import_files/winners.json
 mongoimport --collection brackets --jsonArray --file backend/models/import_files/brackets.json
 mongoimport --collection triviaquestions --jsonArray --file backend/models/import_files/triviaquestions.json
+mongoimport --collection debatequestions --jsonArray --file backend/models/import_files/debate-questions.json
 ```
 
 Atlas Instance:
@@ -58,6 +59,7 @@ mongoimport --uri "<connection_uri>" --collection teams --jsonArray --file backe
 mongoimport --uri "<connection_uri>" --collection winners --jsonArray --file backend/models/import_files/winners.json
 mongoimport --uri "<connection_uri>" --collection brackets --jsonArray --file backend/models/import_files/brackets.json
 mongoimport --uri "<connection_uri>" --collection triviaquestions --jsonArray --file backend/models/import_files/triviaquestions.json
+mongoimport --uri "<connection_uri>" --collection debatequestions --jsonArray --file backend/models/import_files/debate-questions.json
 
 # Ex: mongoimport --uri "mongodb+srv://username:password@cluster0.4n4cu.mongodb.net/mydb" --collection winners --jsonArray --file backend/models/import_files/winners.json
 ```
