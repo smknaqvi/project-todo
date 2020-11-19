@@ -25,6 +25,44 @@ export function putDebate(debate) {
     });
   }
 }
+export function updateRatingCount(
+  responseid,
+  newcount
+) {
+  return axios.put(`${API_ENDPOINT}/debate-responses/update-count/${responseid}`, {
+    count : newcount
+  });
+}
+
+export function getResponsesByIDs(ids) {
+  return axios.get(`${API_ENDPOINT}/debate-responses/get-from-list-of-ids/`, {params : {responseids : ids}});
+}
+
+
+export function updateAssignedResponses(
+  response,
+  userid
+) {
+  return axios.put(`${API_ENDPOINT}/debate-responses/put-assigned-responses/${userid}`, {
+    response : response,
+  });
+}
+
+export function getResponsesByID(id) {
+  return axios.get(`${API_ENDPOINT}/debate-responses/${id}`);
+}
+
+export function putResponseRating(
+  id,
+  userId,
+  value
+) {
+  return axios.put(`${API_ENDPOINT}/debate-responses/put-rating/${id}`, {
+    userId,
+    value
+  });
+}
+
 
 export function getDebate(id) {
   return axios.get(`${API_ENDPOINT}/debate/${id}`);
@@ -41,3 +79,10 @@ export function getAllDebates() {
 export function getDebateByTier(tier) {
   return axios.get(`${API_ENDPOINT}/debate/get-by-tier/${tier}`);
 }
+export function getAssignedResponses(id) {
+  return axios.get(`${API_ENDPOINT}/debate-responses/get-assigned-responses/${id}`);
+}
+
+
+
+

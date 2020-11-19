@@ -10,7 +10,6 @@ import Alert from "./alert.component";
 import { dateToISO } from "../utils/dateUtils";
 
 export default class PicksPage extends Component {
-
   componentDidMount() {
     const {
       userId,
@@ -75,7 +74,7 @@ export default class PicksPage extends Component {
       }
     });
     setTimeout(() => this.submitPicks());
-    updateACS(userId, "DEMO", acsScore + correct * 10);
+    updateACS(userId, "PICKS", acsScore + correct * 10);
   };
 
   createGames(date) {

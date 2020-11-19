@@ -98,7 +98,7 @@ export default class PredictionsPage extends Component {
         <Snackbar
           open={this.props.showError}
           autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
+          onClose={this.props.closeError}
         >
           <Alert severity="error" onClose={this.props.closeError}>
             {this.props.errorReason}
@@ -166,7 +166,7 @@ export default class PredictionsPage extends Component {
 
     this.props.updateACS(
       this.props.userId,
-      "DEMO",
+      "PREDICTIONS",
       this.props.acsScore + correct * 10
     );
   };

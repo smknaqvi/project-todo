@@ -1,35 +1,37 @@
 import { connect } from "react-redux";
-import DebatePage from "../components/debate-page.component";
+import DebateViewPage from "../components/debate-view-page.component";
 import {
   getResponses,
   getDebatesByUserId,
   getDebatesFromUserIdAndDate,
-  getUserResponsesByID,
-  evaluateDebate,
   getAssignedResponsesByIDs,
+  evaluateDebate,
+  updateRating,
 } from "../actions/debate-page";
-import { closeError } from "../actions/error";
-import { getRespondedToDebatesFromState } from "../selectors/responseSelectors";
-import { getACS, updateACS } from "../actions/acs";
+import { getTwoAssignedResponses } from "../actions/debate-write-page";
+import {
+  getRespondedToDebatesFromState,
+  getMyRespondedToDebatesFromState,
+} from "../selectors/responseSelectors";
 import { closeSuccess } from "../actions/success";
+import { getACS, updateACS } from "../actions/acs";
 
 const mapStateToProps = (state) => ({
   userId: state.auth.get("id"),
   date: state.debatePage.get("date"),
   debates: state.debatePage.get("debates"),
   curDebate: state.debatePage.get("curDebate"),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
   responses: state.debatePage.get("responses"),
   hasResponded: getRespondedToDebatesFromState(state),
   assignedResponses: state.debatePage.get("assignedResponses"),
   curResponseObject: state.debatePage.get("curResponseObject"),
   assignedResponsesObjects: state.debatePage.get("assignedResponsesObjects"),
+  curResponse: getMyRespondedToDebatesFromState(state),
   retrievedAssignedResponses: state.debatePage.get(
     "retrievedAssignedResponses"
   ),
+  isCurDebateEvaluated: state.debatePage.get("isCurDebateEvaluated"),
+  retrievedCurDebate: state.debatePage.get("retrievedCurDebate"),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,11 +42,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateACS(userid, type, acsscore)),
   getDebatesFromUserIdAndDate: (date, userid) =>
     dispatch(getDebatesFromUserIdAndDate(date, userid)),
-  getUserResponsesByID: (id) => dispatch(getUserResponsesByID(id)),
-  closeError: () => dispatch(closeError()),
-  closeSuccess: () => dispatch(closeSuccess()),
-  evaluateDebate: (id, date) => dispatch(evaluateDebate(id, date)),
+  evaluateDebate: (userId, id, date) =>
+    dispatch(evaluateDebate(userId, id, date)),
   getAssignedResponsesByIDs: (ids) => dispatch(getAssignedResponsesByIDs(ids)),
+  updateRating: (responseId, value, userId) =>
+    dispatch(updateRating(responseId, value, userId)),
+  getTwoAssignedResponses: (userid, responseid, curdebate) =>
+    dispatch(getTwoAssignedResponses(userid, responseid, curdebate)),
+  closeSuccess: () => {
+    dispatch(closeSuccess());
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DebatePage);
+export default connect(mapStateToProps, mapDispatchToProps)(DebateViewPage);

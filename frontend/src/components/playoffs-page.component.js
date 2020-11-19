@@ -118,6 +118,7 @@ export default class PlayoffsPage extends Component {
           teamTwoScore,
           winnerChoice,
           matchNumber,
+          isFirstMatch,
         } = bracket;
 
         const isGameCorrect =
@@ -143,9 +144,9 @@ export default class PlayoffsPage extends Component {
         };
 
         let acsIncrease = acc.acsIncrease;
-        if (isGameCorrect) {
+        if (!isFirstMatch && isGameCorrect) {
           acsIncrease += 5;
-        } else {
+        } else if (!isFirstMatch) {
           acsIncrease -= 5;
         }
 

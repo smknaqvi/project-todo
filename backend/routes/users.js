@@ -9,6 +9,13 @@ router.route("/").get((_, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/get-profiles/").get((req, res) => {
+  User.find({ _id: {$in : req.query.userids}})
+    .then((users) => res.status(200).json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+
 router.route("/").post((req, res) => {
   const displayName = req.body.username;
   const username = displayName.toLowerCase();
@@ -19,6 +26,8 @@ router.route("/").post((req, res) => {
   const oddSport = req.body.oddSport;
   const favTeam = req.body.favTeam;
   const acs = 100;
+  const assignedResponses = req.body.assignedResponses;
+  const debates = req.body.debates;
   const picture = DEFAULT_PICTURE;
 
   const newUser = new User({
@@ -33,6 +42,8 @@ router.route("/").post((req, res) => {
       favTeam,
     },
     acs,
+    assignedResponses,
+    debates,
     picture,
   });
 

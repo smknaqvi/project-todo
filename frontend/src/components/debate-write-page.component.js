@@ -25,24 +25,31 @@ export default class DebateWritePage extends Component {
   };
 
   submitResponse = () => {
-    const debate = this.props.curDebate[0];
-    const response = {
-      user: this.props.userId,
-      content: this.props.response,
-      count: 0,
-      ratings: new Map(),
-      date: this.props.date,
-    };
-    this.props.uploadResponseAndSaveToDebate(debate, response);
+    if (this.props.response === "") {
+      this.props.showError("Cannot submit empty response");
+    } else {
+      const debate = this.props.curDebate[0];
+      const response = {
+        user: this.props.userId,
+        content: this.props.response,
+        count: 0,
+        ratings: new Map(),
+        date: this.props.date,
+      };
+      this.props.uploadResponseAndSaveToDebate(debate, response);
+    }
   };
 
   render() {
     if (this.props.curDebate.length > 0) {
       const curDebate = this.props.curDebate[0];
       return (
-        <Card variant="outlined">
-          <CardHeader title={curDebate.question}></CardHeader>
-          <CardContent className="debate-responses">
+        <Card className="debate-create" variant="outlined">
+          <CardHeader
+            className="debate-create-header"
+            title={curDebate.question}
+          ></CardHeader>
+          <CardContent className="debate-create-content">
             <TextField
               id="outlined-textarea"
               label="Create your Debate Response"
@@ -55,7 +62,11 @@ export default class DebateWritePage extends Component {
               variant="outlined"
             />
           </CardContent>
-          <Button variant="contained" onClick={this.submitResponse}>
+          <Button
+            className="debate-create-button"
+            variant="contained"
+            onClick={this.submitResponse}
+          >
             Submit Response
           </Button>
         </Card>

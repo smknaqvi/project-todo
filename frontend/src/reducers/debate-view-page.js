@@ -1,13 +1,7 @@
 import {
+  UPDATE_DATE,
   FETCH_DEBATES_SUCCEEDED,
   FETCH_RESPONSES_SUCCEEDED,
-  UPDATE_CURRENT_DEBATE,
-  UPDATE_RETRIEVED_CUR_DEBATE,
-  FETCH_ASSIGNED_RESPONSES_SUCCEEDED,
-  FETCH_SINGLE_RESPONSE_SUCCEEDED,
-  FETCH_ASSIGNED_RESPONSES_OBJECTS_SUCCEEDED,
-  REMOVE_ASSIGNED_RESPONSES_SUCCEEDED,
-  EVALUATE_DEBATE_SUCCEEDED
 } from "../constants";
 import { Map } from "immutable";
 
@@ -16,23 +10,14 @@ const initState = Map({
   debates: [],
   responses: [],
   curDebate: [],
-  retrievedCurDebate: false,
   assignedResponses: [],
-  curResponseObject: null,
-  assignedResponsesObjects: [],
-  retrievedAssignedResponses: false,
-  isCurDebateEvaluated: false
+  assignedResponsesContent: [],
+  curResponse: [],
+  retrievedAssignedResponses: false
 });
 
-export const debatePage = (state = initState, action) => {
+export const debateViewPage = (state = initState, action) => {
   switch (action.type) {
-    case UPDATE_RETRIEVED_CUR_DEBATE:
-      return state.set("retrievedCurDebate", action.retrievedCurDebate).set("retrievedAssignedResponses", false);
-    case UPDATE_CURRENT_DEBATE:
-      return state
-        .set("curDebate", action.curDebate)
-        .set("retrievedCurDebate", true)
-        .set("retrievedAssignedResponses", false);
     case FETCH_RESPONSES_SUCCEEDED:
       return state.set("responses", action.responses);
     case FETCH_ASSIGNED_RESPONSES_SUCCEEDED:
@@ -53,6 +38,8 @@ export const debatePage = (state = initState, action) => {
       return state.set("assignedResponsesObjects", []);
     case EVALUATE_DEBATE_SUCCEEDED:
       return state.set("curDebate", action.curDebate);
+    case UPDATE_DATE:
+      return state.set("date", action.date).set("curDebate", action.curDebate);
     default:
       return state;
   }

@@ -1,0 +1,64 @@
+.debate-page {
+  display: flex;
+  flex-direction: column;
+}
+.debate-page .debate-view-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.debate-page .debate-view-page .response {
+  margin: 2%;
+  width: 70%;
+  height: 30%;
+  padding: 1%;
+}
+
+.debate-page .debate-view-page .response .response-content {
+  padding: 0;
+  margin-bottom: 1%;
+}
+
+.debate-page .debate-view-page .response .debate-slider {
+  padding: 0;
+  margin-top: 1%;
+}
+
+.debate-page .debate-view-page .debate-question {
+  margin: 2%;
+  width: 50%;
+  height: 30%;
+  padding: 1%;
+}
+
+.debate-page .debate-create {
+  padding: 1%;
+}
+
+.debate-page .debate-create .debate-create-header {
+  padding: 0;
+  margin: 1%;
+}
+
+.debate-page .debate-create .debate-create-content {
+  padding: 0;
+  margin: 1%;
+}
+
+.debate-page .debate-create .debate-create-button {
+  float: right;
+  margin: 1%;
+  background-color: green;
+  color: white;
+}
+
+.debate-page .debate-view-page .debate-evaluate-btn {
+  margin: 1%;
+}
+
+.debate-page .debate-view-page .rate-debate-btn {
+  float: right;
+  background-color: green;
+  color: white;
+}

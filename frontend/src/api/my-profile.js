@@ -4,6 +4,10 @@ import { API_ENDPOINT } from "../constants";
 export function getProfileInfo(id) {
   return axios.get(`${API_ENDPOINT}/users/${id}`);
 }
+
+export function getProfileInfoForIds(ids) {
+  return axios.get(`${API_ENDPOINT}/users/get-profiles/`, {params : {userids : ids}});
+}
 export function updateProfileRequest(id, data) {
   return axios.put(API_ENDPOINT + "/users/" + id, {
     bio: data.bio,

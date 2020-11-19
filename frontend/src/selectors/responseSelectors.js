@@ -8,7 +8,19 @@ const getDateFromState = (state) => state.debatePage.get("date");
 export const getRespondedToDebatesFromState = createSelector(
   [getUserIdFromState, getResponsesFromState, getDateFromState],
   (userId, responses, date) => {
+    
     const hasResponded = responses.some((response) => {
+      return response.user === userId && compareDates(date, response.date);
+    });
+    return hasResponded;
+  }
+);
+
+export const getMyRespondedToDebatesFromState = createSelector(
+  [getUserIdFromState, getResponsesFromState, getDateFromState],
+  (userId, responses, date) => {
+    
+    const hasResponded = responses.filter((response) => {
       return response.user === userId && compareDates(date, response.date);
     });
     return hasResponded;

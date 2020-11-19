@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { showError } from "../actions/error";
 import DebateWritePage from "../components/debate-write-page.component";
 import {
   updateDebateResponses,
@@ -26,6 +27,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   populateDebate: (date, tier, userid) => {
     dispatch(populateDebate(date, tier, userid));
+  },
+  showError: (errMsg) => {
+    dispatch(showError(errMsg));
   },
 });
 
