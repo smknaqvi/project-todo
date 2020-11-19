@@ -8,6 +8,7 @@
 @import "text-input.css";
 @import "navbar.css";
 @import "picks-page.css";
+@import "trivia-page.css";
 body {
   height: 100vh;
 }

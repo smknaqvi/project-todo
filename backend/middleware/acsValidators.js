@@ -1,5 +1,7 @@
+const { ACS_UPDATE_TYPES } = require("../constants");
+
 const validate = (options) => (req, res, next) => {
-  if (req.body.type != "DEMO") {
+  if (!ACS_UPDATE_TYPES.includes(req.body.type)) {
     const error = new Error("Invalid ACS Update");
     error.status = 400;
     res.status(400).send(error.message);

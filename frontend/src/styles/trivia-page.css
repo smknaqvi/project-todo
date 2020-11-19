@@ -1,0 +1,77 @@
+.trivia-question-container {
+  text-align: center;
+  justify-content: center;
+  border-style: ridge;
+  border-radius: 8px;
+  margin: auto;
+  width: 50%;
+  height: 30%;
+}
+.trivia-page-header {
+  text-align: center;
+  margin-top: 1%;
+  font-size: xx-large;
+}
+.trivia-questions-complete-container {
+  text-align: center;
+  justify-content: center;
+  border-style: ridge;
+  border-radius: 8px;
+  margin: auto;
+  width: 50%;
+  height: 30%;
+  margin-top: 1.5%;
+}
+.checkmark {
+  margin-top: 5%;
+}
+.trivia-question .response-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.trivia-question {
+  align-items: center;
+}
+.trivia-question .response-options .MuiButton-containedPrimary {
+  margin-bottom: 1%;
+  width: 15%;
+}
+.trivia-question .response-options .response-button {
+  margin-bottom: 1%;
+  width: 17%;
+  background-color: grey;
+  color: white;
+}
+
+.trivia-question .response-options .response-button-selected {
+  margin-bottom: 1%;
+  width: 17%;
+  background-color: green;
+  color: white;
+}
+
+.trivia-question .response-options .response-button-default {
+  margin-bottom: 1%;
+  width: 17%;
+  background-color: grey;
+  color: white;
+}
+
+.trivia-question .response-options .response-button-default:hover {
+  margin-bottom: 1%;
+  width: 17%;
+  background-color: grey;
+  color: white;
+  transition: width 0.2s;
+  width: 19%;
+}
+
+.trivia-question .question-header {
+  font-size: larger;
+  margin-bottom: 1%;
+}
+.trivia-page-container {
+  height: 100%;
+}

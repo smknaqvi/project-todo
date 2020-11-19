@@ -10,12 +10,11 @@ import PnPDropdown from "./pnp-dropdown.component";
 import { Typography } from "@material-ui/core";
 
 export default class Navbar extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     if (this.props.acsScore === 0 && this.props.userId) {
       this.props.getACS(this.props.userId);
     }
   }
-
   createNavElements(elementMap) {
     if (!this.props.isAuthorized) {
       return null;

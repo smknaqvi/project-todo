@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const Response = require("../models/response.model");
 const responseSchema = Response.schema;
 const Debate = require("../models/debate.model");
+const TriviaQuestion = require("./trivia-question.model");
 const debateSchema = Debate.schema;
 
 const userSchema = new Schema(
@@ -80,7 +81,11 @@ const userSchema = new Schema(
     },
     assignedResponses: {
       type: [String],
-    }
+    },
+    triviaQuestionsCompleted: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,

@@ -1,0 +1,54 @@
+[
+  {
+    "question": "Who won the 2015 Finals MVP?",
+    "responses": [
+      {
+        "text": "Andre Iguodala",
+        "correct": true
+      },
+      {
+        "text": "Kawhi Leonard",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "question": "Who won the 2017 Finals MVP?",
+    "responses": [
+      {
+        "text": "Lebron James",
+        "correct": false
+      },
+      {
+        "text": "Kevin Durant",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Who won the 2016 Finals MVP?",
+    "responses": [
+      {
+        "text": "Lebron James",
+        "correct": false
+      },
+      {
+        "text": "Kyrie Irving",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "question": "Who won the 2013 Finals MVP?",
+    "responses": [
+      {
+        "text": "LBJ",
+        "correct": true
+      },
+      {
+        "text": "KD",
+        "correct": false
+      }
+    ]
+  }
+]
