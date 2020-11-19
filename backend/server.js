@@ -34,7 +34,6 @@ const gamePicksRouter = require("./routes/game-picks");
 const debateQuestionsRouter = require("./routes/debate-question");
 const debateResponseRouter = require("./routes/debate-response");
 const debateRouter = require("./routes/debate");
-const bracketWinnersRouter = require("./routes/bracket-winners");
 const triviaRouter = require("./routes/trivia");
 
 app.use("/users", usersRouter);
@@ -50,7 +49,6 @@ app.use("/game-picks", gamePicksRouter);
 app.use("/debate-questions", debateQuestionsRouter);
 app.use("/debate-responses", debateResponseRouter);
 app.use("/debate", debateRouter);
-app.use("/bracket-winners", bracketWinnersRouter);
 app.use("/trivia", triviaRouter);
 
 app.listen(port, () => {

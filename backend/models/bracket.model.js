@@ -1,19 +1,42 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Team = require("../models/team.model");
-const TeamSchema = Team.schema;
 
 const bracketSchema = new Schema(
   {
-    teams: {
-      type: [TeamSchema],
-      default: [],
+    teamOne: {
+      type: String,
+    },
+    teamTwo: {
+      type: String,
+    },
+    matchNumber: {
+      type: Number,
+      max: 15,
+      min: 1,
+      unique: true,
+    },
+    isFirstMatch: {
+      type: Boolean,
+    },
+    winner: {
+      type: String,
     },
     year: {
       type: Number,
       required: true,
     },
+    teamOneScore: {
+      type: Number,
+      max: 4,
+      min: 0,
+    },
+    teamTwoScore: {
+      type: Number,
+      max: 4,
+      min: 0,
+    },
   },
+
   {
     timestamps: true,
   }
@@ -26,35 +49,39 @@ const bracketChoiceSchema = new Schema({
   teamTwo: {
     type: String,
   },
-  winnerID: {
+  winnerChoice: {
     type: String,
   },
-  resultForWinner: {
-    type: String,
-  },
-  userID: {
+  userId: {
     type: String,
   },
   isFirstMatch: {
     type: Boolean,
   },
-  winnerScore: {
+  teamOneScore: {
     type: Number,
-    max: 7,
+    max: 4,
     min: 0,
   },
-  loserScore: {
+  teamTwoScore: {
     type: Number,
-    max: 7,
+    max: 4,
     min: 0,
   },
   isEvaluated: {
+    type: Boolean,
+  },
+  isWinnerCorrect: {
+    type: Boolean,
+  },
+  isLoserScoreCorrect: {
     type: Boolean,
   },
   matchNumber: {
     type: Number,
     max: 15,
     min: 1,
+    unique: true,
   },
 });
 

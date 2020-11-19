@@ -16,6 +16,7 @@ import { createComment } from "./create-comment";
 import { trivia } from "./trivia";
 import { debatePage } from "./debate-page";
 import { debateWritePage } from "./debate-write-page";
+import { playoffs } from "./playoffs";
 
 const appReducer = combineReducers({
   auth,
@@ -33,6 +34,7 @@ const appReducer = combineReducers({
   trivia,
   debatePage,
   debateWritePage,
+  playoffs,
   form: formReducer,
 });
 

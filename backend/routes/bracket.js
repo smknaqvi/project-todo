@@ -1,48 +1,23 @@
 const router = require("express").Router();
 const { Bracket, BracketChoice } = require("../models/bracket.model");
-const { Team } = require("../models/team.model");
 
-router.route("/teams").post((req, res) => {
-  const name = req.body.name;
-  const picture = req.body.picture || " ";
-  const players = req.body.players || [];
-  const newTeam = new Team({
-    name,
-    picture,
-    players,
-  });
-
-  newTeam
-    .save()
-    .then((team) => res.status(200).json(team))
-    .catch((err) => res.status(400).json("Error: Team Already Exists! "));
+router.route("/:year").get((req, res) => {
+  const year = req.params.year;
+  Bracket.find({ year: year })
+    .sort({ matchNumber: 1 })
+    .then((brackets) => {
+      if (brackets.length === 0) {
+        return res.status(404).json("Error: No brackets found for this year!");
+      } else {
+        return res.status(200).json(brackets);
+      }
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/:bracektid/team/:tid").post((req, res) => {
-  const bracketId = req.params.bracektid;
-  const teamId = req.params.tid;
-
-  Team.find({ _id: teamId }, (err, team) => {
-    Bracket.findOneAndUpdate(
-      { _id: bracketId },
-      { $push: { teams: team } },
-      { useFindAndModify: false, new: true, runValidators: true }
-    )
-      .then((updatedTeams) => {
-        if (updatedTeams === null) {
-          res.status(404).json("Error: could not add team");
-        } else {
-          res.status(200).json(updatedTeams);
-        }
-      })
-      .catch((err) => res.status(400).json("Error: " + err));
-  });
-});
-
-router.route("/bracketChoice/:id").get((req, res) => {
-  const bracketChoiceId = req.params.id;
-
-  BracketChoice.find({ _id: bracketChoiceId })
+router.route("/bracketChoice/userId/:id").get((req, res) => {
+  const userId = req.params.id;
+  BracketChoice.find({ userId: userId })
     .then((brackets) => res.status(200).json(brackets))
     .catch((err) => res.status(400).json("Error: " + err));
 });
@@ -50,50 +25,60 @@ router.route("/bracketChoice/:id").get((req, res) => {
 router.route("/bracketChoice").post((req, res) => {
   const teamOne = req.body.teamOne || "";
   const teamTwo = req.body.teamTwo || "";
-  const winnerID = req.body.winnerID || "";
-  const resultForWinner = req.body.resultForWinner || "";
-  const userID = req.body.userID || "";
-  const isFirstMatch = false;
-  const winnerScore = req.body.winnerScore || 0;
-  const loserScore = req.body.loserScore || 0;
+  const winnerChoice = req.body.winnerChoice || "";
+  const userId = req.body.userId || "";
+  const isFirstMatch = req.body.isFirstMatch || false;
+  const teamOneScore = req.body.teamOneScore || 0;
+  const teamTwoScore = req.body.teamTwoScore || 0;
   const isEvaluated = req.body.isEvaluated || false;
+  const isWinnerCorrect = req.body.isWinnerCorrect || false;
   const matchNumber = req.body.matchNumber || 1;
 
   const newBracketChoice = new BracketChoice({
     teamOne,
     teamTwo,
-    winnerID,
-    resultForWinner,
-    userID,
+    winnerChoice,
+    userId,
     isFirstMatch,
-    winnerScore,
-    loserScore,
+    teamOneScore,
+    teamTwoScore,
     isEvaluated,
+    isWinnerCorrect,
     matchNumber,
   });
 
   newBracketChoice
     .save()
     .then((bracketChoice) => res.status(200).json(bracketChoice))
-    .catch((err) =>
-      res.status(400).json("Error: Bracket Choice Already Exists! ")
-    );
+    .catch(() => res.status(400).json("Error: Bracket Choice Already Exists!"));
 });
 
 router.route("/bracketChoice/:id").put((req, res) => {
+  const id = req.params.id;
+  const teamOne = req.body.teamOne || "";
+  const teamTwo = req.body.teamTwo || "";
+  const winnerChoice = req.body.winnerChoice || "";
+  const userId = req.body.userId || "";
+  const isFirstMatch = req.body.isFirstMatch || false;
+  const teamOneScore = req.body.teamOneScore || 0;
+  const teamTwoScore = req.body.teamTwoScore || 0;
+  const isEvaluated = req.body.isEvaluated || false;
+  const isWinnerCorrect = req.body.isWinnerCorrect || false;
+  const matchNumber = req.body.matchNumber || 1;
+
   BracketChoice.findOneAndUpdate(
-    { _id: req.params.id },
+    { _id: id },
     {
-      teamOne: req.body.teamOne || "",
-      teamTwo: req.body.teamTwo || "",
-      winnerID: req.body.winnerID || "",
-      userID: req.body.userID || "",
-      resultForWinner: req.body.resultForWinner || "",
-      isFirstMatch: req.body.isFirstMatch || false,
-      winnerScore: req.body.winnerScore || 0,
-      loserScore: req.body.loserScore || 0,
-      isEvaluated: req.body.isEvaluated || false,
-      matchNumber: req.body.matchNumber || 1,
+      teamOne: teamOne,
+      teamTwo: teamTwo,
+      winnerChoice: winnerChoice,
+      userID: userId,
+      isFirstMatch: isFirstMatch,
+      teamOneScore: teamOneScore,
+      teamTwoScore: teamTwoScore,
+      isEvaluated: isEvaluated,
+      isWinnerCorrect: isWinnerCorrect,
+      matchNumber: matchNumber,
     },
     {
       useFindAndModify: false,
@@ -107,28 +92,7 @@ router.route("/bracketChoice/:id").put((req, res) => {
         res.status(200).json(updatedUserPick);
       }
     })
-    .catch((err) => res.status(400).json("Error"));
-});
-
-router.route("/bracketChoice/:id").delete((req, res) => {
-  const bracketChoiceId = req.params.id;
-  BracketChoice.findByIdAndDelete({ _id: bracketChoiceId })
-    .then((deleteTeam) => {
-      if (deleteTeam === null) {
-        res.status(404).json("Error: could not find teams");
-      } else {
-        res.status(200).json(deleteTeam);
-      }
-    })
     .catch((err) => res.status(400).json("Error: " + err));
-});
-
-router.route("/bracketChoice/userID/:id").get((req, res) => {
-  const userID = req.params.id;
-
-  BracketChoice.find({ userID: userID })
-    .then((brackets) => res.status(200).json(brackets))
-    .catch((err) => res.status(400).json("Error: "));
 });
 
 module.exports = router;

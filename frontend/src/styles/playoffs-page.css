@@ -1,0 +1,59 @@
+.playoffs-container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  justify-content: left;
+}
+
+.playoffs-container .action-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.playoffs-container .action-buttons > * {
+  margin: 10px;
+}
+
+.brackets-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+
+  justify-content: center;
+}
+
+.brackets-container .brackets-column {
+  display: flex;
+  flex-direction: column;
+  font-size: smaller;
+  justify-content: space-around;
+}
+.brackets-container .brackets-column .bracket-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.brackets-container .brackets-column .bracket-container .select-container {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.brackets-container
+  .brackets-column
+  .bracket-container
+  .select-container
+  .select-team {
+  margin: 0px;
+  width: 13vh;
+}
+
+.brackets-container
+  .brackets-column
+  .bracket-container
+  .select-container
+  .select-score {
+  width: 5vh;
+}

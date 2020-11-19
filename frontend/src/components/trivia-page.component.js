@@ -5,6 +5,7 @@ import { CircularProgress } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "./alert.component";
 import checkmarkgif from "../videos/checkmarkgif.mp4";
+
 export default class TriviaPage extends Component {
   componentDidMount() {
     this.props.getTriviaQuestions();

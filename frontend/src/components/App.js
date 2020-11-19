@@ -12,7 +12,6 @@ import OpenCourtPage from "../containers/opencourt-page";
 import PicksPage from "../containers/picks-page";
 import PredictionsPage from "../containers/predictions-page";
 import PlayoffsPage from "../containers/playoffs-page";
-import Auth from "../containers/auth";
 import MyProfile from "../containers/my-profile";
 import { isAuthorized } from "../utils/isAuthorized";
 
@@ -39,7 +38,6 @@ function PrivateRoute({ children, ...rest }) {
 function App() {
   return (
     <Router>
-      <Auth />
       <Navbar />
       <Route path="/login" exact>
         <AuthPage />

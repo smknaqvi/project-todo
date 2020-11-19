@@ -1,0 +1,153 @@
+[
+  {
+    "teamOne": "LAL",
+    "teamTwo": "POR",
+    "matchNumber": 1,
+    "isFirstMatch": true,
+    "winner": "LAL",
+    "winnerScore": 4,
+    "loserScore": 1,
+    "year": 2020
+  },
+  {
+    "teamOne": "HOU",
+    "teamTwo": "OKC",
+    "matchNumber": 2,
+    "isFirstMatch": true,
+    "winner": "HOU",
+    "winnerScore": 4,
+    "loserScore": 3,
+    "year": 2020
+  },
+  {
+    "teamOne": "DEN",
+    "teamTwo": "UTA",
+    "matchNumber": 3,
+    "isFirstMatch": true,
+    "winner": "DEN",
+    "winnerScore": 4,
+    "loserScore": 3,
+    "year": 2020
+  },
+  {
+    "teamOne": "DAL",
+    "teamTwo": "LAC",
+    "matchNumber": 4,
+    "isFirstMatch": true,
+    "winner": "LAC",
+    "winnerScore": 4,
+    "loserScore": 2,
+    "year": 2020
+  },
+  {
+    "teamOne": "MIL",
+    "teamTwo": "ORL",
+    "matchNumber": 5,
+    "isFirstMatch": true,
+    "winner": "MIL",
+    "winnerScore": 4,
+    "loserScore": 1,
+    "year": 2020
+  },
+
+  {
+    "teamOne": "IND",
+    "teamTwo": "MIA",
+    "matchNumber": 6,
+    "isFirstMatch": true,
+    "winner": "MIA",
+    "winnerScore": 4,
+    "loserScore": 0,
+    "year": 2020
+  },
+  {
+    "teamOne": "BOS",
+    "teamTwo": "PHI",
+    "matchNumber": 7,
+    "isFirstMatch": true,
+    "winner": "BOS",
+    "winnerScore": 4,
+    "loserScore": 0,
+    "year": 2020
+  },
+  {
+    "teamOne": "TOR",
+    "teamTwo": "BKN",
+    "matchNumber": 8,
+    "isFirstMatch": true,
+    "winner": "TOR",
+    "winnerScore": 4,
+    "loserScore": 0,
+    "year": 2020
+  },
+  {
+    "teamOne": "LAL",
+    "teamTwo": "HOU",
+    "matchNumber": 9,
+    "isFirstMatch": false,
+    "winner": "LAL",
+    "winnerScore": 4,
+    "loserScore": 1,
+    "year": 2020
+  },
+  {
+    "teamOne": "DEN",
+    "teamTwo": "LAC",
+    "matchNumber": 10,
+    "isFirstMatch": false,
+    "winner": "DEN",
+    "winnerScore": 4,
+    "loserScore": 3,
+    "year": 2020
+  },
+  {
+    "teamOne": "MIL",
+    "teamTwo": "MIA",
+    "matchNumber": 11,
+    "isFirstMatch": false,
+    "winner": "MIA",
+    "winnerScore": 4,
+    "loserScore": 1,
+    "year": 2020
+  },
+  {
+    "teamOne": "BOS",
+    "teamTwo": "TOR",
+    "matchNumber": 12,
+    "isFirstMatch": false,
+    "winner": "BOS",
+    "winnerScore": 4,
+    "loserScore": 3,
+    "year": 2020
+  },
+  {
+    "teamOne": "LAL",
+    "teamTwo": "DEN",
+    "matchNumber": 13,
+    "isFirstMatch": false,
+    "winner": "LAL",
+    "winnerScore": 4,
+    "loserScore": 1,
+    "year": 2020
+  },
+  {
+    "teamOne": "MIA",
+    "teamTwo": "BOS",
+    "matchNumber": 14,
+    "isFirstMatch": false,
+    "winner": "MIA",
+    "winnerScore": 4,
+    "loserScore": 2,
+    "year": 2020
+  },
+  {
+    "teamOne": "LAL",
+    "teamTwo": "MIA",
+    "matchNumber": 15,
+    "isFirstMatch": false,
+    "winner": "LAL",
+    "winnerScore": 4,
+    "loserScore": 2,
+    "year": 2020
+  }
+]

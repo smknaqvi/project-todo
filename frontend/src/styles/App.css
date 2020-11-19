@@ -9,6 +9,8 @@
 @import "navbar.css";
 @import "picks-page.css";
 @import "trivia-page.css";
+@import "playoffs-page.css";
+
 body {
   height: 100vh;
 }

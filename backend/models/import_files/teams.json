@@ -1,8 +1,9 @@
+
 [
     {
         "name": "Toronto Raptors",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/TOR-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Kyle Lowry",
@@ -26,11 +27,11 @@
             }
         ]
     },
-    
+
     {
         "name": "Los Angeles Lakers",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAL-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Lebron James",
@@ -52,7 +53,7 @@
     {
         "name": "Phoenix Suns",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHO.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Devin Booker",
@@ -84,7 +85,7 @@
     {
         "name": "New Orleans Pelicans",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/NOP-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Zion Williamson",
@@ -116,7 +117,7 @@
     {
         "name": "Memphis Grizzlies",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MEM-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Ja Morant",
@@ -128,7 +129,7 @@
     {
         "name": "Los Angeles Clippers",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/LAC-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Montrezl Harrell",
@@ -140,13 +141,97 @@
     {
         "name": "Milwaukee Bucks",
         "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MIL-2020.png",
-        "players" : 
+        "players" :
         [
             {
                 "name": "Giannis Antetokounmpo",
                 "picture": "https://www.basketball-reference.com/req/202010211/images/players/antetgi01.jpg",
                 "rookie": false
             }
+        ]
+    },
+    {
+        "name": "Houston Rockets",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/HOU-2020.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Dallas Mavericks",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/DAL-2020.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Indiana Pacers",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/IND-2020.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Boston Celtics",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/BOS-2020.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Denver Nuggets",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/DEN.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Miami Heat",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/MIA.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Portland Trail Blazers",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/POR.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Oklahoma City Thunder",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/OKC.png",
+        "players" :
+        [
+        ]
+    },
+    {
+        "name": "Utah Jazz",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/UTA.png",
+        "players" :
+        [
+        ]
+    },
+	{
+        "name": "Orlando Magic",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/ORL.png",
+        "players" :
+        [
+        ]
+    },
+	{
+        "name": "Philadelphia 76ers",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/PHI.png",
+        "players" :
+        [
+        ]
+    },
+	{
+        "name": "Brooklyn Nets",
+        "picture": "https://d2p3bygnnzw9w3.cloudfront.net/req/202010091/tlogo/bbr/NJN.png",
+        "players" :
+        [
         ]
     }
 ]
