@@ -13,7 +13,6 @@ const bracketSchema = new Schema(
       type: Number,
       max: 15,
       min: 1,
-      unique: true,
     },
     isFirstMatch: {
       type: Boolean,
@@ -81,7 +80,6 @@ const bracketChoiceSchema = new Schema({
     type: Number,
     max: 15,
     min: 1,
-    unique: true,
   },
 });
 
