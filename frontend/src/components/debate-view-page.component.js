@@ -64,13 +64,6 @@ export default class DebateViewPage extends Component {
               return (
                 <Card className="response" key={response._id}>
                   <CardContent className="response-content" key={response._id}>
-                    <Typography
-                      className={"title"}
-                      color="textSecondary"
-                      gutterBottom
-                    >
-                      User : {response.userName}
-                    </Typography>
                     Their Response : {response.content}
                   </CardContent>
                   <Divider />
