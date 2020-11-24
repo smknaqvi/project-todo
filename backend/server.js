@@ -35,6 +35,7 @@ const debateQuestionsRouter = require("./routes/debate-question");
 const debateResponseRouter = require("./routes/debate-response");
 const debateRouter = require("./routes/debate");
 const triviaRouter = require("./routes/trivia");
+const hhTriviaRouter = require("./routes/hhtrivia");
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
@@ -50,6 +51,7 @@ app.use("/debate-questions", debateQuestionsRouter);
 app.use("/debate-responses", debateResponseRouter);
 app.use("/debate", debateRouter);
 app.use("/trivia", triviaRouter);
+app.use("/hhtrivia", hhTriviaRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

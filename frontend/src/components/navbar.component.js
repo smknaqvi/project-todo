@@ -7,6 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import PnPDropdown from "./pnp-dropdown.component";
+import TriviaDropdown from "./trivia-dropdown.component";
 import { Typography } from "@material-ui/core";
 
 export default class Navbar extends Component {
@@ -54,6 +55,13 @@ export default class Navbar extends Component {
     return <PnPDropdown />;
   }
 
+  createTriviaDropdown() {
+    if (!this.props.isAuthorized) {
+      return null;
+    }
+    return <TriviaDropdown />;
+  }
+
   createACSHeader() {
     if (this.props.acsScore === 0) {
       return null;
@@ -72,6 +80,7 @@ export default class Navbar extends Component {
           </NavLink>
           <div className="left-navbar">
             {this.createNavElements(NAV_ELEMENTS)}
+            {this.createTriviaDropdown()}
             {this.createPnPDropdown()}
             {this.createNavElements(MY_PROFILE_NAV_ELEMENT)}
           </div>

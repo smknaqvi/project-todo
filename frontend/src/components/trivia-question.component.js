@@ -5,7 +5,7 @@ import { Button } from "@material-ui/core";
 export default class TriviaQuestion extends Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 5 };
+    this.state = { seconds: 10 };
   }
 
   componentWillUnmount() {
@@ -16,12 +16,12 @@ export default class TriviaQuestion extends Component {
       this.setState({ seconds: this.state.seconds - 1 });
     } else {
       this.props.validateTriviaAnswer();
-      this.setState({ seconds: 5 });
+      this.setState({ seconds: 10 });
     }
   };
   submitButtonClicked = () => {
     this.props.validateTriviaAnswer();
-    this.setState({ seconds: 5 });
+    this.setState({ seconds: 10 });
   };
   componentDidMount() {
     this.timer = setInterval(this.tick, 1000);

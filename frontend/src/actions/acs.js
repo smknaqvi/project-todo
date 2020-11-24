@@ -3,6 +3,8 @@ import {
   FETCH_ACS_SUCCEEDED,
   UPDATE_ACS_STARTED,
   UPDATE_ACS_SUCCEEDED,
+  UPDATE_OTHER_ACS_STARTED,
+  UPDATE_OTHER_ACS_SUCCEEDED,
 } from "../constants";
 import { acsRequest, putUpdatedAcs } from "../api/acs";
 import { showError } from "./error";
@@ -44,12 +46,41 @@ export const updateACSSuccess = (acs) => ({
   acs,
 });
 
+export const updateOtherACSStarted = () => ({
+  type: UPDATE_OTHER_ACS_STARTED,
+});
+
+export const updateOtherACSSuccess = (userId, acs) => ({
+  type: UPDATE_OTHER_ACS_SUCCEEDED,
+  userId,
+  acs,
+});
+
 export function updateACS(id, type, updatedACS) {
   return function (dispatch) {
     dispatch(updateACSStarted());
     return putUpdatedAcs(id, type, updatedACS)
       .then(function (response) {
         dispatch(updateACSSuccess(response.data.acs));
+      })
+      .catch(function (error) {
+        if (error.response) {
+          dispatch(showError(error.response.data));
+        } else if (error.request) {
+          dispatch(showError("Unable to reach server"));
+        } else {
+          dispatch(showError("Internal server error"));
+        }
+      });
+  };
+}
+
+export function updateOtherACS(id, type, updatedACS) {
+  return function (dispatch) {
+    dispatch(updateOtherACSStarted());
+    return putUpdatedAcs(id, type, updatedACS)
+      .then(function (response) {
+        dispatch(updateOtherACSSuccess(id, response.data.acs));
       })
       .catch(function (error) {
         if (error.response) {

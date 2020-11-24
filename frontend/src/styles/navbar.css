@@ -65,3 +65,37 @@
 .picks-dropdown-menu-container .MuiMenuItem-root {
   justify-content: center;
 }
+
+.trivia-dropdown-container {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.trivia-dropdown-menu-container .MuiMenu-paper {
+  background-color: #333333;
+}
+
+.trivia-dropdown-menu-container a {
+  color: gray;
+}
+
+.trivia-dropdown-menu-container a:hover {
+  color: white;
+}
+
+.trivia-dropdown-menu-container {
+  color: white;
+}
+
+.trivia-dropdown-menu-container .MuiMenuItem-root {
+  justify-content: center;
+}
+
+.navbar .trivia-dropdown-label {
+  text-transform: none;
+}
+
+.navbar .trivia-dropdown-label:hover {
+  color: white;
+  text-transform: none;
+}

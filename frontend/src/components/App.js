@@ -13,6 +13,7 @@ import PicksPage from "../containers/picks-page";
 import PredictionsPage from "../containers/predictions-page";
 import PlayoffsPage from "../containers/playoffs-page";
 import MyProfile from "../containers/my-profile";
+import HHTriviaPage from "../containers/hhtrivia-page";
 import { isAuthorized } from "../utils/isAuthorized";
 
 function PrivateRoute({ children, ...rest }) {
@@ -69,7 +70,9 @@ function App() {
       <PrivateRoute path="/profile" exact>
         <MyProfile />
       </PrivateRoute>
-
+      <PrivateRoute path="/hhtrivia" exact>
+        <HHTriviaPage />
+      </PrivateRoute>
       <PrivateRoute path="/" exact></PrivateRoute>
 
       <PrivateRoute path="/thezone" exact>

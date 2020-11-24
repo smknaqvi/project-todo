@@ -1,0 +1,73 @@
+.hhtrivia-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+  width: 100%;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container {
+  width: 50%;
+  margin: 1%;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container .hhtrivia-action-buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container .hhtrivia-action-buttons {
+  display: flex;
+  align-items: center;
+  margin: 1%;
+  color: gray;
+}
+
+.hhtrivia-page .trivia-questions-complete-container {
+  text-align: center;
+  justify-content: center;
+  border-style: ridge;
+  border-radius: 8px;
+  margin: auto;
+  width: 50%;
+  height: 30%;
+  margin-top: 1.5%;
+}
+
+.hhtrivia-page .hhtrivia-question-container {
+  text-align: center;
+  border-style: ridge;
+  border-radius: 8px;
+  margin: auto;
+  width: 50%;
+  height: 40;
+}
+
+.hhtrivia-page .hhtrivia-page-header {
+  text-align: center;
+  margin-top: 1%;
+  font-size: xx-large;
+}
+
+.hhtrivia-page .hhtrivia-page-container {
+  height: auto;
+  width: 100%;
+}
+
+.hhtrivia-page .hhtrivia-return-button {
+  margin-bottom: 1%;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container .trivia-tied-message {
+  color: gray;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container .trivia-lost-message {
+  color: red;
+}
+
+.hhtrivia-page .hhtrivia-game-list-container .trivia-won-message {
+  color: green;
+}

@@ -11,6 +11,7 @@
 @import "trivia-page.css";
 @import "debate-page.css";
 @import "playoffs-page.css";
+@import "hhtrivia-page.css";
 
 body {
   height: 100vh;
