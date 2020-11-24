@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import memoize from "@hs/transmute/memoize";
+import memoizeLast from "@hs/transmute/memoizeLast";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
@@ -46,7 +46,7 @@ export default class PicksPage extends Component {
     this.props.updateDailyPicks(pick);
   };
 
-  getGamesByDate = memoize((date, games) =>
+  getGamesByDate = memoizeLast((date, games) =>
     games.filter((game) => {
       const gameDate = new Date(game.date * 1000);
       return (
