@@ -6,6 +6,7 @@ import {
   deleteComment,
 } from "../actions/opencourt-timeline";
 import { SUCCEEDED } from "../constants";
+import { triggerConfirmationDialog } from "../actions/confirmation-dialog";
 
 const mapStateToProps = (state) => ({
   users: state.openCourtTimeline.get("users"),
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   deleteOCComment: (pid, cid) => {
     dispatch(deleteComment(pid, cid));
+  },
+  triggerConfirmationDialog: (params) => {
+    dispatch(triggerConfirmationDialog(params));
   },
 });
 

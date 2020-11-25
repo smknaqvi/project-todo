@@ -18,6 +18,7 @@ import { debatePage } from "./debate-page";
 import { debateWritePage } from "./debate-write-page";
 import { playoffs } from "./playoffs";
 import { hhTriviaPage } from "./hhtrivia-page";
+import { confirmationDialog } from "./confirmation-dialog";
 const appReducer = combineReducers({
   auth,
   authPage,
@@ -36,6 +37,7 @@ const appReducer = combineReducers({
   debateWritePage,
   playoffs,
   hhTriviaPage,
+  confirmationDialog,
   form: formReducer,
 });
 

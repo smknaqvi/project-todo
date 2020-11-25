@@ -19,6 +19,7 @@ export default class OpenCourtTimeline extends Component {
             curUserId={this.props.curUserId}
             deleteOCPost={this.props.deleteOCPost}
             deleteOCComment={this.props.deleteOCComment}
+            triggerConfirmationDialog={this.props.triggerConfirmationDialog}
           />
         );
       });

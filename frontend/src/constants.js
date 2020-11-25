@@ -70,6 +70,9 @@ export const SHOW_SUCCESS = "SHOW_SUCCESS";
 
 export const LOGOUT = "LOGOUT";
 
+export const TRIGGER_CONFIRMATION_DIALOG = "TRIGGER_CONFIRMATION_DIALOG";
+export const CLOSE_CONFIRMATION_DIALOG = "CLOSE_CONFIRMATION_DIALOG";
+
 export const TOGGLE_AUTH_PAGE = "TOGGLE_AUTH_PAGE";
 
 export const INIT_PHOTO_STARTED = "INIT_PHOTO_STARTED";
@@ -222,6 +225,12 @@ export const UPDATE_OTHER_ACS_SUCCEEDED = "UPDATE_OTHER_ACS_SUCCEEDED";
 export const INCREMENT_HHTRIVIA_CORRECT_QUESTION =
   "INCREMENT_HHTRIVIA_CORRECT_QUESTION";
 
+// Confirmation Dialog Messages
+export const DELETE_POST = "Do you wish to delete this post?";
+export const DELETE_POST_TITLE = "Delete Post?";
+export const DELETE_COMMENT = "Do you wish to delete this comment?";
+export const DELETE_COMMENT_TITLE = "Delete Comment?";
+
 // API STATUS
 export const UNINITIALIZED = "UNINITIALIZED";
 export const STARTED = "STARTED";
@@ -229,9 +238,11 @@ export const SUCCEEDED = "SUCCEEDED";
 export const FAILED = "FAILED";
 
 //  MISC
+export const EMPTY_FUNC = () => {};
 
 // LocalStorage
 export const USER_KEY = "user";
+export const DEFAULT_CONFIRMATION_DIALOG = "Are you sure?";
 
 // NAVBAR
 export const NAV_ELEMENTS = [

@@ -14,6 +14,13 @@ import Divider from "@material-ui/core/Divider";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import CreateComment from "../containers/create-comment";
+import ConfirmationDialog from "../containers/confirmation-dialog";
+import {
+  DELETE_COMMENT,
+  DELETE_COMMENT_TITLE,
+  DELETE_POST,
+  DELETE_POST_TITLE,
+} from "../constants";
 
 export default class PostView extends Component {
   createCardMedia() {
@@ -35,7 +42,13 @@ export default class PostView extends Component {
         <IconButton
           edge="end"
           onClick={() =>
-            this.props.deleteOCComment(this.props.postId, commentId)
+            this.props.triggerConfirmationDialog({
+              dialogMessage: DELETE_COMMENT,
+              dialogTitle: DELETE_COMMENT_TITLE,
+              onAcceptChange: () => {
+                this.props.deleteOCComment(this.props.postId, commentId);
+              },
+            })
           }
         >
           <DeleteIcon />
@@ -97,7 +110,15 @@ export default class PostView extends Component {
       return (
         <IconButton
           aria-label="delete-post"
-          onClick={() => this.props.deleteOCPost(this.props.postId)}
+          onClick={() =>
+            this.props.triggerConfirmationDialog({
+              dialogMessage: DELETE_POST,
+              dialogTitle: DELETE_POST_TITLE,
+              onAcceptChange: () => {
+                this.props.deleteOCPost(this.props.postId);
+              },
+            })
+          }
         >
           <DeleteIcon />
         </IconButton>
@@ -126,6 +147,7 @@ export default class PostView extends Component {
           />
           {this.createComments()}
         </Card>
+        <ConfirmationDialog />
       </div>
     );
   }
