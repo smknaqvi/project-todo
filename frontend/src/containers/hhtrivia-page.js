@@ -12,7 +12,7 @@ import {
   startHHTriviaGame,
   setHHTriviaSelectedAnswer,
   incrementHHTriviaCurQuestion,
-  toggleHHTriviaPage,
+  setHHTriviaDefaultPage,
   validateHHTriviaAnswer,
   evaluateHHTriviaGame,
 } from "../actions/hhtrivia-page";
@@ -63,8 +63,8 @@ const mapDispatchToProps = (dispatch) => ({
   incrementHHTriviaCurQuestion: () => {
     dispatch(incrementHHTriviaCurQuestion());
   },
-  toggleHHTriviaPage: () => {
-    dispatch(toggleHHTriviaPage());
+  setHHTriviaDefaultPage: () => {
+    dispatch(setHHTriviaDefaultPage());
   },
   validateHHTriviaAnswer: (curGame, curQuestion, selectedAnswer, userId) => {
     dispatch(

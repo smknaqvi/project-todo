@@ -17,7 +17,7 @@ export default class HHTriviaPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.toggleHHTriviaPage();
+    this.props.setHHTriviaDefaultPage();
   }
 
   createTriviaQuestion() {
@@ -58,7 +58,7 @@ export default class HHTriviaPage extends Component {
           </div>
           <Button
             className="hhtrivia-return-button"
-            onClick={this.props.toggleHHTriviaPage}
+            onClick={this.props.setHHTriviaDefaultPage}
             variant="contained"
           >
             Return

@@ -14,7 +14,7 @@ import {
   START_HHTRIVIA_GAME_SUCCEEDED,
   SET_HHTRIVIA_SELECTED_ANSWER,
   INCREMENT_HHTRIVIA_CUR_QUESTION,
-  TOGGLE_HHTRIVIA_PAGE,
+  SET_HHTRIVIA_DEFAULT_PAGE,
   SET_HHTRIVIA_ACS_CHANGE,
   SET_HHTRIVIA_GAME_EVALUATED_SUCCEEDED,
   UPDATE_OTHER_ACS_SUCCEEDED,
@@ -95,11 +95,7 @@ export const hhTriviaPage = (state = initState, action) => {
       return state.set("selectedAnswer", action.answer);
     case INCREMENT_HHTRIVIA_CUR_QUESTION:
       return state.set("curQuestion", state.get("curQuestion") + 1);
-    case TOGGLE_HHTRIVIA_PAGE:
-      const transferredGameState = state.set(
-        "showGame",
-        !state.get("showGame")
-      );
+    case SET_HHTRIVIA_DEFAULT_PAGE:
       if (state.get("showGame")) {
         const curGameID = state.get("curGame")._id;
         temp = state.get("allGames").reduce((acc, cur) => {
@@ -109,9 +105,9 @@ export const hhTriviaPage = (state = initState, action) => {
             return [...acc, cur];
           }
         }, []);
-        state.set("allGames", temp);
+        return state.set("allGames", temp).set("showGame", false);
       }
-      return transferredGameState;
+      return state.set("showGame", false);
     case SET_HHTRIVIA_ACS_CHANGE:
       temp = state.get("allGames").reduce((acc, cur) => {
         if (cur._id === action.gameId) {

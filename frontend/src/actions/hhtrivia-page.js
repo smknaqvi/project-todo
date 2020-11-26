@@ -14,7 +14,7 @@ import {
   START_HHTRIVIA_GAME_SUCCEEDED,
   SET_HHTRIVIA_SELECTED_ANSWER,
   INCREMENT_HHTRIVIA_CUR_QUESTION,
-  TOGGLE_HHTRIVIA_PAGE,
+  SET_HHTRIVIA_DEFAULT_PAGE,
   SET_HHTRIVIA_ACS_CHANGE,
   SET_HHTRIVIA_GAME_EVALUATED_SUCCEEDED,
   INCREMENT_HHTRIVIA_CORRECT_QUESTION,
@@ -102,8 +102,8 @@ export const incrementHHTriviaCurQuestion = () => ({
   type: INCREMENT_HHTRIVIA_CUR_QUESTION,
 });
 
-export const toggleHHTriviaPage = () => ({
-  type: TOGGLE_HHTRIVIA_PAGE,
+export const setHHTriviaDefaultPage = () => ({
+  type: SET_HHTRIVIA_DEFAULT_PAGE,
 });
 
 export const incrementHHTriviaCorrectQuestion = (userId) => ({
