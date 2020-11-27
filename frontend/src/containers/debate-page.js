@@ -7,8 +7,11 @@ import {
   getUserResponsesByID,
   evaluateDebate,
   getAssignedResponsesByIDs,
+  getPreviousDebatesFromUserIdAndDate,
+  updateDateToToday
 } from "../actions/debate-page";
 import { getRespondedToDebatesFromState } from "../selectors/responseSelectors";
+import { getCurrentUserACSLevelFromState } from "../selectors/acsSelectors";
 import { getACS, updateACS } from "../actions/acs";
 
 const mapStateToProps = (state) => ({
@@ -24,6 +27,10 @@ const mapStateToProps = (state) => ({
   retrievedAssignedResponses: state.debatePage.get(
     "retrievedAssignedResponses"
   ),
+  debateResponses: state.debatePage.get("debateResponses"),
+  isShowingPrevDay: state.debatePage.get("isShowingPrevDay"),
+  retrievedCurDebate: state.debatePage.get("retrievedCurDebate"),
+  tier: getCurrentUserACSLevelFromState(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -37,6 +44,12 @@ const mapDispatchToProps = (dispatch) => ({
   getUserResponsesByID: (id) => dispatch(getUserResponsesByID(id)),
   evaluateDebate: (id, date) => dispatch(evaluateDebate(id, date)),
   getAssignedResponsesByIDs: (ids) => dispatch(getAssignedResponsesByIDs(ids)),
+  getPreviousDebatesFromUserIdAndDate: (date, id) => {
+    dispatch(getPreviousDebatesFromUserIdAndDate(date, id))
+  },
+  updateDateToToday: (id) => {
+    dispatch(updateDateToToday(id))
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebatePage);

@@ -1,27 +1,39 @@
 import { createSelector } from "reselect";
-import { compareDates } from "../utils/dateUtils";
 
 const getUserIdFromState = (state) => state.auth.get("id");
 const getResponsesFromState = (state) => state.debatePage.get("responses");
 const getDateFromState = (state) => state.debatePage.get("date");
+const getDebateFromState = (state) => state.debatePage.get("curDebate");
 
 export const getRespondedToDebatesFromState = createSelector(
-  [getUserIdFromState, getResponsesFromState, getDateFromState],
-  (userId, responses, date) => {
+  [getUserIdFromState, getResponsesFromState, getDateFromState, getDebateFromState],
+  (userId, responses, date, curDebate) => {
     
     const hasResponded = responses.some((response) => {
-      return response.user === userId && compareDates(date, response.date);
+      if(curDebate.length > 0){
+        return curDebate[0].responseIds.includes(response._id) && response.user === userId;
+      }
+      else{
+        return false;
+      }
+      
     });
     return hasResponded;
   }
 );
 
 export const getMyRespondedToDebatesFromState = createSelector(
-  [getUserIdFromState, getResponsesFromState, getDateFromState],
-  (userId, responses, date) => {
+  [getUserIdFromState, getResponsesFromState, getDateFromState, getDebateFromState],
+  (userId, responses, date, curDebate) => {
     
     const hasResponded = responses.filter((response) => {
-      return response.user === userId && compareDates(date, response.date);
+      if(curDebate.length > 0){
+        return curDebate[0].responseIds.includes(response._id) && response.user === userId;
+      }
+      else{
+        return false;
+      }
+      
     });
     return hasResponded;
   }

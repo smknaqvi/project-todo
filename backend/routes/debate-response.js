@@ -95,4 +95,13 @@ router.route("/put-rating/:id").put((req, res) => {
   })
 });
 
+router.route("/put-avg/:id").put((req, res) => {
+  const avg = req.body.avg;
+  DebateResponse.findByIdAndUpdate(req.params.id, { avg : avg }, { useFindAndModify: false, new: true })
+  .then((response) => res.status(200).json(response))
+  .catch((err) => res.status(400).json("Error: Response Does Not Exist!"));
+});
+
+
+
 module.exports = router;

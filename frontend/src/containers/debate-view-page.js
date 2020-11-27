@@ -7,6 +7,8 @@ import {
   getAssignedResponsesByIDs,
   evaluateDebate,
   updateRating,
+  getPreviousDebatesFromUserIdAndDate,
+  getUserResponsesByID,
 } from "../actions/debate-page";
 import { getTwoAssignedResponses } from "../actions/debate-write-page";
 import {
@@ -31,6 +33,8 @@ const mapStateToProps = (state) => ({
   ),
   isCurDebateEvaluated: state.debatePage.get("isCurDebateEvaluated"),
   retrievedCurDebate: state.debatePage.get("retrievedCurDebate"),
+  isShowingPrevDay: state.debatePage.get("isShowingPrevDay"),
+  debateResponses: state.debatePage.get("debateResponses"),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -48,6 +52,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateRating(responseId, value, userId)),
   getTwoAssignedResponses: (userid, responseid, curdebate) =>
     dispatch(getTwoAssignedResponses(userid, responseid, curdebate)),
+  getPreviousDebatesFromUserIdAndDate: (date, id) => {
+    dispatch(getPreviousDebatesFromUserIdAndDate(date, id));
+  },
+  getUserResponsesByID: (id) => {
+    dispatch(getUserResponsesByID(id));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebateViewPage);

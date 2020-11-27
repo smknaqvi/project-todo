@@ -63,6 +63,15 @@ export function putResponseRating(
   });
 }
 
+export function putResponseAvg(
+  id,
+  avg
+) {
+  return axios.put(`${API_ENDPOINT}/debate-responses/put-avg/${id}`, {
+    avg
+  });
+}
+
 
 export function getDebate(id) {
   return axios.get(`${API_ENDPOINT}/debate/${id}`);

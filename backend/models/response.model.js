@@ -16,6 +16,9 @@ const responseSchema = new Schema(
       type: Number,
       required: true
     },
+    avg: {
+      type: Number,
+    },
     ratings: {
       type: Map,
       required: true

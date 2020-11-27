@@ -6,6 +6,9 @@ import {
   uploadResponseAndSaveToDebate,
   populateDebate,
 } from "../actions/debate-write-page";
+import {
+  getDebatesFromUserIdAndDate,
+} from "../actions/debate-page";
 import { getCurrentUserACSLevelFromState } from "../selectors/acsSelectors";
 
 const mapStateToProps = (state) => ({
@@ -31,6 +34,8 @@ const mapDispatchToProps = (dispatch) => ({
   showError: (errMsg) => {
     dispatch(showError(errMsg));
   },
+  getDebatesFromUserIdAndDate: (date, userid) =>
+    dispatch(getDebatesFromUserIdAndDate(date, userid)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebateWritePage);

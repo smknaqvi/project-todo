@@ -112,11 +112,13 @@ export function uploadResponseAndSaveToDebate(debate, response) {
         dispatch(showSuccess("Uploaded Debate Response"));
         // Retrieve the updated debates and responses from DB to update state
         return (
+          dispatch(updateDebateResponses("")) &&
           dispatch(getDebatesByUserId(response.user)) &&
           dispatch(getResponses()) &&
           dispatch(updateCurrentDebate([debate])) &&
           dispatch(getDebatesFromUserIdAndDate(debate.date, response.user)) &&
           dispatch(getAssignedResponsesByIDs(response.user))
+          
         );
       })
       .catch(function (error) {
@@ -138,8 +140,7 @@ export function getAvailableDebates(date, tier, userid) {
         const curDebate = response.data.filter((debate) => {
           return (
             // Check that their dates align but the user is not apart of this debate
-            compareDates(debate.date, date) &&
-            !debate.debaterIds.includes(userid)
+            compareDates(debate.date, date)
           );
         });
         return curDebate;
@@ -168,6 +169,8 @@ export function populateDebate(date, tier, userid) {
           });
           // Add myself to the debate and update the DB and my state
           minParticipatingDebate.debaterIds.push(userid);
+          minParticipatingDebate.debaterIds = Array.from(
+            new Set(minParticipatingDebate.debaterIds));
           return putDebate(minParticipatingDebate).then((response) => {
             /* retrieve the new debates from state which should now include the 
             debate we just updated to include user */

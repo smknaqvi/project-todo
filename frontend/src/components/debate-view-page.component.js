@@ -16,62 +16,139 @@ export default class DebateViewPage extends Component {
       retrievedCurDebate,
       getDebatesFromUserIdAndDate,
       date,
+      getPreviousDebatesFromUserIdAndDate,
     } = this.props;
     if (!acsScore) {
       getACS(userId);
     }
     getAssignedResponsesByIDs(userId);
+
+    if (this.props.isShowingPrevDay) {
+      const date = new Date();
+      date.setDate(date.getDate() - 1);
+      getPreviousDebatesFromUserIdAndDate(date, userId);
+    }
     if (!retrievedCurDebate) {
-      getDebatesFromUserIdAndDate(date ? new Date(date) : new Date(), userId);
+      if (this.props.isShowingPrevDay) {
+        const date = new Date();
+        date.setDate(date.getDate() - 1);
+        getPreviousDebatesFromUserIdAndDate(date, userId);
+      } else {
+        getDebatesFromUserIdAndDate(date ? new Date(date) : new Date(), userId);
+      }
+    }
+  }
+
+  createAvg() {
+    if (
+      this.props.curDebate.length > 0 &&
+      this.props.curDebate[0].isEvaluated &&
+      this.props.isShowingPrevDay
+    ) {
+      return (
+        <Typography>
+          Average :{" "}
+          {this.props.curResponse[0].avg ? this.props.curResponse[0].avg : 0}%
+        </Typography>
+      );
     }
   }
 
   SimpleCard() {
-    return (
-      <Card className="debate-question">
-        <CardContent>
-          <Typography variant="h5" gutterBottom>
-            <u>
-              <b>Original Question:</b>
-            </u>{" "}
-            {this.createDebates()}
-          </Typography>
-          <Typography gutterBottom>
-            Your Response: {this.props.curResponse[0].content}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
+    if (this.props.curResponse.length > 0) {
+      return (
+        <Card className="debate-question">
+          <CardContent>
+            <Typography variant="h5" gutterBottom>
+              <u>
+                <b>Original Question:</b>
+              </u>{" "}
+              {this.createDebates()}
+            </Typography>
+            <Typography gutterBottom>
+              Your Response: {this.props.curResponse[0].content}
+            </Typography>
+            {this.createAvg()}
+          </CardContent>
+        </Card>
+      );
+    } else if (this.props.curDebate.length > 0) {
+      this.props.getUserResponsesByID(this.props.userId);
+    }
   }
 
   createDebates = () => {
     if (this.props.curDebate.length > 0) {
       return this.props.curDebate[0].question;
     } else {
-      return "No questions for: " + this.props.date;
+      this.props.getDebatesFromUserIdAndDate(
+        this.props.date ? new Date(this.props.date) : new Date(),
+        this.props.userId
+      );
     }
+  };
+
+  createUserName = (response) => {
+    if (this.props.isShowingPrevDay) {
+      const avg = response.avg ? response.avg : 0;
+      return (
+        <Typography className={"title"} color="textSecondary" gutterBottom>
+          User : {response.userName}-{avg}%
+        </Typography>
+      );
+    }
+  };
+
+  createResponseCards = (responses, viewAssignedOnly) => {
+    return responses.map((response) => {
+      if (
+        (viewAssignedOnly &&
+          this.props.curDebate.length > 0 &&
+          this.props.curDebate[0].responseIds.includes(response._id)) ||
+        !viewAssignedOnly
+      ) {
+        return (
+          <Card className="response" key={response._id}>
+            <CardContent className="response-content" key={response._id}>
+              {this.createUserName(response)}
+              Their Response : {response.content}
+            </CardContent>
+            <Divider />
+            {this.DiscreteSlider(response._id)}
+          </Card>
+        );
+      } else {
+        return null;
+      }
+    });
+  };
+
+  renderEarlyResponseMessage = () => {
+    return (
+      <Card>
+        <CardContent>
+          <Typography className={"title"} color="textSecondary" gutterBottom>
+            Congrats! You are one of the first responses. Please check back
+            later to rate other people's responses.
+          </Typography>
+        </CardContent>
+      </Card>
+    );
   };
 
   createResponses = () => {
     if (this.props.curDebate.length > 0) {
       const curDebate = this.props.curDebate[0];
       if (curDebate.responseIds.length > 2) {
-        if (this.props.retrievedAssignedResponses) {
-          return this.props.assignedResponsesObjects.map((response) => {
-            if (curDebate.responseIds.includes(response._id)) {
-              return (
-                <Card className="response" key={response._id}>
-                  <CardContent className="response-content" key={response._id}>
-                    Their Response : {response.content}
-                  </CardContent>
-                  <Divider />
-                  {this.DiscreteSlider(response._id)}
-                </Card>
-              );
-            } else {
-              return <div />;
-            }
-          });
+        if (this.props.isShowingPrevDay) {
+          // if we are showing a prev day, show every response associated with this debate
+          return this.createResponseCards(this.props.debateResponses, false);
+        } else if (this.props.retrievedAssignedResponses) {
+          // if we are not showing a previous day, render only the assigned responses
+          return this.createResponseCards(
+            this.props.assignedResponsesObjects,
+            true
+          );
         } else {
           this.props.getTwoAssignedResponses(
             this.props.userId,
@@ -80,27 +157,14 @@ export default class DebateViewPage extends Component {
           );
         }
       } else {
-        return (
-          <Card>
-            <CardContent>
-              <Typography
-                className={"title"}
-                color="textSecondary"
-                gutterBottom
-              >
-                Congrats! You are one of the first responses. Please check back
-                later to rate other people's responses.
-              </Typography>
-            </CardContent>
-          </Card>
-        );
+        return this.renderEarlyResponseMessage();
       }
     }
   };
 
   handleEvaluate = () => {
     const curDebate = this.props.curDebate[0];
-    if (!curDebate.isEvaluated) {
+    if (!curDebate.isEvaluated && !this.props.isShowingPrevDay) {
       this.props.evaluateDebate(
         this.props.userId,
         curDebate._id,
@@ -145,7 +209,11 @@ export default class DebateViewPage extends Component {
     }
   }
   createEvaluateButton = () => {
-    if (this.props.retrievedCurDebate) {
+    if (
+      this.props.retrievedCurDebate &&
+      this.props.curDebate.length > 0 &&
+      !this.props.isShowingPrevDay
+    ) {
       const disable = this.props.retrievedCurDebate
         ? this.props.curDebate[0].isEvaluated
         : false;

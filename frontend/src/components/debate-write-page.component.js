@@ -5,18 +5,18 @@ import PropTypes from "prop-types";
 import { Card, CardHeader, CardContent, Button } from "@material-ui/core";
 
 export default class DebateWritePage extends Component {
-  componentDidUpdate() {
-    const { curDebate, date, tier, userId, retrievedCurDebate } = this.props;
+  componentDidMount() {
+    const { curDebate, tier, userId, retrievedCurDebate } = this.props;
     // If the date has changed
     if (retrievedCurDebate) {
       // Check if the user has a debate assignment to them on this given date
-      this.checkDebateUpdate(curDebate, date, tier, userId);
+      this.checkDebateUpdate(curDebate, tier, userId);
     }
   }
 
-  checkDebateUpdate = (curDebate, date, tier, userId) => {
+  checkDebateUpdate = (curDebate, tier, userId) => {
     if (curDebate.length === 0) {
-      this.props.populateDebate(date ? date : new Date(), tier, userId);
+      this.props.populateDebate(new Date(), tier, userId);
     }
   };
 
@@ -72,7 +72,14 @@ export default class DebateWritePage extends Component {
         </Card>
       );
     } else {
-      return <div>No Debate Today!</div>;
+      if (!this.props.retrievedCurDebate) {
+        this.checkDebateUpdate(
+          this.props.curDebate,
+          this.props.tier,
+          this.props.userId
+        );
+      }
+      return <div>No debate</div>;
     }
   }
 }

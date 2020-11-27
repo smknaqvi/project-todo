@@ -18,6 +18,8 @@ import {
   FETCH_ASSIGNED_RESPONSES_OBJECTS_SUCCEEDED,
   UPDATE_RESPONSE_STARTED,
   UPDATE_RESPONSE_SUCCEEDED,
+  FETCH_PREV_DEBATE_STARTED,
+  FETCH_PREV_DEBATE_SUCCEEDED,
 } from "../constants";
 import { showSuccess } from "./success";
 import { updateCurrentDebate } from "./debate-write-page";
@@ -31,6 +33,7 @@ import {
   getResponsesByIDs,
   putDebate,
   putResponseRating,
+  putResponseAvg,
 } from "../api/debate";
 import { getDebateResponses } from "../api/debate-responses";
 import { getProfileInfo, getProfileInfoForIds } from "../api/my-profile";
@@ -124,6 +127,14 @@ export const updateResponseStarted = () => ({
   type: UPDATE_RESPONSE_STARTED,
 });
 
+export const fetchPrevDebateStarted = () => ({
+  type: FETCH_PREV_DEBATE_STARTED,
+});
+export const fetchPrevDebateSucceeded = (responses) => ({
+  type: FETCH_PREV_DEBATE_SUCCEEDED,
+  responses: responses,
+});
+
 export function getDebatesByUserId(id) {
   return function (dispatch) {
     dispatch(debateRequestStarted());
@@ -159,6 +170,49 @@ export function getDebates() {
           dispatch(showError("Internal server error"));
         }
       });
+  };
+}
+
+export function getPreviousDebatesFromUserIdAndDate(date, id) {
+  return function (dispatch) {
+    dispatch(fetchPrevDebateStarted);
+    return getDebateByUserId(id).then(function (debates) {
+      const allDebates = debates.data;
+      const prevDebate = allDebates.find((debate) => {
+        return compareDates(debate.date, date);
+      });
+      if(prevDebate === undefined){
+        dispatch(showError("No Previous Debates"));
+      }
+      else{
+        getResponsesByIDs(prevDebate.responseIds).then(function (response) {
+          const allResponses = response.data;
+          let listOfUsers = allResponses.map((response) => {
+            return response.user
+          });
+          getProfileInfoForIds(listOfUsers).then(function (userprofiles) {
+            let listOfResponses = [];
+            userprofiles.data.forEach((user) => {
+              allResponses.forEach((response) => {
+                if (user._id === response.user) {
+                  response.userName = user.displayName;
+                  listOfResponses = [...listOfResponses, response];
+                }
+              });
+            });
+            dispatch(
+              getAssignedResponsesRequestSucceeded(
+                listOfResponses,
+                prevDebate.responseIds
+              )
+            );
+            dispatch(updateCurrentDebate([prevDebate]));
+            dispatch(fetchPrevDebateSucceeded(listOfResponses));
+          });
+        });
+      }
+      
+    });
   };
 }
 
@@ -246,6 +300,24 @@ export function getResponses() {
   };
 }
 
+export function updateDateToToday(id) {
+  return function (dispatch) {
+    return getDebateByUserId(id)
+      .then(function (response) {
+        dispatch(updateCurrentDebate([]));
+      })
+      .catch(function (error) {
+        if (error.response) {
+          dispatch(showError(error.response.data));
+        } else if (error.request) {
+          dispatch(showError("Unable to reach server"));
+        } else {
+          dispatch(showError("Internal server error"));
+        }
+      });
+  };
+}
+
 export function getUserResponsesByID(id) {
   return function (dispatch) {
     dispatch(singleRsponseRequestStarted());
@@ -287,7 +359,7 @@ export function updateRating(responseId, value, userId) {
   };
 }
 
-export function evaluateDebate(userId, id, date) {
+export function evaluateDebate(userId, id) {
   return function (dispatch) {
     dispatch(evaluateDebateStarted());
     return getDebate(id)
@@ -307,6 +379,16 @@ export function evaluateDebate(userId, id, date) {
                 sum += rating;
               });
               const avg = sum / Object.values(ratings).length;
+              putResponseAvg(response._id, avg)
+              .catch(function (error) {
+                if (error.response) {
+                  dispatch(showError(error.response.data));
+                } else if (error.request) {
+                  dispatch(showError("Unable to reach server"));
+                } else {
+                  dispatch(showError("Internal server error"));
+                }
+              });
               if (avg > highestAvg) {
                 highestAvg = avg;
                 useridofhighestavg = response.user;
@@ -318,6 +400,7 @@ export function evaluateDebate(userId, id, date) {
               }
               userScoreMap[response.user] = score;
             }
+
             score = highestAvg / 10;
             score = Math.ceil(parseInt(score));
             userScoreMap[useridofhighestavg] = score + 5;
