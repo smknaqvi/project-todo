@@ -5,8 +5,6 @@ import uniqueId from "@hs/transmute/uniqueId";
 import { getNextMatch } from "../utils/bracketsUtils";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import { MAX_ACS, MIN_ACS } from "../constants";
 
 export default class PlayoffsPage extends Component {
@@ -23,31 +21,6 @@ export default class PlayoffsPage extends Component {
     if (!acsScore) {
       getACS(userId);
     }
-  }
-
-  createAlerts() {
-    return (
-      <>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
-        <Snackbar
-          open={this.props.showError}
-          autoHideDuration={5000}
-          onClose={this.props.closeError}
-        >
-          <Alert severity="error" onClose={this.props.closeError}>
-            {this.props.errorReason}
-          </Alert>
-        </Snackbar>
-      </>
-    );
   }
 
   handleSetSelectedTeam = (matchNumber, teamKey, { target: { value } }) => {
@@ -241,7 +214,6 @@ export default class PlayoffsPage extends Component {
             Evaluate
           </Button>
         </div>
-        {this.createAlerts()}
       </div>
     );
   }
@@ -255,10 +227,6 @@ PlayoffsPage.propTypes = {
   isFetchCompleted: PropTypes.bool,
   isUpdating: PropTypes.bool,
   acsScore: PropTypes.number,
-  showError: PropTypes.bool,
-  errorReason: PropTypes.string,
-  showSuccess: PropTypes.bool,
-  successReason: PropTypes.string,
   getBrackets: PropTypes.func,
   getUserBrackets: PropTypes.func,
   updateBrackets: PropTypes.func,
@@ -266,5 +234,4 @@ PlayoffsPage.propTypes = {
   setSelectedScore: PropTypes.func,
   getACS: PropTypes.func,
   updateACS: PropTypes.func,
-  closeSuccess: PropTypes.func,
 };

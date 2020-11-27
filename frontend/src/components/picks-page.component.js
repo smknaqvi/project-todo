@@ -5,8 +5,6 @@ import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import PicksCard from "./picks-card.component";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import { dateToISO } from "../utils/dateUtils";
 
 export default class PicksPage extends Component {
@@ -113,31 +111,6 @@ export default class PicksPage extends Component {
     );
   }
 
-  createAlerts() {
-    return (
-      <>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
-        <Snackbar
-          open={this.props.showError}
-          autoHideDuration={5000}
-          onClose={this.props.closeError}
-        >
-          <Alert severity="error" onClose={this.props.closeError}>
-            {this.props.errorReason}
-          </Alert>
-        </Snackbar>
-      </>
-    );
-  }
-
   render() {
     const firstGameOnDate = this.getGamesByDate(
       this.props.date,
@@ -176,7 +149,6 @@ export default class PicksPage extends Component {
         >
           SUBMIT
         </Button>
-        {this.createAlerts()}
       </div>
     );
   }
@@ -197,10 +169,4 @@ PicksPage.propTypes = {
   getDailyPicksFromDB: PropTypes.func,
   updateDailyPicks: PropTypes.func,
   updateACS: PropTypes.func,
-  showSuccess: PropTypes.bool,
-  successReason: PropTypes.string,
-  showError: PropTypes.bool,
-  errorReason: PropTypes.string,
-  closeSuccess: PropTypes.func,
-  closeError: PropTypes.func,
 };

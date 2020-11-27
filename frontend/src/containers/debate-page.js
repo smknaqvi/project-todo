@@ -8,20 +8,14 @@ import {
   evaluateDebate,
   getAssignedResponsesByIDs,
 } from "../actions/debate-page";
-import { closeError } from "../actions/error";
 import { getRespondedToDebatesFromState } from "../selectors/responseSelectors";
 import { getACS, updateACS } from "../actions/acs";
-import { closeSuccess } from "../actions/success";
 
 const mapStateToProps = (state) => ({
   userId: state.auth.get("id"),
   date: state.debatePage.get("date"),
   debates: state.debatePage.get("debates"),
   curDebate: state.debatePage.get("curDebate"),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
   responses: state.debatePage.get("responses"),
   hasResponded: getRespondedToDebatesFromState(state),
   assignedResponses: state.debatePage.get("assignedResponses"),
@@ -41,8 +35,6 @@ const mapDispatchToProps = (dispatch) => ({
   getDebatesFromUserIdAndDate: (date, userid) =>
     dispatch(getDebatesFromUserIdAndDate(date, userid)),
   getUserResponsesByID: (id) => dispatch(getUserResponsesByID(id)),
-  closeError: () => dispatch(closeError()),
-  closeSuccess: () => dispatch(closeSuccess()),
   evaluateDebate: (id, date) => dispatch(evaluateDebate(id, date)),
   getAssignedResponsesByIDs: (ids) => dispatch(getAssignedResponsesByIDs(ids)),
 });

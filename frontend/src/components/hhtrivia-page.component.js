@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import TriviaQuestion from "../containers/trivia-question";
 import { CircularProgress } from "@material-ui/core";
 import checkmarkgif from "../videos/checkmarkgif.mp4";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
@@ -43,7 +41,6 @@ export default class HHTriviaPage extends Component {
               }}
             />
           </div>
-          {this.createAlerts()}
         </div>
       );
     } else {
@@ -63,35 +60,9 @@ export default class HHTriviaPage extends Component {
           >
             Return
           </Button>
-          {this.createAlerts()}
         </div>
       );
     }
-  }
-
-  createAlerts() {
-    return (
-      <>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
-        <Snackbar
-          open={this.props.showError}
-          autoHideDuration={5000}
-          onClose={this.props.closeError}
-        >
-          <Alert severity="error" onClose={this.props.closeError}>
-            {this.props.errorReason}
-          </Alert>
-        </Snackbar>
-      </>
-    );
   }
 
   createAccordionActions(game, playerNum) {
@@ -244,11 +215,6 @@ export default class HHTriviaPage extends Component {
     } else {
       hhTriviaPage = <CircularProgress />;
     }
-    return (
-      <div className="hhtrivia-page">
-        {this.createAlerts()}
-        {hhTriviaPage}
-      </div>
-    );
+    return <div className="hhtrivia-page">{hhTriviaPage}</div>;
   }
 }

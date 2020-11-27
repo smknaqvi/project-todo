@@ -2,39 +2,12 @@ import React, { Component } from "react";
 import TriviaQuestion from "../containers/trivia-question";
 import PropTypes from "prop-types";
 import { CircularProgress } from "@material-ui/core";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import checkmarkgif from "../videos/checkmarkgif.mp4";
 
 export default class TriviaPage extends Component {
   componentDidMount() {
     this.props.getTriviaQuestions();
     this.props.getCompletedQuestions(this.props.userId);
-  }
-
-  createAlerts() {
-    return (
-      <>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
-        <Snackbar
-          open={this.props.showError}
-          autoHideDuration={5000}
-          onClose={this.props.closeError}
-        >
-          <Alert severity="error" onClose={this.props.closeError}>
-            {this.props.errorReason}
-          </Alert>
-        </Snackbar>
-      </>
-    );
   }
 
   render() {
@@ -71,7 +44,6 @@ export default class TriviaPage extends Component {
                 }}
               />
             </div>
-            {this.createAlerts()}
           </div>
         );
       } else {
@@ -87,7 +59,6 @@ export default class TriviaPage extends Component {
                 </video>
               </div>
               No more questions for today. See you tomorrow!
-              {this.createAlerts()}
             </div>
           </div>
         );

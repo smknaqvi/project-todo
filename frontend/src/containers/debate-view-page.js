@@ -13,7 +13,6 @@ import {
   getRespondedToDebatesFromState,
   getMyRespondedToDebatesFromState,
 } from "../selectors/responseSelectors";
-import { closeSuccess } from "../actions/success";
 import { getACS, updateACS } from "../actions/acs";
 
 const mapStateToProps = (state) => ({
@@ -49,9 +48,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateRating(responseId, value, userId)),
   getTwoAssignedResponses: (userid, responseid, curdebate) =>
     dispatch(getTwoAssignedResponses(userid, responseid, curdebate)),
-  closeSuccess: () => {
-    dispatch(closeSuccess());
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebateViewPage);

@@ -4,8 +4,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import Divider from "@material-ui/core/Divider";
 
 export default class DebateViewPage extends Component {
@@ -171,15 +169,6 @@ export default class DebateViewPage extends Component {
         {this.SimpleCard()}
         {this.createResponses()}
         {this.createEvaluateButton()}
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={2000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert onClose={this.props.closeSuccess} severity="success">
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
       </div>
     );
   }

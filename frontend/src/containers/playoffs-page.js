@@ -16,8 +16,6 @@ import {
   getIsUpdatingFromState,
 } from "../selectors/playoffsSelectors";
 import { getUserIdFromState } from "../selectors/authSelectors";
-import { closeError } from "../actions/error";
-import { closeSuccess } from "../actions/success";
 
 const mapStateToProps = (state) => ({
   userId: getUserIdFromState(state),
@@ -27,10 +25,6 @@ const mapStateToProps = (state) => ({
   isFetchCompleted: getIsFetchCompletedFromState(state),
   isUpdating: getIsUpdatingFromState(state),
   acsScore: getCurrentUserACSScoreFromState(state),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
 });
 const mapDispatchToProps = (dispatch) => ({
   getBrackets: (year) => dispatch(getBrackets(year)),
@@ -44,12 +38,6 @@ const mapDispatchToProps = (dispatch) => ({
   getACS: (userId) => dispatch(getACS(userId)),
   updateACS: (userId, type, acsScore) =>
     dispatch(updateACS(userId, type, acsScore)),
-  closeError: () => {
-    dispatch(closeError());
-  },
-  closeSuccess: () => {
-    dispatch(closeSuccess());
-  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlayoffsPage);

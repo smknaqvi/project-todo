@@ -8,8 +8,6 @@ import {
   sendDailyPicksToDb,
   updateDailyPicks,
 } from "../actions/daily-picks";
-import { closeSuccess } from "../actions/success";
-import { closeError } from "../actions/error";
 import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
 
 const mapStateToProps = (state) => ({
@@ -20,10 +18,6 @@ const mapStateToProps = (state) => ({
   date: state.dailyPicks.get("date"),
   games: state.dailyPicks.get("games"),
   madePicks: state.dailyPicks.get("madePicks"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -36,8 +30,6 @@ const mapDispatchToProps = (dispatch) => ({
   updateDailyPicks: (pick) => dispatch(updateDailyPicks(pick)),
   updateACS: (userid, type, acsscore) =>
     dispatch(updateACS(userid, type, acsscore)),
-  closeSuccess: () => dispatch(closeSuccess()),
-  closeError: () => dispatch(closeError()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PicksPage);

@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import HHTriviaPage from "../components/hhtrivia-page.component";
 import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
 import { updateACS } from "../actions/acs";
-import { closeError } from "../actions/error";
-import { closeSuccess } from "../actions/success";
 import {
   getUsersHHTriviaGames,
   deleteHHTriviaGame,
@@ -28,20 +26,10 @@ const mapStateToProps = (state) => ({
   users: state.hhTriviaPage.get("users"),
   fetchAllGamesFinished: state.hhTriviaPage.get("fetchAllGamesFinished"),
   fetchAllUsersFinished: state.hhTriviaPage.get("fetchAllUsersFinished"),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateACS: (id, type, acs) => dispatch(updateACS(id, type, acs)),
-  closeError: () => {
-    dispatch(closeError());
-  },
-  closeSuccess: () => {
-    dispatch(closeSuccess());
-  },
   getUsersHHTriviaGames: (userId) => {
     dispatch(getUsersHHTriviaGames(userId));
   },

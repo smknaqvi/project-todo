@@ -1,8 +1,4 @@
 import {
-  SHOW_ERROR,
-  CLOSE_ERROR,
-  SHOW_SUCCESS,
-  CLOSE_SUCCESS,
   FETCH_USERS_HHTRIVIA_GAMES_SUCCEEDED,
   FETCH_HHTRIVIA_OPPONENTS_SUCCEEDED,
   DELETE_HHTRIVIA_GAME_SUCCEEDED,
@@ -24,10 +20,6 @@ import {
 import { Map } from "immutable";
 
 const initState = Map({
-  showError: false,
-  showSucess: false,
-  errorReason: "",
-  successReason: "",
   allGames: [],
   users: {},
   showGame: false,
@@ -41,14 +33,6 @@ const initState = Map({
 export const hhTriviaPage = (state = initState, action) => {
   let temp = "";
   switch (action.type) {
-    case SHOW_ERROR:
-      return state.set("showError", true).set("errorReason", action.reason);
-    case CLOSE_ERROR:
-      return state.set("showError", false).set("errorReason", "");
-    case SHOW_SUCCESS:
-      return state.set("showSuccess", true).set("successReason", action.reason);
-    case CLOSE_SUCCESS:
-      return state.set("showSuccess", false).set("successReason", "");
     case FETCH_USERS_HHTRIVIA_GAMES_SUCCEEDED:
       return state
         .set("allGames", action.games)

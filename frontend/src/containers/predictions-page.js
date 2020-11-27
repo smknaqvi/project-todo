@@ -2,8 +2,6 @@ import { connect } from "react-redux";
 import PredictionsPage from "../components/predictions-page.component";
 import { getACS, updateACS } from "../actions/acs";
 import { getPlayers, updatePicks } from "../actions/team";
-import { closeSuccess } from "../actions/success";
-import { closeError } from "../actions/error";
 import {
   sendPicksToDB,
   getPicksFromDB,
@@ -20,10 +18,6 @@ const mapStateToProps = (state) => ({
   awards: state.player.get("awards").toJS(),
   madePicks: state.player.get("madePicks"),
   results: state.player.get("results"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
-  showError: state.error.get("showError"),
-  errorReason: state.error.get("errorReason"),
   winners: state.player.get("winners"),
   isEvaluated: state.player.get("isEvaluated"),
 });
@@ -37,8 +31,6 @@ const mapDispatchToProps = (dispatch) => ({
       sendPicksToDB(year, userid, picks, results, madePicks, isEvaluated)
     ),
   getPicksFromDB: (userid) => dispatch(getPicksFromDB(userid)),
-  closeSuccess: () => dispatch(closeSuccess()),
-  closeError: () => dispatch(closeError()),
   getWinnersFromDB: (year) => dispatch(getWinnersFromDB(year)),
   updateACS: (userid, type, acsscore) =>
     dispatch(updateACS(userid, type, acsscore)),

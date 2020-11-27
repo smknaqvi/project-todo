@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Box from "@material-ui/core/Box";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 import { AWARDS } from "../constants";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -81,31 +79,6 @@ export default class PredictionsPage extends Component {
     ) {
       return <img src={this.props.awards[award.key].picture} alt="player" />;
     }
-  }
-
-  createAlerts() {
-    return (
-      <>
-        <Snackbar
-          open={this.props.showSuccess}
-          autoHideDuration={5000}
-          onClose={this.props.closeSuccess}
-        >
-          <Alert severity="success" onClose={this.props.closeSuccess}>
-            {this.props.successReason}
-          </Alert>
-        </Snackbar>
-        <Snackbar
-          open={this.props.showError}
-          autoHideDuration={5000}
-          onClose={this.props.closeError}
-        >
-          <Alert severity="error" onClose={this.props.closeError}>
-            {this.props.errorReason}
-          </Alert>
-        </Snackbar>
-      </>
-    );
   }
 
   submitPicks = () => {
@@ -200,7 +173,6 @@ export default class PredictionsPage extends Component {
         >
           SUBMIT
         </Button>
-        {this.createAlerts()}
       </div>
     );
   }
@@ -215,10 +187,6 @@ PredictionsPage.propTypes = {
   awards: PropTypes.object,
   madePicks: PropTypes.bool,
   results: PropTypes.object,
-  showSuccess: PropTypes.bool,
-  successReason: PropTypes.string,
-  showError: PropTypes.bool,
-  errorReason: PropTypes.string,
   winners: PropTypes.object,
   isEvaluated: PropTypes.bool,
   getACS: PropTypes.func,
@@ -226,8 +194,6 @@ PredictionsPage.propTypes = {
   updatePicks: PropTypes.func,
   sendPicksToDB: PropTypes.func,
   getPicksFromDB: PropTypes.func,
-  closeSuccess: PropTypes.func,
-  closeError: PropTypes.func,
   getWinnersFromDB: PropTypes.func,
   updateACS: PropTypes.func,
 };

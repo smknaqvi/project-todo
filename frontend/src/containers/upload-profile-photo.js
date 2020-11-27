@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { closeSuccess } from "../actions/success";
 import {
   setBase64Image,
   uploadPhoto,
@@ -17,8 +16,6 @@ const mapStateToProps = (state) => ({
   newPhotoSet: state.uploadProfilePhoto.get("newPhotoSet"),
   username: state.auth.get("username"),
   userId: state.auth.get("id"),
-  showSuccess: state.success.get("showSuccess"),
-  successReason: state.success.get("successReason"),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -30,9 +27,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   initProfilePhoto: (id) => {
     dispatch(initProfilePhoto(id));
-  },
-  closeSuccess: () => {
-    dispatch(closeSuccess());
   },
 });
 

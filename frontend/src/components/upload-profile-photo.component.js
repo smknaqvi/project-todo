@@ -110,7 +110,4 @@ UploadProfilePhoto.propTypes = {
   isPostUploading: PropTypes.bool,
   initProfilePhoto: PropTypes.func,
   newPhotoSet: PropTypes.bool,
-  showSuccess: PropTypes.bool,
-  closeSuccess: PropTypes.func,
-  successReason: PropTypes.string,
 };

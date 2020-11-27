@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "./alert.component";
 
 export default class AcsInfraDemo extends Component {
   componentDidMount() {
@@ -14,13 +12,7 @@ export default class AcsInfraDemo extends Component {
     updateACS(userId, "DEMO", acsScore + acsChange);
   };
   render() {
-    const {
-      acsScore,
-      acsLevel,
-      showError,
-      closeError,
-      errorReason,
-    } = this.props;
+    const { acsScore, acsLevel } = this.props;
     return (
       <>
         <div className="acs-infra-demo">
@@ -33,11 +25,6 @@ export default class AcsInfraDemo extends Component {
         <Button variant="outlined" onClick={() => this.handleUpdateACS(-10)}>
           Decrement 10
         </Button>
-        <Snackbar open={showError} autoHideDuration={5000} onClose={closeError}>
-          <Alert severity="error" onClose={closeError}>
-            {errorReason}
-          </Alert>
-        </Snackbar>
       </>
     );
   }
@@ -49,7 +36,4 @@ AcsInfraDemo.propTypes = {
   getACS: PropTypes.func,
   userId: PropTypes.string,
   updateACS: PropTypes.func,
-  errorReason: PropTypes.string,
-  showError: PropTypes.bool,
-  closeError: PropTypes.func,
 };
