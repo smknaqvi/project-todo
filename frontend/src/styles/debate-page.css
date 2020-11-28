@@ -30,10 +30,15 @@
   width: 50%;
   height: 30%;
   padding: 1%;
+  overflow-wrap: break-word;
 }
 
 .debate-page .debate-create {
   padding: 1%;
+}
+
+.error-msg {
+  color: red;
 }
 
 .debate-page .debate-create .debate-create-header {
@@ -50,6 +55,13 @@
   float: right;
   margin: 1%;
   background-color: green;
+  color: white;
+}
+
+.debate-create-button-invalid {
+  float: right;
+  margin: 1%;
+  background-color: red;
   color: white;
 }
 

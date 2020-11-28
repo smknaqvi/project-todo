@@ -65,7 +65,7 @@ export default class DebateViewPage extends Component {
               </u>{" "}
               {this.createDebates()}
             </Typography>
-            <Typography gutterBottom>
+            <Typography gutterBottom variant="body1">
               Your Response: {this.props.curResponse[0].content}
             </Typography>
             {this.createAvg()}

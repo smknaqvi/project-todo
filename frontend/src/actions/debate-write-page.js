@@ -118,7 +118,6 @@ export function uploadResponseAndSaveToDebate(debate, response) {
           dispatch(updateCurrentDebate([debate])) &&
           dispatch(getDebatesFromUserIdAndDate(debate.date, response.user)) &&
           dispatch(getAssignedResponsesByIDs(response.user))
-          
         );
       })
       .catch(function (error) {
@@ -170,7 +169,8 @@ export function populateDebate(date, tier, userid) {
           // Add myself to the debate and update the DB and my state
           minParticipatingDebate.debaterIds.push(userid);
           minParticipatingDebate.debaterIds = Array.from(
-            new Set(minParticipatingDebate.debaterIds));
+            new Set(minParticipatingDebate.debaterIds)
+          );
           return putDebate(minParticipatingDebate).then((response) => {
             /* retrieve the new debates from state which should now include the 
             debate we just updated to include user */
