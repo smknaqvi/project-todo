@@ -1,7 +1,7 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
 
 export function playerRequest() {
-  return axios.get(`${API_ENDPOINT}/team`);
+  return client.get(`/team`);
 }
 

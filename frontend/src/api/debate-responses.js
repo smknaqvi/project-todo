@@ -1,9 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
 import { Map } from "immutable";
+import { client } from "./client";
+
 
 export function postDebateResponses(user, content, date) {
-  return axios.post(`${API_ENDPOINT}/debate-responses`, {
+  return client.post(`/debate-responses`, {
     user: user,
     content: content,
     count: 0,
@@ -13,9 +13,9 @@ export function postDebateResponses(user, content, date) {
 }
 
 export function getDebateResponseById(userid) {
-  return axios.get(`${API_ENDPOINT}/debate-responses/${userid}`);
+  return client.get(`/debate-responses/${userid}`);
 }
 
 export function getDebateResponses() {
-  return axios.get(`${API_ENDPOINT}/debate-responses`);
+  return client.get(`/debate-responses`);
 }

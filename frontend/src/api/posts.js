@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function uploadPost({ userId, content, base64Image }) {
-  return axios.post(API_ENDPOINT + "/posts", {
+  return client.post( "/posts", {
     origPosterID: userId,
     content: content,
     picture: base64Image,

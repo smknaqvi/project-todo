@@ -1,19 +1,19 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
 
 export function postDailyPicks(userid, data) {
-  return axios.post(`${API_ENDPOINT}/game-picks`, {
+  return client.post(`/game-picks`, {
     user: userid,
     picks: data,
   });
 }
 
 export function putDailyPicks(userid, data) {
-  return axios.put(`${API_ENDPOINT}/game-picks/${userid}`, {
+  return client.put(`/game-picks/${userid}`, {
     picks: data,
   });
 }
 
 export function getDailyPicks(userid) {
-  return axios.get(`${API_ENDPOINT}/game-picks/${userid}`);
+  return client.get(`/game-picks/${userid}`);
 }

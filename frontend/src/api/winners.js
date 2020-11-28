@@ -1,6 +1,6 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
 
 export function getWinners(year) {
-  return axios.get(`${API_ENDPOINT}/winners/${year}`);
+  return client.get(`/winners/${year}`);
 }

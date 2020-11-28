@@ -1,12 +1,13 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function userBracketChoicesRequest(userId) {
-  return axios.get(`${API_ENDPOINT}/bracket/bracketChoice/userId/${userId}`);
+  return client.get(`/bracket/bracketChoice/userId/${userId}`);
 }
 
 export function bracketsRequest(year) {
-  return axios.get(`${API_ENDPOINT}/bracket/${year}`);
+  return client.get(`/bracket/${year}`);
 }
 
 export function postBracket({
@@ -21,7 +22,7 @@ export function postBracket({
   isWinnerCorrect,
   matchNumber,
 }) {
-  return axios.post(`${API_ENDPOINT}/bracket/bracketChoice/`, {
+  return client.post(`/bracket/bracketChoice/`, {
     teamOne,
     teamTwo,
     winnerChoice,
@@ -48,7 +49,7 @@ export function putBracket({
   isWinnerCorrect,
   matchNumber,
 }) {
-  return axios.put(`${API_ENDPOINT}/bracket/bracketChoice/${_id}`, {
+  return client.put(`/bracket/bracketChoice/${_id}`, {
     teamOne,
     teamTwo,
     winnerChoice,

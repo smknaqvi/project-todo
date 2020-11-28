@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function signupRequest(data) {
-  return axios.post(API_ENDPOINT + "/users", {
+  return client.post("/users", {
     username: data.username,
     password: data.password,
     birthday: data.birthday,

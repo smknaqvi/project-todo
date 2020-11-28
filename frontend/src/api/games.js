@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function gamesRequest() {
-  return axios.get(`${API_ENDPOINT}/games/`);
+  return client.get(`/games/`);
 }
 
 

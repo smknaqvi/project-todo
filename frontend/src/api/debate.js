@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function postDebate(debate) {
-  return axios.post(`${API_ENDPOINT}/debate`, {
+  return client.post(`/debate`, {
     tier: debate.tier,
     question: debate.question,
     debaterIds: debate.debaterIds,
@@ -15,7 +16,7 @@ export function putDebate(debate) {
   if (debate._id === undefined || debate._id === null) {
     return postDebate(debate);
   } else {
-    return axios.put(`${API_ENDPOINT}/debate/${debate._id}`, {
+    return client.put(`/debate/${debate._id}`, {
       tier: debate.tier,
       question: debate.question,
       debaterIds: debate.debaterIds,
@@ -29,13 +30,13 @@ export function updateRatingCount(
   responseid,
   newcount
 ) {
-  return axios.put(`${API_ENDPOINT}/debate-responses/update-count/${responseid}`, {
+  return client.put(`/debate-responses/update-count/${responseid}`, {
     count : newcount
   });
 }
 
 export function getResponsesByIDs(ids) {
-  return axios.get(`${API_ENDPOINT}/debate-responses/get-from-list-of-ids/`, {params : {responseids : ids}});
+  return client.get(`/debate-responses/get-from-list-of-ids/`, {params : {responseids : ids}});
 }
 
 
@@ -43,13 +44,13 @@ export function updateAssignedResponses(
   response,
   userid
 ) {
-  return axios.put(`${API_ENDPOINT}/debate-responses/put-assigned-responses/${userid}`, {
+  return client.put(`/debate-responses/put-assigned-responses/${userid}`, {
     response : response,
   });
 }
 
 export function getResponsesByID(id) {
-  return axios.get(`${API_ENDPOINT}/debate-responses/${id}`);
+  return client.get(`/debate-responses/${id}`);
 }
 
 export function putResponseRating(
@@ -57,7 +58,7 @@ export function putResponseRating(
   userId,
   value
 ) {
-  return axios.put(`${API_ENDPOINT}/debate-responses/put-rating/${id}`, {
+  return client.put(`/debate-responses/put-rating/${id}`, {
     userId,
     value
   });
@@ -74,22 +75,22 @@ export function putResponseAvg(
 
 
 export function getDebate(id) {
-  return axios.get(`${API_ENDPOINT}/debate/${id}`);
+  return client.get(`/debate/${id}`);
 }
 
 export function getDebateByUserId(id) {
-  return axios.get(`${API_ENDPOINT}/debate/get-by-userid/${id}`);
+  return client.get(`/debate/get-by-userid/${id}`);
 }
 
 export function getAllDebates() {
-  return axios.get(`${API_ENDPOINT}/debate`);
+  return client.get(`/debate`);
 }
 
 export function getDebateByTier(tier) {
-  return axios.get(`${API_ENDPOINT}/debate/get-by-tier/${tier}`);
+  return client.get(`debate/get-by-tier/${tier}`);
 }
 export function getAssignedResponses(id) {
-  return axios.get(`${API_ENDPOINT}/debate-responses/get-assigned-responses/${id}`);
+  return client.get(`/debate-responses/get-assigned-responses/${id}`);
 }
 
 

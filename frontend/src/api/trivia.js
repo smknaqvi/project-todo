@@ -1,16 +1,17 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function getCompletedQuestionsRequest(id) {
-  return axios.get(`${API_ENDPOINT}/trivia/${id}`);
+  return client.get(`/trivia/${id}`);
 }
 
 export function getQuestions() {
-  return axios.get(`${API_ENDPOINT}/trivia/questions`);
+  return client.get(`/trivia/questions`);
 }
 
 export function updateCompletedQuestions(id, questionsCompleted) {
-  return axios.put(`${API_ENDPOINT}/trivia/${id}`, {
+  return client.put(`/trivia/${id}`, {
     triviaQuestionsCompleted: questionsCompleted,
   });
 }

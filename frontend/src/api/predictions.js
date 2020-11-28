@@ -1,8 +1,9 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function postPredictions(year, userid, data, results, isEvaluated) {
-  return axios.post(`${API_ENDPOINT}/user-picks`, {
+  return client.post(`/user-picks`, {
     year,
     user: userid,
     picks: data,
@@ -12,7 +13,7 @@ export function postPredictions(year, userid, data, results, isEvaluated) {
 }
 
 export function putPredictions(year, userid, data, results, isEvaluated) {
-  return axios.put(`${API_ENDPOINT}/user-picks/${userid}`, {
+  return client.put(`/user-picks/${userid}`, {
     year,
     picks: data,
     results: results,
@@ -21,5 +22,5 @@ export function putPredictions(year, userid, data, results, isEvaluated) {
 }
 
 export function getPredictions(userid) {
-  return axios.get(`${API_ENDPOINT}/user-picks/${userid}`);
+  return client.get(`/user-picks/${userid}`);
 }

@@ -1,24 +1,25 @@
-import axios from "axios";
-import { API_ENDPOINT } from "../constants";
+import { client } from "./client";
+
+
 
 export function getOCPosts() {
-  return axios.get(API_ENDPOINT + "/posts", {});
+  return client.get( "/posts", {});
 }
 
 export function getUserByID(ids) {
-  return axios.get(API_ENDPOINT + "/users/" + ids, {});
+  return client.get( "/users/" + ids, {});
 }
 
 export function deleteOCPost(id) {
-  return axios.delete(API_ENDPOINT + "/posts/" + id, {});
+  return client.delete( "/posts/" + id, {});
 }
 
 export function deleteOCComment(pid, cid) {
-  return axios.delete(API_ENDPOINT + "/posts/" + pid + "/comments/" + cid, {});
+  return client.delete( "/posts/" + pid + "/comments/" + cid, {});
 }
 
 export function uploadOCComment(pid, uid, comment) {
-  return axios.post(API_ENDPOINT + "/posts/" + pid + "/comments/", {
+  return client.post( "/posts/" + pid + "/comments/", {
     origPosterID: uid,
     content: comment,
   });
