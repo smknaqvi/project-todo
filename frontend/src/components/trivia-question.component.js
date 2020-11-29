@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button } from "@material-ui/core";
+import { Button, LinearProgress } from "@material-ui/core";
 
 export default class TriviaQuestion extends Component {
   constructor(props) {
@@ -16,9 +16,12 @@ export default class TriviaQuestion extends Component {
       this.setState({ seconds: this.state.seconds - 1 });
     } else {
       this.props.validateTriviaAnswer();
-      this.setState({ seconds: 10 });
+      this.setState({ seconds: 10.0 });
     }
   };
+
+  normalise = (value) => (value * 100) / 10;
+
   submitButtonClicked = () => {
     this.props.validateTriviaAnswer();
     this.setState({ seconds: 10 });
@@ -32,7 +35,10 @@ export default class TriviaQuestion extends Component {
       <div className="trivia-question">
         <div className="question-header">
           <div style={{ width: "100%", textAlign: "center" }}>
-            <h3>{this.state.seconds}</h3>
+            <LinearProgress
+              variant="determinate"
+              value={this.normalise(this.state.seconds)}
+            />
           </div>
           {this.props.currentQuestion.question}
         </div>
