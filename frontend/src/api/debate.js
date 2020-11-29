@@ -1,6 +1,5 @@
 import { client } from "./client";
-
-
+import { API_ENDPOINT } from "../constants";
 
 export function postDebate(debate) {
   return client.post(`/debate`, {
@@ -26,26 +25,21 @@ export function putDebate(debate) {
     });
   }
 }
-export function updateRatingCount(
-  responseid,
-  newcount
-) {
+export function updateRatingCount(responseid, newcount) {
   return client.put(`/debate-responses/update-count/${responseid}`, {
-    count : newcount
+    count: newcount,
   });
 }
 
 export function getResponsesByIDs(ids) {
-  return client.get(`/debate-responses/get-from-list-of-ids/`, {params : {responseids : ids}});
+  return client.get(`/debate-responses/get-from-list-of-ids/`, {
+    params: { responseids: ids },
+  });
 }
 
-
-export function updateAssignedResponses(
-  response,
-  userid
-) {
+export function updateAssignedResponses(response, userid) {
   return client.put(`/debate-responses/put-assigned-responses/${userid}`, {
-    response : response,
+    response: response,
   });
 }
 
@@ -53,26 +47,18 @@ export function getResponsesByID(id) {
   return client.get(`/debate-responses/${id}`);
 }
 
-export function putResponseRating(
-  id,
-  userId,
-  value
-) {
+export function putResponseRating(id, userId, value) {
   return client.put(`/debate-responses/put-rating/${id}`, {
     userId,
-    value
+    value,
   });
 }
 
-export function putResponseAvg(
-  id,
-  avg
-) {
-  return axios.put(`${API_ENDPOINT}/debate-responses/put-avg/${id}`, {
-    avg
+export function putResponseAvg(id, avg) {
+  return client.put(`${API_ENDPOINT}/debate-responses/put-avg/${id}`, {
+    avg,
   });
 }
-
 
 export function getDebate(id) {
   return client.get(`/debate/${id}`);
@@ -92,7 +78,3 @@ export function getDebateByTier(tier) {
 export function getAssignedResponses(id) {
   return client.get(`/debate-responses/get-assigned-responses/${id}`);
 }
-
-
-
-
