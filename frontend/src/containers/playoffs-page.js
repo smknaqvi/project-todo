@@ -4,6 +4,7 @@ import {
   getUserBracketChoices,
   setSelectedTeam,
   updateBrackets,
+  getTeamImages,
 } from "../actions/playoffs";
 import { getACS, updateACS } from "../actions/acs";
 import PlayoffsPage from "../components/playoffs-page.component";
@@ -14,6 +15,7 @@ import {
   getBracketValuesFromState,
   getIsFetchCompletedFromState,
   getIsUpdatingFromState,
+  getTeamImagesFromState,
 } from "../selectors/playoffsSelectors";
 import { getUserIdFromState } from "../selectors/authSelectors";
 
@@ -25,10 +27,12 @@ const mapStateToProps = (state) => ({
   isFetchCompleted: getIsFetchCompletedFromState(state),
   isUpdating: getIsUpdatingFromState(state),
   acsScore: getCurrentUserACSScoreFromState(state),
+  teamImages: getTeamImagesFromState(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   getBrackets: (year) => dispatch(getBrackets(year)),
   getUserBrackets: (userId) => dispatch(getUserBracketChoices(userId)),
+  getTeamImages: () => dispatch(getTeamImages()),
   updateBrackets: (numBrackets, brackets) =>
     dispatch(updateBrackets(numBrackets, brackets)),
   setSelectedTeam: (matchNumber, teamKey, selectedTeam) =>

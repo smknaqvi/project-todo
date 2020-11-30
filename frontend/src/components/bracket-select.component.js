@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import uniqueId from "@hs/transmute/uniqueId";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import CardMedia from "@material-ui/core/CardMedia";
 import ScoreSelect from "./score-select.component";
 import { getMatchName } from "../utils/bracketsUtils";
 
@@ -16,6 +17,7 @@ export default function BracketSelect({
   handleSetSelectedTeam,
   handleSetSelectedScore,
   isUpdating,
+  teamImages,
 }) {
   const firstOptions = options[0];
   const secondOptions = options[1];
@@ -42,6 +44,9 @@ export default function BracketSelect({
     <Card className={cardClassNames}>
       <Typography variant="h6">{matchName}</Typography>
       <div className="select-container">
+        <div>
+          <img id="teamOneImg" src={teamImages.get(values.teamOne)} />
+        </div>
         <div>
           <Typography variant="caption" display="block" gutterBottom>
             Teams
@@ -80,6 +85,9 @@ export default function BracketSelect({
         </div>
       </div>
       <div className="select-container">
+        <div>
+          <img id="teamTwoImg" src={teamImages.get(values.teamTwo)} />
+        </div>
         <Select
           value={values.teamTwo}
           onChange={handleSetSelectedTeam.bind(null, matchNumber, "teamTwo")}

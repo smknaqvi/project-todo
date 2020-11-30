@@ -15,9 +15,11 @@ export default class PlayoffsPage extends Component {
       getACS,
       userId,
       acsScore,
+      getTeamImages,
     } = this.props;
     getBrackets(new Date().getFullYear());
     getUserBrackets(userId);
+    getTeamImages();
     if (!acsScore) {
       getACS(userId);
     }
@@ -146,7 +148,12 @@ export default class PlayoffsPage extends Component {
   };
 
   createBracketSelects(start, finish) {
-    const { bracketOptions, bracketValues, isUpdating } = this.props;
+    const {
+      bracketOptions,
+      bracketValues,
+      isUpdating,
+      teamImages,
+    } = this.props;
     const bracketSelects = [];
     for (let i = start; i <= finish; i++) {
       bracketSelects.push(
@@ -158,6 +165,7 @@ export default class PlayoffsPage extends Component {
           handleSetSelectedTeam={this.handleSetSelectedTeam}
           handleSetSelectedScore={this.handleSetSelectedScore}
           isUpdating={isUpdating}
+          teamImages={teamImages}
         />
       );
     }
@@ -227,6 +235,8 @@ PlayoffsPage.propTypes = {
   isFetchCompleted: PropTypes.bool,
   isUpdating: PropTypes.bool,
   acsScore: PropTypes.number,
+  getTeamImages: PropTypes.func,
+  TeamImages: PropTypes.object,
   getBrackets: PropTypes.func,
   getUserBrackets: PropTypes.func,
   updateBrackets: PropTypes.func,

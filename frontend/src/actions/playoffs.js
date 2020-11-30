@@ -8,6 +8,8 @@ import {
   SET_SELECTED_TEAM,
   SET_SELECTED_SCORE,
   SET_BRACKET_UPDATE,
+  GET_TEAM_IMAGE_STARTED,
+  GET_TEAM_IMAGE_SUCCEEDED,
 } from "../constants";
 import {
   bracketsRequest,
@@ -15,6 +17,7 @@ import {
   putBracket,
   postBracket,
 } from "../api/playoffs";
+import { playerRequest } from "../api/team";
 import { showError } from "./error";
 import { showSuccess } from "./success";
 
@@ -122,6 +125,38 @@ export function updateBrackets(numBrackets, brackets) {
           return false;
         });
     });
+  };
+}
+
+export const teamImageStarted = () => ({
+  type: GET_TEAM_IMAGE_STARTED,
+});
+
+export const teamImageSuccess = (teamImages) => ({
+  type: GET_TEAM_IMAGE_SUCCEEDED,
+  teamImages,
+});
+
+export function getTeamImages() {
+  return function (dispatch) {
+    dispatch(teamImageStarted());
+    return playerRequest()
+      .then(function (response) {
+        let TeamImages = {};
+        response.data.forEach((team) => {
+          TeamImages[team.abbrName] = team.picture;
+        });
+        dispatch(teamImageSuccess(TeamImages));
+      })
+      .catch(function (error) {
+        if (error.response) {
+          dispatch(showError(error.response.data));
+        } else if (error.request) {
+          dispatch(showError("Unable to reach server"));
+        } else {
+          dispatch(showError("Internal server error"));
+        }
+      });
   };
 }
 

@@ -13,6 +13,14 @@ const teamSchema = new Schema(
       minlength: 3,
       maxlength: 40,
     },
+    abbrName: {
+      type: String,
+      required: false,
+      unique: false,
+      trim: true,
+      minlength: 3,
+      maxlength: 3,
+    },
     picture: {
       type: String,
       required: true,

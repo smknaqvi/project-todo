@@ -231,6 +231,9 @@ export const UPDATE_OTHER_ACS_SUCCEEDED = "UPDATE_OTHER_ACS_SUCCEEDED";
 export const INCREMENT_HHTRIVIA_CORRECT_QUESTION =
   "INCREMENT_HHTRIVIA_CORRECT_QUESTION";
 
+export const GET_TEAM_IMAGE_STARTED = "GET_TEAM_IMAGE_STARTED";
+export const GET_TEAM_IMAGE_SUCCEEDED = "GET_TEAM_IMAGE_SUCCEEDED";
+
 // Confirmation Dialog Messages
 export const DELETE_POST = "Do you wish to delete this post?";
 export const DELETE_POST_TITLE = "Delete Post?";

@@ -48,6 +48,13 @@ export const getUserBracketChoicesFromState = createSelector(
   }
 );
 
+export const getTeamImagesFromState = createSelector(
+  [getPlayoffsFromState],
+  (playoffs) => {
+    return playoffs.get("teamImages");
+  }
+);
+
 export const getBracketValuesFromState = createSelector(
   [getBracketsFromState, getUserBracketChoicesFromState, getUserIdFromState],
   (brackets, userBracketChoices, userId) => {

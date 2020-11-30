@@ -34,6 +34,17 @@
   flex-direction: column;
   margin: 10px;
 }
+#teamOneImg {
+  width: 40px;
+  height: auto;
+  padding-top: 18px;
+  padding-right: 5px;
+}
+#teamTwoImg {
+  width: 40px;
+  height: auto;
+  padding-right: 5px;
+}
 
 .brackets-container .brackets-column .bracket-container .select-container {
   display: flex;
@@ -47,7 +58,7 @@
   .select-container
   .select-team {
   margin: 0px;
-  width: 13vh;
+  width: 10vh;
 }
 
 .brackets-container
