@@ -1,0 +1,65 @@
+.full-badge {
+  text-align: center;
+  width: 300px;
+  padding: 10px;
+  height: auto;
+}
+
+.side-badge {
+  margin: 10px;
+}
+
+.fanalyst-icon {
+  color: #747474;
+}
+
+.analyst-icon {
+  color: #272727;
+}
+
+.pro-analyst-icon {
+  color: #ffe400;
+}
+
+.expert-analyst-icon {
+  color: #14a76c;
+}
+
+.triangle {
+  position: relative;
+  height: 200px;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.triangle div {
+  position: relative;
+  width: 100%;
+  margin: 0 auto 2px;
+  color: white;
+  line-height: 50px;
+  text-align: center;
+}
+
+.triangle .inactive {
+  background: #747474;
+}
+
+.fanalyst:hover,
+.fanalyst {
+  background: #747474;
+}
+
+.analyst:hover,
+.analyst {
+  background: #272727;
+}
+
+.pro-analyst:hover,
+.pro-analyst {
+  background: #ffe400;
+}
+
+.expert-analyst:hover,
+.expert-analyst {
+  background: #14a76c;
+}

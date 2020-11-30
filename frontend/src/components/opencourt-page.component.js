@@ -4,12 +4,6 @@ import PropTypes from "prop-types";
 import CreatePost from "../containers/create-post";
 
 export default class OpenCourtPage extends Component {
-  componentDidMount() {
-    if (!this.props.currentUserACSScore) {
-      this.props.getAcs(this.props.userId);
-    }
-  }
-
   render() {
     return (
       <div className="oc-page">

@@ -1,6 +1,5 @@
 import { connect } from "react-redux";
 import OpenCourtPage from "../components/opencourt-page.component";
-import { getACS } from "../actions/acs";
 import {
   getCurrentUserACSScoreFromState,
   getCurrentUserACSLevelFromState,
@@ -12,8 +11,6 @@ const mapStateToProps = (state) => ({
   currentUserACSLevel: getCurrentUserACSLevelFromState(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getAcs: (id) => dispatch(getACS(id)),
-});
+const mapDispatchToProps = (dispatch) => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(OpenCourtPage);

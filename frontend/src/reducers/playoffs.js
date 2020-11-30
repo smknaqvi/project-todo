@@ -11,7 +11,6 @@ import {
   UPDATE_BRACKETS_STARTED,
   UPDATE_BRACKETS_SUCCEEDED,
   SET_BRACKET_UPDATE,
-  GET_TEAM_IMAGE_STARTED,
   GET_TEAM_IMAGE_SUCCEEDED,
 } from "../constants";
 import { Map, List } from "immutable";
@@ -49,7 +48,6 @@ export const playoffs = (state = initState, action) => {
       return state.set("updateApiStatus", SUCCEEDED);
     case GET_TEAM_IMAGE_SUCCEEDED:
       return state.set("teamImages", Map(action.teamImages));
-    case GET_TEAM_IMAGE_SUCCEEDED:
     case SET_SELECTED_TEAM:
       return state.setIn(
         [

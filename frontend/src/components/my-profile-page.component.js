@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import MyProfileForm from "./my-profile-form.component";
 import PropTypes from "prop-types";
-import { CircularProgress } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import UploadProfilePhoto from "../containers/upload-profile-photo";
 import { dateToISO } from "../utils/dateUtils";
+import AcsBadge from "../containers/acs-badge";
 
 export default class MyProfilePage extends Component {
   save = (values) => {
@@ -22,6 +25,10 @@ export default class MyProfilePage extends Component {
       return (
         <div className="my-profile-container">
           <div className="upload-profile">
+            <Card className="side-badge" title="ACS Tiers">
+              <CardHeader title="ACS Tiers" />
+              <AcsBadge type="full" />
+            </Card>
             <UploadProfilePhoto
               acsLevel={this.props.currentUserACSLevel}
               acsScore={this.props.currentUserACSScore}

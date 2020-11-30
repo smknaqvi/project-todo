@@ -266,19 +266,35 @@ export const MY_PROFILE_NAV_ELEMENT = [
 // Endpoints
 export const API_ENDPOINT = "http://localhost:5000";
 
-// ACS
+/**  ACS -- DO NOT CHANGE ORDER OF INITIALIZATION -- */
 export const EXPERT_ANALYST = "Expert Analyst";
 export const PRO_ANALYST = "Pro Analyst";
 export const ANALYST = "Analyst";
 export const FANALYST = "Fanalyst";
 
-export const EXPERT_ANALYST_RANGE = { maxScore: 1100, name: EXPERT_ANALYST };
-export const PRO_ANALYST_RANGE = { maxScore: 900, name: PRO_ANALYST };
-export const ANALYST_RANGE = { maxScore: 600, name: ANALYST };
-export const FANALYST_RANGE = { maxScore: 300, name: FANALYST };
-
 export const MIN_ACS = 100;
 export const MAX_ACS = 1100;
+
+export const FANALYST_RANGE = {
+  maxScore: 300,
+  minScore: MIN_ACS,
+  name: FANALYST,
+};
+export const ANALYST_RANGE = {
+  maxScore: 600,
+  minScore: FANALYST_RANGE.maxScore + 1,
+  name: ANALYST,
+};
+export const PRO_ANALYST_RANGE = {
+  maxScore: 900,
+  minScore: ANALYST_RANGE.maxScore + 1,
+  name: PRO_ANALYST,
+};
+export const EXPERT_ANALYST_RANGE = {
+  maxScore: MAX_ACS,
+  minScore: PRO_ANALYST_RANGE.maxScore + 1,
+  name: EXPERT_ANALYST,
+};
 
 // All awards
 export const AWARDS = [

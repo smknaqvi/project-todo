@@ -10,6 +10,7 @@ import SendIcon from "@material-ui/icons/Send";
 import CardMedia from "@material-ui/core/CardMedia";
 import Skeleton from "@material-ui/lab/Skeleton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import AcsBadge from "../containers/acs-badge";
 
 export default function UploadProfilePhoto({
   content,
@@ -23,7 +24,6 @@ export default function UploadProfilePhoto({
   isLoading,
   initProfilePhoto,
   newPhotoSet,
-  acsLevel,
 }) {
   useEffect(() => {
     initProfilePhoto(profile._id);
@@ -48,7 +48,9 @@ export default function UploadProfilePhoto({
     <Card className="oc-create-post">
       <CardHeader
         title={
-          profile.displayName + " - " + acsLevel + " (" + profile.acs + ")"
+          <span>
+            {profile.displayName} <AcsBadge type="text" />
+          </span>
         }
       />
       {isPhotoLoading ? (

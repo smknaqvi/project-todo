@@ -15,6 +15,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import CreateComment from "../containers/create-comment";
 import ConfirmationDialog from "../containers/confirmation-dialog";
+import AcsBadge from "../containers/acs-badge";
 import {
   DELETE_COMMENT,
   DELETE_COMMENT_TITLE,
@@ -133,7 +134,7 @@ export default class PostView extends Component {
         <Card>
           <CardHeader
             title={curUser.username}
-            subheader={curUser.acsLevel + " (" + curUser.acs + ")"}
+            subheader={<AcsBadge type="icon" acsScore={curUser.acs} />}
             action={this.createHeaderButtons()}
           />
           {this.createCardMedia()}

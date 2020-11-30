@@ -12,6 +12,7 @@
 @import "debate-page.css";
 @import "playoffs-page.css";
 @import "hhtrivia-page.css";
+@import "acs-badge.css";
 
 body {
   height: 100vh;

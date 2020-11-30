@@ -9,13 +9,9 @@ import Button from "@material-ui/core/Button";
 import PnPDropdown from "./pnp-dropdown.component";
 import TriviaDropdown from "./trivia-dropdown.component";
 import { Typography } from "@material-ui/core";
+import AcsBadge from "../containers/acs-badge";
 
 export default class Navbar extends Component {
-  componentDidUpdate() {
-    if (this.props.acsScore === 0 && this.props.userId) {
-      this.props.getACS(this.props.userId);
-    }
-  }
   createNavElements(elementMap) {
     if (!this.props.isAuthorized) {
       return null;
@@ -62,20 +58,13 @@ export default class Navbar extends Component {
     return <TriviaDropdown />;
   }
 
-  createACSHeader() {
-    if (this.props.acsScore === 0) {
-      return null;
-    }
-    return "(" + this.props.acsScore + ")";
-  }
-
   render() {
     return (
       <AppBar position="static">
         <Toolbar className="navbar">
           <NavLink exact to="/" className="nav-brand active">
             <Typography variant="h6">
-              SPORTCRED {this.createACSHeader()}
+              SPORTCRED <AcsBadge type="text" use="score" />
             </Typography>
           </NavLink>
           <div className="left-navbar">

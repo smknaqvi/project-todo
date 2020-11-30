@@ -13,6 +13,7 @@ import SendIcon from "@material-ui/icons/Send";
 import CardMedia from "@material-ui/core/CardMedia";
 import Skeleton from "@material-ui/lab/Skeleton";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import AcsBadge from "../containers/acs-badge";
 
 export default function CreatePost({
   content,
@@ -23,8 +24,6 @@ export default function CreatePost({
   addPost,
   username,
   userId,
-  acsScore,
-  acsLevel,
   isImageLoading,
   isPostUploading,
 }) {
@@ -58,7 +57,7 @@ export default function CreatePost({
 
   return (
     <Card className="oc-create-post">
-      <CardHeader title={username} subheader={`${acsLevel} (${acsScore})`} />
+      <CardHeader title={username} subheader={<AcsBadge type="icon" />} />
       {isImageLoading ? (
         <Skeleton
           className="post-media"
