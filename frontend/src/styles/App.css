@@ -13,6 +13,7 @@
 @import "playoffs-page.css";
 @import "hhtrivia-page.css";
 @import "acs-badge.css";
+@import "loading-wrapper.css";
 
 body {
   height: 100vh;

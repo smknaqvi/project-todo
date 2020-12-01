@@ -5,8 +5,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Divider from "@material-ui/core/Divider";
+import { LoadingWrapper } from "./loading-wrapper.component";
 
-export default class DebateViewPage extends Component {
+class DebateViewPage extends Component {
   componentDidMount() {
     const {
       userId,
@@ -36,6 +37,18 @@ export default class DebateViewPage extends Component {
       } else {
         getDebatesFromUserIdAndDate(date ? new Date(date) : new Date(), userId);
       }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.retrievedCurDebate !== this.props.retrievedCurDebate ||
+      prevProps.fetchAssignedResponses !== this.props.fetchAssignedResponses ||
+      (this.props.isLoading &&
+        this.props.retrievedCurDebate &&
+        this.props.fetchAssignedResponses)
+    ) {
+      this.props.setLoading(!this.props.retrievedCurDebate);
     }
   }
 
@@ -232,12 +245,18 @@ export default class DebateViewPage extends Component {
   };
 
   render() {
-    return (
-      <div className="debate-view-page">
-        {this.SimpleCard()}
-        {this.createResponses()}
-        {this.createEvaluateButton()}
-      </div>
-    );
+    if (!this.props.isLoading) {
+      return (
+        <div className="debate-view-page">
+          {this.SimpleCard()}
+          {this.createResponses()}
+          {this.createEvaluateButton()}
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
+
+export default LoadingWrapper(DebateViewPage);

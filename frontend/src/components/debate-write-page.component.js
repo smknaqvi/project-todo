@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import { Map } from "immutable";
 import PropTypes from "prop-types";
+import { LoadingWrapper } from "./loading-wrapper.component";
 import {
   DEBATE_CHARACTER_LIMIT_MIN,
   DEBATE_CHARACTER_LIMIT_MAX,
@@ -14,13 +15,22 @@ import {
   Typography,
 } from "@material-ui/core";
 
-export default class DebateWritePage extends Component {
+class DebateWritePage extends Component {
   componentDidMount() {
     const { curDebate, tier, userId, retrievedCurDebate } = this.props;
     // If the date has changed
     if (retrievedCurDebate) {
       // Check if the user has a debate assignment to them on this given date
       this.checkDebateUpdate(curDebate, tier, userId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.retrievedCurDebate !== this.props.retrievedCurDebate ||
+      (this.props.isLoading && this.props.retrievedCurDebate)
+    ) {
+      this.props.setLoading(!this.props.retrievedCurDebate);
     }
   }
 
@@ -70,47 +80,51 @@ export default class DebateWritePage extends Component {
   };
 
   render() {
-    if (this.props.curDebate.length > 0) {
-      const curDebate = this.props.curDebate[0];
-      const responseLength = this.props.response.trim().length;
-      const notValid =
-        responseLength > DEBATE_CHARACTER_LIMIT_MAX ||
-        (responseLength < DEBATE_CHARACTER_LIMIT_MIN && responseLength !== 0);
-      const submitClassName =
-        notValid || responseLength === 0
-          ? "debate-create-button-invalid"
-          : "debate-create-button";
-      return (
-        <Card className="debate-create" variant="outlined">
-          <CardHeader
-            className="debate-create-header"
-            title={curDebate.question}
-          ></CardHeader>
-          <CardContent className="debate-create-content">
-            <TextField
-              id="outlined-textarea"
-              label="Create your Debate Response"
-              placeholder="Start your response..."
-              onChange={this.updateResponse}
-              value={this.props.response ? this.props.response : ""}
-              rows={4}
-              helperText={`Characters: ${responseLength}/${DEBATE_CHARACTER_LIMIT_MAX}`}
-              multiline={true}
-              fullWidth={true}
-              variant="outlined"
-            />
-            {this.createInvalidLengthMsg()}
-          </CardContent>
-          <Button
-            className={submitClassName}
-            variant="contained"
-            onClick={this.submitResponse}
-            disabled={notValid || responseLength === 0}
-          >
-            Submit Response
-          </Button>
-        </Card>
-      );
+    if (!this.props.isLoading) {
+      if (this.props.curDebate.length > 0) {
+        const curDebate = this.props.curDebate[0];
+        const responseLength = this.props.response.trim().length;
+        const notValid =
+          responseLength > DEBATE_CHARACTER_LIMIT_MAX ||
+          (responseLength < DEBATE_CHARACTER_LIMIT_MIN && responseLength !== 0);
+        const submitClassName =
+          notValid || responseLength === 0
+            ? "debate-create-button-invalid"
+            : "debate-create-button";
+        return (
+          <Card className="debate-create" variant="outlined">
+            <CardHeader
+              className="debate-create-header"
+              title={curDebate.question}
+            ></CardHeader>
+            <CardContent className="debate-create-content">
+              <TextField
+                id="outlined-textarea"
+                label="Create your Debate Response"
+                placeholder="Start your response..."
+                onChange={this.updateResponse}
+                value={this.props.response ? this.props.response : ""}
+                rows={4}
+                helperText={`Characters: ${responseLength}/${DEBATE_CHARACTER_LIMIT_MAX}`}
+                multiline={true}
+                fullWidth={true}
+                variant="outlined"
+              />
+              {this.createInvalidLengthMsg()}
+            </CardContent>
+            <Button
+              className={submitClassName}
+              variant="contained"
+              onClick={this.submitResponse}
+              disabled={notValid || responseLength === 0}
+            >
+              Submit Response
+            </Button>
+          </Card>
+        );
+      } else {
+        return <div>No debate</div>;
+      }
     } else {
       if (!this.props.retrievedCurDebate) {
         this.checkDebateUpdate(
@@ -119,7 +133,7 @@ export default class DebateWritePage extends Component {
           this.props.userId
         );
       }
-      return <div>No debate</div>;
+      return null;
     }
   }
 }
@@ -136,3 +150,5 @@ DebateWritePage.propTypes = {
   uploadResponseAndSaveToDebate: PropTypes.func,
   populateDebate: PropTypes.func,
 };
+
+export default LoadingWrapper(DebateWritePage);

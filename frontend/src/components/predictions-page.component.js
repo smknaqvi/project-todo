@@ -5,10 +5,11 @@ import { AWARDS } from "../constants";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Button from "@material-ui/core/Button";
+import { LoadingWrapper } from "./loading-wrapper.component";
 
 const rookieOTY = "rookieOTY";
 
-export default class PredictionsPage extends Component {
+class PredictionsPage extends Component {
   componentDidMount() {
     this.props.getPlayers();
     this.props.getACS(this.props.userId);
@@ -16,6 +17,20 @@ export default class PredictionsPage extends Component {
     const date = new Date();
     const year = date.getFullYear();
     this.props.getWinnersFromDB(year.toString());
+  }
+
+  componentDidUpdate(prevProps) {
+    const { fetchWinners, fetchPredictions, fetchPlayers } = this.props;
+    if (
+      prevProps.fetchWinners !== fetchWinners ||
+      prevProps.fetchPredictions !== fetchPredictions ||
+      prevProps.fetchPlayers !== fetchPlayers ||
+      (this.props.isLoading && fetchPlayers && fetchPredictions && fetchWinners)
+    ) {
+      this.props.setLoading(
+        !(fetchPlayers && fetchPredictions && fetchWinners)
+      );
+    }
   }
 
   handleUpdatePicks(key, value) {
@@ -145,36 +160,40 @@ export default class PredictionsPage extends Component {
   };
 
   render() {
-    const { username, acsScore } = this.props;
-    return (
-      <div className="predicts-page">
-        <Box
-          bgcolor="primary.main"
-          color="primary.contrastText"
-          className="user-acs"
-        >
-          {username}: {acsScore}
+    const { username, acsScore, isLoading } = this.props;
+    if (!isLoading) {
+      return (
+        <div className="predicts-page">
+          <Box
+            bgcolor="primary.main"
+            color="primary.contrastText"
+            className="user-acs"
+          >
+            {username}: {acsScore}
+            <Button
+              disabled={this.props.isEvaluated}
+              variant="contained"
+              color="secondary"
+              onClick={this.evaluatePicks}
+            >
+              EVALUATE
+            </Button>
+          </Box>
+
+          {this.createAwardElements()}
           <Button
             disabled={this.props.isEvaluated}
             variant="contained"
-            color="secondary"
-            onClick={this.evaluatePicks}
+            color="primary"
+            onClick={this.submitPicks}
           >
-            EVALUATE
+            SUBMIT
           </Button>
-        </Box>
-
-        {this.createAwardElements()}
-        <Button
-          disabled={this.props.isEvaluated}
-          variant="contained"
-          color="primary"
-          onClick={this.submitPicks}
-        >
-          SUBMIT
-        </Button>
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
@@ -198,3 +217,5 @@ PredictionsPage.propTypes = {
   getWinnersFromDB: PropTypes.func,
   updateACS: PropTypes.func,
 };
+
+export default LoadingWrapper(PredictionsPage);

@@ -4,10 +4,10 @@ import BracketSelect from "./bracket-select.component";
 import uniqueId from "@hs/transmute/uniqueId";
 import { getNextMatch } from "../utils/bracketsUtils";
 import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import { MAX_ACS, MIN_ACS } from "../constants";
+import { LoadingWrapper } from "./loading-wrapper.component";
 
-export default class PlayoffsPage extends Component {
+class PlayoffsPage extends Component {
   componentDidMount() {
     const {
       getBrackets,
@@ -22,6 +22,15 @@ export default class PlayoffsPage extends Component {
     getTeamImages();
     if (!acsScore) {
       getACS(userId);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.isFetchCompleted !== this.props.isFetchCompleted ||
+      (this.props.isLoading && this.props.isFetchCompleted)
+    ) {
+      this.props.setLoading(!this.props.isFetchCompleted);
     }
   }
 
@@ -173,57 +182,58 @@ export default class PlayoffsPage extends Component {
   }
 
   render() {
-    const { isFetchCompleted, isUpdating, bracketValues } = this.props;
+    const { isLoading, isUpdating, bracketValues } = this.props;
     const disabled =
       isUpdating || (bracketValues[1] && bracketValues[1].isEvaluated);
-    if (!isFetchCompleted) {
-      return <CircularProgress />;
+    if (!isLoading) {
+      return (
+        <div className="playoffs-container">
+          <div className="brackets-container">
+            <div className="brackets-column">
+              {this.createBracketSelects(1, 4)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(9, 10)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(13, 13)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(15, 15)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(14, 14)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(11, 12)}
+            </div>
+            <div className="brackets-column">
+              {this.createBracketSelects(5, 8)}
+            </div>
+          </div>
+          <div className="action-buttons">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handleUpdateBrackets}
+              disabled={disabled}
+            >
+              Save
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleEvaluateBrackets}
+              disabled={disabled}
+            >
+              Evaluate
+            </Button>
+          </div>
+        </div>
+      );
+    } else {
+      return null;
     }
-    return (
-      <div className="playoffs-container">
-        <div className="brackets-container">
-          <div className="brackets-column">
-            {this.createBracketSelects(1, 4)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(9, 10)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(13, 13)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(15, 15)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(14, 14)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(11, 12)}
-          </div>
-          <div className="brackets-column">
-            {this.createBracketSelects(5, 8)}
-          </div>
-        </div>
-        <div className="action-buttons">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleUpdateBrackets}
-            disabled={disabled}
-          >
-            Save
-          </Button>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={this.handleEvaluateBrackets}
-            disabled={disabled}
-          >
-            Evaluate
-          </Button>
-        </div>
-      </div>
-    );
   }
 }
 
@@ -246,3 +256,5 @@ PlayoffsPage.propTypes = {
   getACS: PropTypes.func,
   updateACS: PropTypes.func,
 };
+
+export default LoadingWrapper(PlayoffsPage);

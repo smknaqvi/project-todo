@@ -19,6 +19,8 @@ const mapStateToProps = (state) => ({
   acsScore: getCurrentUserACSScoreFromState(state),
   pPPScore: getCurrentUserPPPScoreFromState(state),
   dailyPicks: state.dailyPicks.get("dailyPicks").toJS(),
+  fetchGames: state.dailyPicks.get("fetchGames"),
+  fetchDailyPicks: state.dailyPicks.get("fetchDailyPicks"),
   date: state.dailyPicks.get("date"),
   games: state.dailyPicks.get("games"),
   madePicks: state.dailyPicks.get("madePicks"),
