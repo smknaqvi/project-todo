@@ -33,6 +33,7 @@ const mapStateToProps = (state) => ({
   ),
   isCurDebateEvaluated: state.debatePage.get("isCurDebateEvaluated"),
   retrievedCurDebate: state.debatePage.get("retrievedCurDebate"),
+  fetchAssignedResponses: state.debatePage.get("fetchAssignedResponses"),
   isShowingPrevDay: state.debatePage.get("isShowingPrevDay"),
   debateResponses: state.debatePage.get("debateResponses"),
 });

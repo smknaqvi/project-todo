@@ -1,27 +1,36 @@
 import React, { Component } from "react";
 import MyProfileForm from "./my-profile-form.component";
 import PropTypes from "prop-types";
+import { LoadingWrapper } from "./loading-wrapper.component";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CircularProgress from "@material-ui/core/CircularProgress";
 import UploadProfilePhoto from "../containers/upload-profile-photo";
 import { dateToISO } from "../utils/dateUtils";
 import AcsBadge from "../containers/acs-badge";
 
-export default class MyProfilePage extends Component {
+class MyProfilePage extends Component {
   save = (values) => {
     this.props.save(this.props.userId, {
       ...values,
     });
   };
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.fetchCompleted !== this.props.fetchCompleted ||
+      (this.props.isLoading && this.props.fetchCompleted)
+    ) {
+      this.props.setLoading(!this.props.fetchCompleted);
+    }
+  }
+
   componentDidMount() {
     this.props.getProfile(this.props.userId);
   }
 
   render() {
-    if (this.props.fetchCompleted) {
-      const { profile } = this.props;
+    const { profile, isLoading } = this.props;
+    if (!isLoading) {
       return (
         <div className="my-profile-container">
           <div className="upload-profile">
@@ -53,7 +62,7 @@ export default class MyProfilePage extends Component {
         </div>
       );
     } else {
-      return <CircularProgress />;
+      return null;
     }
   }
 }
@@ -68,3 +77,5 @@ MyProfilePage.propTypes = {
   setBase64Image: PropTypes.func,
   base64Image: PropTypes.string,
 };
+
+export default LoadingWrapper(MyProfilePage);

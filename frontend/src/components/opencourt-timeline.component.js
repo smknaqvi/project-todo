@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import PostView from "./post-view.component";
+import { LoadingWrapper } from "./loading-wrapper.component";
 import PropTypes from "prop-types";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default class OpenCourtTimeline extends Component {
+class OpenCourtTimeline extends Component {
   componentDidMount() {
     this.props.getOCPosts(this.props.curUserId);
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.fetchCompleted !== this.props.fetchCompleted ||
+      (this.props.isLoading && this.props.fetchCompleted)
+    ) {
+      this.props.setLoading(!this.props.fetchCompleted);
+    }
+  }
+
   createTimeline() {
-    if (this.props.fetchCompleted) {
+    if (!this.props.isLoading) {
       const cards = this.props.posts.map((post) => {
         return (
           <PostView
@@ -25,7 +34,7 @@ export default class OpenCourtTimeline extends Component {
       });
       return cards;
     } else {
-      return <CircularProgress />;
+      return null;
     }
   }
 
@@ -44,3 +53,5 @@ OpenCourtTimeline.propTypes = {
   fetchUnintialized: PropTypes.bool,
   curUserId: PropTypes.string,
 };
+
+export default LoadingWrapper(OpenCourtTimeline);

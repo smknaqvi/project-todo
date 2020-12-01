@@ -6,8 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import PicksCard from "./picks-card.component";
 import { dateToISO } from "../utils/dateUtils";
+import { LoadingWrapper } from "./loading-wrapper.component";
 
-export default class PicksPage extends Component {
+class PicksPage extends Component {
   componentDidMount() {
     const {
       userId,
@@ -21,6 +22,20 @@ export default class PicksPage extends Component {
     }
     getGames();
     getDailyPicksFromDB(userId);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.fetchGames !== this.props.fetchGames ||
+      prevProps.fetchDailyPicks !== this.props.fetchDailyPicks ||
+      (this.props.isLoading &&
+        this.props.fetchGames &&
+        this.props.fetchDailyPicks)
+    ) {
+      this.props.setLoading(
+        !(this.props.fetchGames, this.props.fetchDailyPicks)
+      );
+    }
   }
 
   handleChangedDate = (event) => {
@@ -120,37 +135,40 @@ export default class PicksPage extends Component {
       firstGameOnDate &&
       this.props.dailyPicks[firstGameOnDate._id] &&
       this.props.dailyPicks[firstGameOnDate._id].isEvaluated;
+    if (!this.props.isLoading) {
+      return (
+        <div className="picks-page">
+          <Box
+            bgcolor="primary.main"
+            color="primary.contrastText"
+            className="user-acs"
+          >
+            {this.props.username}: {this.props.acsScore}
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleEvaluation}
+              disabled={isEvaluated}
+            >
+              EVALUATE
+            </Button>
+          </Box>
 
-    return (
-      <div className="picks-page">
-        <Box
-          bgcolor="primary.main"
-          color="primary.contrastText"
-          className="user-acs"
-        >
-          {this.props.username}: {this.props.acsScore}
+          {this.createDatePicker()}
+          {this.createGames(this.props.date)}
           <Button
             variant="contained"
-            color="secondary"
-            onClick={this.handleEvaluation}
+            color="primary"
+            onClick={this.submitPicks}
             disabled={isEvaluated}
           >
-            EVALUATE
+            SUBMIT
           </Button>
-        </Box>
-
-        {this.createDatePicker()}
-        {this.createGames(this.props.date)}
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={this.submitPicks}
-          disabled={isEvaluated}
-        >
-          SUBMIT
-        </Button>
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
@@ -171,3 +189,5 @@ PicksPage.propTypes = {
   updateDailyPicks: PropTypes.func,
   updateACS: PropTypes.func,
 };
+
+export default LoadingWrapper(PicksPage);

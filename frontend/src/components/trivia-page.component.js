@@ -1,21 +1,37 @@
 import React, { Component } from "react";
 import TriviaQuestion from "../containers/trivia-question";
 import PropTypes from "prop-types";
-import { CircularProgress } from "@material-ui/core";
+import { LoadingWrapper } from "./loading-wrapper.component";
 import checkmarkgif from "../videos/checkmarkgif.mp4";
 
-export default class TriviaPage extends Component {
+class TriviaPage extends Component {
   componentDidMount() {
     this.props.getTriviaQuestions();
     this.props.getCompletedQuestions(this.props.userId);
   }
 
-  render() {
+  componentDidUpdate(prevProps) {
     if (
-      this.props.fetchCompletedQuestionsCompleted &&
-      this.props.fetchTriviaQuestionsCompleted
+      prevProps.fetchCompletedQuestionsCompleted !==
+        this.props.fetchCompletedQuestionsCompleted ||
+      prevProps.fetchTriviaQuestionsCompleted !==
+        this.props.fetchTriviaQuestionsCompleted ||
+      (this.props.isLoading &&
+        this.props.fetchTriviaQuestionsCompleted &&
+        this.props.fetchCompletedQuestionsCompleted)
     ) {
-      const { questions, questionsCompleted } = this.props;
+      this.props.setLoading(
+        !(
+          this.props.fetchTriviaQuestionsCompleted &&
+          this.props.fetchCompletedQuestionsCompleted
+        )
+      );
+    }
+  }
+
+  render() {
+    const { questions, questionsCompleted, isLoading } = this.props;
+    if (!isLoading) {
       if (questionsCompleted < questions.length) {
         const { userId, selectedAnswer } = this.props;
         const currentQuestion = this.props.questions[questionsCompleted];
@@ -64,7 +80,7 @@ export default class TriviaPage extends Component {
         );
       }
     } else {
-      return <CircularProgress />;
+      return null;
     }
   }
 }
@@ -74,3 +90,5 @@ TriviaPage.propTypes = {
   fetchCompleted: PropTypes.bool,
   gamesScore: PropTypes.number,
 };
+
+export default LoadingWrapper(TriviaPage);
