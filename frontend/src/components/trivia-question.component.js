@@ -13,7 +13,9 @@ export default class TriviaQuestion extends Component {
   }
   tick = () => {
     if (this.state.seconds > 0) {
-      this.setState({ seconds: this.state.seconds - 1 });
+      this.setState((prevState) => {
+        return { seconds: prevState.seconds - 1 }
+      });
     } else {
       this.props.validateTriviaAnswer();
       this.setState({ seconds: 10.0 });
