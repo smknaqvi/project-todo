@@ -76,6 +76,5 @@ DebatePage.propTypes = {
   getDebatesByUserId: PropTypes.func,
   getResponses: PropTypes.func,
   getACS: PropTypes.func,
-  updateACS: PropTypes.func,
   getDebatesFromUserIdAndDate: PropTypes.func,
 };

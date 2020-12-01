@@ -10,11 +10,10 @@ router.route("/").get((_, res) => {
 });
 
 router.route("/get-profiles/").get((req, res) => {
-  User.find({ _id: {$in : req.query.userids}})
+  User.find({ _id: { $in: req.query.userids } })
     .then((users) => res.status(200).json(users))
     .catch((err) => res.status(400).json("Error: " + err));
 });
-
 
 router.route("/").post((req, res) => {
   const displayName = req.body.username;
@@ -25,7 +24,7 @@ router.route("/").post((req, res) => {
   const levelOfPlay = req.body.levelOfPlay;
   const oddSport = req.body.oddSport;
   const favTeam = req.body.favTeam;
-  const acs = 100;
+  const acs = { games: 100, analysis: 100, history: 100, pPP: 100 };
   const assignedResponses = req.body.assignedResponses;
   const debates = req.body.debates;
   const picture = DEFAULT_PICTURE;

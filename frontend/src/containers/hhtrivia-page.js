@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import HHTriviaPage from "../components/hhtrivia-page.component";
 import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
-import { updateACS } from "../actions/acs";
 import {
   getUsersHHTriviaGames,
   deleteHHTriviaGame,
@@ -29,7 +28,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateACS: (id, type, acs) => dispatch(updateACS(id, type, acs)),
   getUsersHHTriviaGames: (userId) => {
     dispatch(getUsersHHTriviaGames(userId));
   },

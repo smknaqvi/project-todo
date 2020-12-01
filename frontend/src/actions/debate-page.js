@@ -181,14 +181,13 @@ export function getPreviousDebatesFromUserIdAndDate(date, id) {
       const prevDebate = allDebates.find((debate) => {
         return compareDates(debate.date, date);
       });
-      if(prevDebate === undefined){
+      if (prevDebate === undefined) {
         dispatch(showError("No Previous Debates"));
-      }
-      else{
+      } else {
         getResponsesByIDs(prevDebate.responseIds).then(function (response) {
           const allResponses = response.data;
           let listOfUsers = allResponses.map((response) => {
-            return response.user
+            return response.user;
           });
           getProfileInfoForIds(listOfUsers).then(function (userprofiles) {
             let listOfResponses = [];
@@ -211,7 +210,6 @@ export function getPreviousDebatesFromUserIdAndDate(date, id) {
           });
         });
       }
-      
     });
   };
 }
@@ -379,8 +377,7 @@ export function evaluateDebate(userId, id) {
                 sum += rating;
               });
               const avg = sum / Object.values(ratings).length;
-              putResponseAvg(response._id, avg)
-              .catch(function (error) {
+              putResponseAvg(response._id, avg).catch(function (error) {
                 if (error.response) {
                   dispatch(showError(error.response.data));
                 } else if (error.request) {
@@ -412,13 +409,15 @@ export function evaluateDebate(userId, id) {
             for (const [key, value] of Object.entries(userScoreMap)) {
               if (key.length > 0) {
                 getProfileInfo(key).then((user) => {
-                  putUpdatedAcs(key, "DEBATE", user.data[0].acs + value).then(
-                    () => {
-                      if (key === userId) {
-                        dispatch(getACS(userId));
-                      }
+                  putUpdatedAcs(
+                    key,
+                    "DEBATE",
+                    user.data[0].acs.analysis + value
+                  ).then(() => {
+                    if (key === userId) {
+                      dispatch(getACS(userId));
                     }
-                  );
+                  });
                 });
               }
               dispatch(showSuccess("Debate has been successfully evaluated!"));

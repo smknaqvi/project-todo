@@ -1,30 +1,32 @@
 import { createSelector } from "reselect";
-import {
-  FANALYST_RANGE,
-  ANALYST_RANGE,
-  PRO_ANALYST_RANGE,
-  EXPERT_ANALYST_RANGE,
-} from "../constants";
+import { acsToAggregate, acsToLevel } from "../utils/acsUtils";
+
 const getACSFromState = (state) => state.acs;
+
+export const getCurrentUserGamesScoreFromState = createSelector(
+  [getACSFromState],
+  (acs) => acs.get("games")
+);
+
+export const getCurrentUserAnalysisScoreFromState = createSelector(
+  [getACSFromState],
+  (acs) => acs.get("analysis")
+);
+
+export const getCurrentUserHistoryScoreFromState = createSelector(
+  [getACSFromState],
+  (acs) => acs.get("history")
+);
+
+export const getCurrentUserPPPScoreFromState = createSelector(
+  [getACSFromState],
+  (acs) => acs.get("pPP")
+);
 
 export const getCurrentUserACSScoreFromState = createSelector(
   [getACSFromState],
-  (acs) => {
-    return acs.get("currentUserACSScore");
-  }
+  acsToAggregate
 );
-
-export const acsToLevel = (acsScore) => {
-  if (acsScore <= FANALYST_RANGE.maxScore) {
-    return FANALYST_RANGE.name;
-  } else if (acsScore <= ANALYST_RANGE.maxScore) {
-    return ANALYST_RANGE.name;
-  } else if (acsScore <= PRO_ANALYST_RANGE.maxScore) {
-    return PRO_ANALYST_RANGE.name;
-  } else if (acsScore <= EXPERT_ANALYST_RANGE.maxScore) {
-    return EXPERT_ANALYST_RANGE.name;
-  }
-};
 
 export const getCurrentUserACSLevelFromState = createSelector(
   [getCurrentUserACSScoreFromState],

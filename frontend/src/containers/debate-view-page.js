@@ -15,7 +15,7 @@ import {
   getRespondedToDebatesFromState,
   getMyRespondedToDebatesFromState,
 } from "../selectors/responseSelectors";
-import { getACS, updateACS } from "../actions/acs";
+import { getACS } from "../actions/acs";
 
 const mapStateToProps = (state) => ({
   userId: state.auth.get("id"),
@@ -41,8 +41,6 @@ const mapDispatchToProps = (dispatch) => ({
   getDebatesByUserId: (id) => dispatch(getDebatesByUserId(id)),
   getResponses: () => dispatch(getResponses()),
   getACS: (id) => dispatch(getACS(id)),
-  updateACS: (userid, type, acsscore) =>
-    dispatch(updateACS(userid, type, acsscore)),
   getDebatesFromUserIdAndDate: (date, userid) =>
     dispatch(getDebatesFromUserIdAndDate(date, userid)),
   evaluateDebate: (userId, id, date) =>

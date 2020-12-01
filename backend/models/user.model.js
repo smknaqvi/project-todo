@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Response = require("../models/response.model");
-const responseSchema = Response.schema;
-const Debate = require("../models/debate.model");
-const TriviaQuestion = require("./trivia-question.model");
-const debateSchema = Debate.schema;
+const Acs = require("./acs.model");
+const acsModel = Acs.schema;
 
 const userSchema = new Schema(
   {
@@ -69,13 +66,7 @@ const userSchema = new Schema(
         unique: false,
       },
     },
-    acs: {
-      type: Number,
-      required: true,
-      unique: false,
-      min: 100,
-      max: 1100,
-    },
+    acs: acsModel,
     debates: {
       type: [String],
     },

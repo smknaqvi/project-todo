@@ -34,7 +34,7 @@ export default class TriviaPage extends Component {
                     currentQuestion,
                     selectedAnswer,
                     userId,
-                    this.props.acsScore
+                    this.props.gamesScore
                   );
                   this.props.incrementQuestionsCompleted(
                     userId,
@@ -72,4 +72,5 @@ TriviaPage.propTypes = {
   getProfile: PropTypes.func,
   profile: PropTypes.object,
   fetchCompleted: PropTypes.bool,
+  gamesScore: PropTypes.number,
 };

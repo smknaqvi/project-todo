@@ -22,6 +22,7 @@ import {
   DELETE_POST,
   DELETE_POST_TITLE,
 } from "../constants";
+import { acsToAggregate } from "../utils/acsUtils";
 
 export default class PostView extends Component {
   createCardMedia() {
@@ -134,7 +135,9 @@ export default class PostView extends Component {
         <Card>
           <CardHeader
             title={curUser.username}
-            subheader={<AcsBadge type="icon" acsScore={curUser.acs} />}
+            subheader={
+              <AcsBadge type="icon" acsScore={acsToAggregate(curUser.acs)} />
+            }
             action={this.createHeaderButtons()}
           />
           {this.createCardMedia()}

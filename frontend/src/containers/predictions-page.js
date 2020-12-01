@@ -7,12 +7,16 @@ import {
   getPicksFromDB,
   getWinnersFromDB,
 } from "../actions/predictions";
-import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
+import {
+  getCurrentUserACSScoreFromState,
+  getCurrentUserPPPScoreFromState,
+} from "../selectors/acsSelectors";
 
 const mapStateToProps = (state) => ({
   username: state.auth.get("username"),
   userId: state.auth.get("id"),
   acsScore: getCurrentUserACSScoreFromState(state),
+  pPPScore: getCurrentUserPPPScoreFromState(state),
   players: state.player.get("players"),
   rookies: state.player.get("players").filter((player) => player.rookie),
   awards: state.player.get("awards").toJS(),
