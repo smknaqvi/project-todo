@@ -56,7 +56,7 @@ export default class PicksPage extends Component {
   );
 
   handleEvaluation = () => {
-    const { date, games, dailyPicks, acsScore, userId, updateACS } = this.props;
+    const { date, games, dailyPicks, pPPScore, userId, updateACS } = this.props;
 
     const gamesDuringDate = this.getGamesByDate(date, games);
 
@@ -72,7 +72,7 @@ export default class PicksPage extends Component {
       }
     });
     setTimeout(() => this.submitPicks());
-    updateACS(userId, "PICKS", acsScore + correct * 10);
+    updateACS(userId, "PICKS", pPPScore + correct * 10);
   };
 
   createGames(date) {
@@ -158,6 +158,7 @@ PicksPage.propTypes = {
   username: PropTypes.string,
   userId: PropTypes.string,
   acsScore: PropTypes.number,
+  pPPScore: PropTypes.number,
   dailyPicks: PropTypes.object,
   date: PropTypes.instanceOf(Date),
   games: PropTypes.array,

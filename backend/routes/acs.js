@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { ACS_GROUPS } = require("../constants");
 const acsValidators = require("../middleware/acsValidators");
 const User = require("../models/user.model");
 
@@ -11,9 +12,13 @@ router.route("/:id").get((req, res) => {
 });
 
 router.route("/:id").put(acsValidators.validate(), (req, res) => {
+  const acsUpdateKey = Object.keys(ACS_GROUPS).find((key) =>
+    ACS_GROUPS[key].includes(req.body.type)
+  );
+
   User.findByIdAndUpdate(
     req.params.id,
-    { acs: req.body.updatedACS },
+    { $set: { [`acs.${acsUpdateKey}`]: req.body.updatedACS } },
     { useFindAndModify: false, new: true }
   )
     .then((updatedUser) => {

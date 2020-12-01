@@ -337,8 +337,8 @@ export function validateHHTriviaAnswer(
 export function evaluateHHTriviaGame(games, users, gameNum, curUserId) {
   return function (dispatch) {
     const game = games[gameNum];
-    const player1ACS = users[game.player1.userId].acs;
-    const player2ACS = users[game.player2.userId].acs;
+    const player1ACS = users[game.player1.userId].acs.games;
+    const player2ACS = users[game.player2.userId].acs.games;
     const winner =
       game.player1.numCorrect > game.player2.numCorrect
         ? 1

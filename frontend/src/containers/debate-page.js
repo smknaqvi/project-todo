@@ -8,11 +8,11 @@ import {
   evaluateDebate,
   getAssignedResponsesByIDs,
   getPreviousDebatesFromUserIdAndDate,
-  updateDateToToday
+  updateDateToToday,
 } from "../actions/debate-page";
 import { getRespondedToDebatesFromState } from "../selectors/responseSelectors";
 import { getCurrentUserACSLevelFromState } from "../selectors/acsSelectors";
-import { getACS, updateACS } from "../actions/acs";
+import { getACS } from "../actions/acs";
 
 const mapStateToProps = (state) => ({
   userId: state.auth.get("id"),
@@ -37,19 +37,17 @@ const mapDispatchToProps = (dispatch) => ({
   getDebatesByUserId: (id) => dispatch(getDebatesByUserId(id)),
   getResponses: () => dispatch(getResponses()),
   getACS: (id) => dispatch(getACS(id)),
-  updateACS: (userid, type, acsscore) =>
-    dispatch(updateACS(userid, type, acsscore)),
   getDebatesFromUserIdAndDate: (date, userid) =>
     dispatch(getDebatesFromUserIdAndDate(date, userid)),
   getUserResponsesByID: (id) => dispatch(getUserResponsesByID(id)),
   evaluateDebate: (id, date) => dispatch(evaluateDebate(id, date)),
   getAssignedResponsesByIDs: (ids) => dispatch(getAssignedResponsesByIDs(ids)),
   getPreviousDebatesFromUserIdAndDate: (date, id) => {
-    dispatch(getPreviousDebatesFromUserIdAndDate(date, id))
+    dispatch(getPreviousDebatesFromUserIdAndDate(date, id));
   },
   updateDateToToday: (id) => {
-    dispatch(updateDateToToday(id))
-  }
+    dispatch(updateDateToToday(id));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DebatePage);

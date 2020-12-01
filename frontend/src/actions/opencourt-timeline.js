@@ -18,7 +18,7 @@ import {
   deleteOCPost,
   deleteOCComment,
 } from "../api/opencourt-timeline";
-import { acsToLevel } from "../selectors/acsSelectors";
+import { acsToAggregate, acsToLevel } from "../utils/acsUtils";
 import { showError } from "./error";
 import { mapPost } from "../operators/mapPosts";
 
@@ -132,8 +132,8 @@ export function fetchAllUsers(posts, curUserId) {
         response.data.forEach((user) => {
           users[user._id] = {
             username: user.displayName,
-            acs: user.acs,
-            acsLevel: acsToLevel(user.acs),
+            acs: acsToAggregate(user.acs),
+            acsLevel: acsToLevel(acsToAggregate(user.acs)),
             picture: user.picture,
           };
         });

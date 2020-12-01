@@ -8,6 +8,7 @@ import AccordionActions from "@material-ui/core/AccordionActions";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
+import { acsToAggregate } from "../utils/acsUtils";
 
 export default class HHTriviaPage extends Component {
   componentDidMount() {
@@ -139,7 +140,7 @@ export default class HHTriviaPage extends Component {
         ? this.props.users[opponentUserId].displayName
         : "-----";
       const opponentACS = this.props.users[opponentUserId]
-        ? this.props.users[opponentUserId].acs
+        ? acsToAggregate(this.props.users[opponentUserId].acs)
         : "?";
       const playerNum = game.player1.userId === this.props.userId ? 1 : 2;
       return (

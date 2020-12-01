@@ -267,6 +267,13 @@ export const MY_PROFILE_NAV_ELEMENT = [
 export const API_ENDPOINT = "http://localhost:5000";
 
 /**  ACS -- DO NOT CHANGE ORDER OF INITIALIZATION -- */
+export const ACS_BREAKDOWN = {
+  games: 0.1,
+  analysis: 0.3,
+  history: 0.1,
+  pPP: 0.5,
+};
+
 export const EXPERT_ANALYST = "Expert Analyst";
 export const PRO_ANALYST = "Pro Analyst";
 export const ANALYST = "Analyst";

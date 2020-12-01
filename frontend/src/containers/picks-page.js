@@ -8,12 +8,16 @@ import {
   sendDailyPicksToDb,
   updateDailyPicks,
 } from "../actions/daily-picks";
-import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
+import {
+  getCurrentUserACSScoreFromState,
+  getCurrentUserPPPScoreFromState,
+} from "../selectors/acsSelectors";
 
 const mapStateToProps = (state) => ({
   username: state.auth.get("username"),
   userId: state.auth.get("id"),
   acsScore: getCurrentUserACSScoreFromState(state),
+  pPPScore: getCurrentUserPPPScoreFromState(state),
   dailyPicks: state.dailyPicks.get("dailyPicks").toJS(),
   date: state.dailyPicks.get("date"),
   games: state.dailyPicks.get("games"),

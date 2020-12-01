@@ -3,8 +3,8 @@ import AcsBadge from "../components/acs-badge.component";
 import {
   getCurrentUserACSScoreFromState,
   getCurrentUserACSLevelFromState,
-  acsToLevel,
 } from "../selectors/acsSelectors";
+import { acsToLevel } from "../utils/acsUtils";
 import { getACS } from "../actions/acs";
 
 const mapStateToProps = (state, { acsScore }) => ({

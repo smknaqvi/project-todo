@@ -143,10 +143,10 @@ export default function AcsBadge({
 }
 
 AcsBadge.propTypes = {
-  acsScore: PropTypes.number.isRequired,
-  acsLevel: PropTypes.string.isRequired,
+  acsScore: PropTypes.number,
+  acsLevel: PropTypes.string,
   userId: PropTypes.string,
   type: PropTypes.oneOf(["full", "icon", "text"]),
   use: PropTypes.oneOf(["all", "score", "tier", "none"]),
-  getACS: PropTypes.func.isRequired,
+  getACS: PropTypes.func,
 };

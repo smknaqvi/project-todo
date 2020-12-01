@@ -140,7 +140,7 @@ export default class PredictionsPage extends Component {
     this.props.updateACS(
       this.props.userId,
       "PREDICTIONS",
-      this.props.acsScore + correct * 10
+      this.props.pPPScore + correct * 10
     );
   };
 
@@ -182,6 +182,7 @@ PredictionsPage.propTypes = {
   username: PropTypes.string,
   userId: PropTypes.string,
   acsScore: PropTypes.number,
+  pPPScore: PropTypes.number,
   players: PropTypes.array,
   rookies: PropTypes.array,
   awards: PropTypes.object,

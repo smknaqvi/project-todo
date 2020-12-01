@@ -8,12 +8,15 @@ import {
   validateTrivia,
   incrementTriviaQuestion,
 } from "../actions/trivia";
-import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
-import { updateACS } from "../actions/acs";
+import {
+  getCurrentUserACSScoreFromState,
+  getCurrentUserGamesScoreFromState,
+} from "../selectors/acsSelectors";
 
 const mapStateToProps = (state) => ({
   profile: getCurrentUserProfileFromState(state),
   acsScore: getCurrentUserACSScoreFromState(state),
+  gamesScore: getCurrentUserGamesScoreFromState(state),
   userId: state.auth.get("id"),
   questions: state.trivia.get("questions"),
   questionsCompleted: state.trivia.get("questionsCompleted"),
@@ -31,7 +34,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(validateTrivia(question, answer, userId, curACS)),
   getTriviaQuestions: () => dispatch(getTriviaQuestions()),
   setTriviaAnswer: (text) => dispatch(setTriviaAnswer(text)),
-  updateACS: (id, type, acs) => dispatch(updateACS(id, type, acs)),
   incrementQuestionsCompleted: (id, completed) =>
     dispatch(incrementTriviaQuestion(id, completed)),
 });

@@ -80,7 +80,7 @@ export default class PlayoffsPage extends Component {
       updateBrackets,
       updateACS,
       userId,
-      acsScore,
+      pPPScore,
     } = this.props;
 
     const brackets = Object.values(bracketValues);
@@ -138,7 +138,7 @@ export default class PlayoffsPage extends Component {
           updatedBrackets: [...acc.updatedBrackets, newBracket],
         };
       },
-      { acsIncrease: acsScore, updatedBrackets: [] }
+      { acsIncrease: pPPScore, updatedBrackets: [] }
     );
 
     const newACSScore = Math.min(Math.max(acsIncrease, MIN_ACS), MAX_ACS);
@@ -235,6 +235,7 @@ PlayoffsPage.propTypes = {
   isFetchCompleted: PropTypes.bool,
   isUpdating: PropTypes.bool,
   acsScore: PropTypes.number,
+  pPPScore: PropTypes.number,
   getTeamImages: PropTypes.func,
   TeamImages: PropTypes.object,
   getBrackets: PropTypes.func,

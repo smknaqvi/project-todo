@@ -8,7 +8,10 @@ import {
 } from "../actions/playoffs";
 import { getACS, updateACS } from "../actions/acs";
 import PlayoffsPage from "../components/playoffs-page.component";
-import { getCurrentUserACSScoreFromState } from "../selectors/acsSelectors";
+import {
+  getCurrentUserACSScoreFromState,
+  getCurrentUserPPPScoreFromState,
+} from "../selectors/acsSelectors";
 import {
   getBracketOptionsFromState,
   getBracketsObjectFromState,
@@ -27,6 +30,7 @@ const mapStateToProps = (state) => ({
   isFetchCompleted: getIsFetchCompletedFromState(state),
   isUpdating: getIsUpdatingFromState(state),
   acsScore: getCurrentUserACSScoreFromState(state),
+  pPPScore: getCurrentUserPPPScoreFromState(state),
   teamImages: getTeamImagesFromState(state),
 });
 const mapDispatchToProps = (dispatch) => ({
