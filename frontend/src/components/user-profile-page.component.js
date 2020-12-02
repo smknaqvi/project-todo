@@ -1,16 +1,26 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { CircularProgress } from "@material-ui/core";
+import { LoadingWrapper } from "./loading-wrapper.component";
 import Card from "@material-ui/core/Card";
 import { withRouter } from "react-router";
 import CardMedia from "@material-ui/core/CardMedia";
 import AcsBadge from "../containers/acs-badge";
 import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
 
 class UserProfilePage extends Component {
   componentDidMount() {
     const userid = this.props.match.params.userid;
     this.props.getProfile(userid);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.fetchCompleted !== this.props.fetchCompleted ||
+      (this.props.isLoading && this.props.fetchCompleted)
+    ) {
+      this.props.setLoading(!this.props.fetchCompleted);
+    }
   }
 
   createProfilePicAndUsername = () => {
@@ -20,7 +30,7 @@ class UserProfilePage extends Component {
       <Card className="user-profile">
         <CardHeader
           className="user-profile-header"
-          title={header}
+          title={<Typography variant="h4">{header}</Typography>}
           subheader={<AcsBadge type="icon" />}
           avatar={
             <CardMedia
@@ -49,7 +59,7 @@ class UserProfilePage extends Component {
   };
 
   render() {
-    if (this.props.fetchCompleted) {
+    if (!this.props.isLoading) {
       return (
         <div className="user-profile-container">
           {this.createProfilePicAndUsername()}
@@ -57,11 +67,11 @@ class UserProfilePage extends Component {
         </div>
       );
     } else {
-      return <CircularProgress />;
+      return null;
     }
   }
 }
-export default withRouter(UserProfilePage);
+export default LoadingWrapper(withRouter(UserProfilePage));
 
 UserProfilePage.propTypes = {
   togglePage: PropTypes.func,

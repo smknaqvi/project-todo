@@ -49,7 +49,7 @@ export default function UploadProfilePhoto({
       <CardHeader
         title={
           <span>
-            {profile.displayName} <AcsBadge type="text" />
+            {profile.displayName} - <AcsBadge type="text" />
           </span>
         }
       />

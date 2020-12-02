@@ -155,7 +155,11 @@ export default class PostView extends Component {
         <Card>
           <CardHeader
             title={
-              <Link component={NavLink} to={profileLink}>
+              <Link
+                component={NavLink}
+                to={profileLink}
+                className="oc-post-view-profile-link"
+              >
                 {curUser.username}
               </Link>
             }

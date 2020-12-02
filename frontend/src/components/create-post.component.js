@@ -64,7 +64,7 @@ export default function CreatePost({
         title={
           <Link
             component={NavLink}
-            className="navbar-item"
+            className="oc-create-post-profile-link"
             to={USER_PROFILE_LINKS[0].link}
           >
             {username}
