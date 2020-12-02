@@ -23,7 +23,6 @@ class TriviaPage extends Component {
   componentDidMount() {
     window.addEventListener("beforeunload", this.componentCleanup);
     this.props.getTriviaQuestions();
-    this.props.setLoading(false);
     this.props.getCompletedQuestions(this.props.userId);
   }
   componentWillUnmount() {
@@ -44,7 +43,10 @@ class TriviaPage extends Component {
       prevProps.fetchCompletedQuestionsCompleted !==
         this.props.fetchCompletedQuestionsCompleted ||
       prevProps.fetchTriviaQuestionsCompleted !==
-        this.props.fetchTriviaQuestionsCompleted
+        this.props.fetchTriviaQuestionsCompleted ||
+      (this.props.isLoading &&
+        this.props.fetchTriviaQuestionsCompleted &&
+        this.props.fetchCompletedQuestionsCompleted)
     ) {
       this.props.setLoading(
         !(
@@ -56,7 +58,7 @@ class TriviaPage extends Component {
   }
 
   render() {
-    if (!this.props.triviaStarted) {
+    if (!this.props.triviaStarted && !this.props.isLoading) {
       const { questionsCompleted } = this.props;
       return (
         <div className="trivia-page-container">
