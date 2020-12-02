@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -16,6 +17,7 @@ import Avatar from "@material-ui/core/Avatar";
 import CreateComment from "../containers/create-comment";
 import ConfirmationDialog from "../containers/confirmation-dialog";
 import AcsBadge from "../containers/acs-badge";
+import Link from "@material-ui/core/Link";
 import {
   DELETE_COMMENT,
   DELETE_COMMENT_TITLE,
@@ -23,6 +25,7 @@ import {
   DELETE_POST_TITLE,
 } from "../constants";
 import { acsToAggregate } from "../utils/acsUtils";
+import { USER_PROFILE_LINKS } from "../constants";
 
 export default class PostView extends Component {
   createCardMedia() {
@@ -69,6 +72,7 @@ export default class PostView extends Component {
     }
     const comments = this.props.comments.map((comment) => {
       const commenter = this.props.users[comment.origPoster];
+      const profileLink = this.generateProfileLink(comment.origPoster);
       return (
         <div key={"root-" + comment.commentId}>
           <Divider />
@@ -82,18 +86,25 @@ export default class PostView extends Component {
               <ListItemText
                 secondary={
                   <>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className="inline-comment"
-                      color="textPrimary"
+                    <Link
+                      component={NavLink}
+                      className="navbar-item"
+                      to={profileLink}
                     >
-                      {this.createCommentDisplayName(
-                        commenter.username,
-                        commenter.acsLevel,
-                        commenter.acs
-                      )}
-                    </Typography>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className="inline-comment"
+                        color="textPrimary"
+                      >
+                        {this.createCommentDisplayName(
+                          commenter.username,
+                          commenter.acsLevel,
+                          commenter.acs
+                        )}
+                      </Typography>
+                    </Link>
+
                     {" - " + comment.content}
                   </>
                 }
@@ -128,18 +139,32 @@ export default class PostView extends Component {
     }
   }
 
+  generateProfileLink = (userId) => {
+    const profileLink =
+      userId === this.props.curUserId
+        ? USER_PROFILE_LINKS[0].link
+        : USER_PROFILE_LINKS[1].link + userId;
+    return profileLink;
+  };
+
   render() {
     const curUser = this.props.users[this.props.origPoster];
+    const profileLink = this.generateProfileLink(this.props.origPoster);
     return (
       <div className="post-view">
         <Card>
           <CardHeader
-            title={curUser.username}
+            title={
+              <Link component={NavLink} to={profileLink}>
+                {curUser.username}
+              </Link>
+            }
             subheader={
               <AcsBadge type="icon" acsScore={acsToAggregate(curUser.acs)} />
             }
             action={this.createHeaderButtons()}
           />
+
           {this.createCardMedia()}
           <CardContent>
             <Typography paragraph>{this.props.content}</Typography>

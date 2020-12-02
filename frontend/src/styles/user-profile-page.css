@@ -1,0 +1,47 @@
+.user-profile-pic {
+  height: 20vh;
+  width: auto !important;
+  margin-top: 10px;
+}
+
+.user-profile .user-profile-about-me {
+  justify-content: center !important;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding-top: 20%;
+  width: 50%;
+}
+
+.user-profile-about-me {
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.user-profile-bio-info {
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.user-profile-about-me-container {
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 50%;
+}
