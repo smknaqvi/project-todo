@@ -13,6 +13,7 @@ import PicksPage from "../containers/picks-page";
 import PredictionsPage from "../containers/predictions-page";
 import PlayoffsPage from "../containers/playoffs-page";
 import MyProfile from "../containers/my-profile";
+import UserProfile from "../containers/user-profile";
 import HHTriviaPage from "../containers/hhtrivia-page";
 import AlertSnackbar from "../containers/alert-snackbar";
 import { isAuthorized } from "../utils/isAuthorized";
@@ -74,6 +75,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path="/hhtrivia" exact>
           <HHTriviaPage />
+        </PrivateRoute>
+        <PrivateRoute path="/user-profile/:userid" exact>
+          <UserProfile />
         </PrivateRoute>
         <PrivateRoute path="/" exact></PrivateRoute>
         <PrivateRoute path="/thezone" exact>

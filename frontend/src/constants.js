@@ -29,6 +29,11 @@ export const FETCH_OC_USERS_STARTED = "FETCH_OC_USERS_STARTED";
 export const FETCH_OC_USERS_SUCCEEDED = "FETCH_OC_USERS_SUCCEEDED";
 export const FETCH_OC_USERS_FAILED = "FETCH_OC_USERS_FAILED";
 
+export const USER_PROFILE_LINKS = [
+  { name: "My Profile", link: "/profile" },
+  { name: "User Profile", link: "/user-profile/" },
+];
+
 export const DELETE_OC_POST_STARTED = "DELETE_OC_POST_STARTED";
 export const DELETE_OC_POST_SUCCEEDED = "DELETE_OC_POST_SUCCEEDED";
 export const DELETE_OC_POST_FAILED = "DELETE_OC_POST_FAILED";

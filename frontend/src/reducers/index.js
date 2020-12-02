@@ -5,6 +5,7 @@ import { acs } from "./acs";
 import { authPage } from "./auth-page";
 import { error } from "./error";
 import { profile } from "./profile";
+import { userProfile } from "./user-profile";
 import { success } from "./success";
 import { player } from "./player";
 import { openCourtTimeline } from "./opencourt-timeline";
@@ -37,6 +38,7 @@ const appReducer = combineReducers({
   debateWritePage,
   playoffs,
   hhTriviaPage,
+  userProfile,
   confirmationDialog,
   form: formReducer,
 });

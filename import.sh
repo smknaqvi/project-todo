@@ -1,6 +1,0 @@
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection games --jsonArray --file backend/models/import_files/games.json &&
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection teams --jsonArray --file backend/models/import_files/teams.json &&
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection winners --jsonArray --file backend/models/import_files/winners.json &&
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection brackets --jsonArray --file backend/models/import_files/brackets.json &&
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection triviaquestions --jsonArray --file backend/models/import_files/triviaquestions.json &&
-mongoimport --uri "mongodb+srv://test-user:B4cB2UbMF57LBV9@playground.376tc.mongodb.net/todo?retryWrites=true&w=majority" --collection debatequestions --jsonArray --file backend/models/import_files/debate-questions.json

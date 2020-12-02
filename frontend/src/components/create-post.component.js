@@ -11,9 +11,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import ImageIcon from "@material-ui/icons/Image";
 import SendIcon from "@material-ui/icons/Send";
 import CardMedia from "@material-ui/core/CardMedia";
+import Link from "@material-ui/core/Link";
 import Skeleton from "@material-ui/lab/Skeleton";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AcsBadge from "../containers/acs-badge";
+import { NavLink } from "react-router-dom";
+import { USER_PROFILE_LINKS } from "../constants";
 
 export default function CreatePost({
   content,
@@ -57,7 +60,19 @@ export default function CreatePost({
 
   return (
     <Card className="oc-create-post">
-      <CardHeader title={username} subheader={<AcsBadge type="icon" />} />
+      <CardHeader
+        title={
+          <Link
+            component={NavLink}
+            className="navbar-item"
+            to={USER_PROFILE_LINKS[0].link}
+          >
+            {username}
+          </Link>
+        }
+        subheader={<AcsBadge type="icon" />}
+      />
+
       {isImageLoading ? (
         <Skeleton
           className="post-media"
