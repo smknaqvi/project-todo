@@ -6,6 +6,8 @@ import {
   UPDATE_QUESTIONS_COMPLETED_STARTED,
   UPDATE_QUESTIONS_COMPLETED_SUCCEEDED,
   SET_TRIVIA_ANSWER,
+  TRIVIA_STARTED,
+  TRIVIA_ENDED,
 } from "../constants";
 import { showError } from "./error";
 import { showSuccess } from "./success";
@@ -111,10 +113,13 @@ export function validateTrivia(question, selectedAnswer, userId, curACS) {
       const correctAnswer = question.responses.filter(function (response) {
         return response.correct === true;
       });
-
-      dispatch(
-        showError("Incorrect: the correct answer was: " + correctAnswer[0].text)
-      );
+      if (!(selectedAnswer === "")) {
+        dispatch(
+          showError(
+            "Incorrect: the correct answer was: " + correctAnswer[0].text
+          )
+        );
+      }
     }
   };
 }
@@ -136,4 +141,11 @@ export function incrementTriviaQuestion(userId, questionsCompleted) {
         }
       });
   };
+}
+export function startTrivia() {
+  return { type: TRIVIA_STARTED };
+}
+
+export function endTrivia() {
+  return { type: TRIVIA_ENDED };
 }

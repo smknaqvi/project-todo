@@ -9,9 +9,10 @@ import {
 } from "../constants";
 
 export const acsToAggregate = (acs) =>
-  Math.ceil(
+  Math.round(
     Object.keys(ACS_BREAKDOWN).reduce(
-      (totalAcs, key) => totalAcs + ACS_BREAKDOWN[key] * get(key, acs),
+      (totalAcs, key) =>
+        Math.round(totalAcs + ACS_BREAKDOWN[key] * get(key, acs)),
       0
     )
   );

@@ -18,6 +18,7 @@ import {
   SET_HHTRIVIA_ACS_CHANGE,
   SET_HHTRIVIA_GAME_EVALUATED_SUCCEEDED,
   INCREMENT_HHTRIVIA_CORRECT_QUESTION,
+  ACS_BREAKDOWN,
 } from "../constants";
 import { showError } from "./error";
 import { showSuccess } from "./success";
@@ -351,21 +352,33 @@ export function evaluateHHTriviaGame(games, users, gameNum, curUserId) {
       player1ACSChange = Math.round(
         (1 / 150000) * (player1ACS - player2ACS + 1000) ** 2.1
       );
+
       player2ACSChange = -1 * player1ACSChange;
     } else if (winner === 2) {
       player2ACSChange = Math.round(
         (1 / 150000) * (player2ACS - player1ACS + 1000) ** 2.1
       );
+
       player1ACSChange = -1 * player2ACSChange;
     }
     return setHHTriviaGameEvaluatedRequest(game._id)
       .then(function (res) {
+        const player1RoundedACSChange =
+          Math.round(player1ACS + player1ACSChange * ACS_BREAKDOWN.games) -
+          player1ACS;
+        const player2RoundedACSChange =
+          Math.round(player2ACS + player2ACSChange * ACS_BREAKDOWN.games) -
+          player2ACS;
         dispatch(setHHTriviaGameEvaluatedSuccess(game._id));
         if (winner !== 0) {
-          setHHTriviaGameACSChangeRequest(game._id, 1, player1ACSChange);
-          setHHTriviaGameACSChangeRequest(game._id, 2, player2ACSChange);
+          setHHTriviaGameACSChangeRequest(game._id, 1, player1RoundedACSChange);
+          setHHTriviaGameACSChangeRequest(game._id, 2, player2RoundedACSChange);
           dispatch(
-            setHHTriviaACSChange(game._id, player1ACSChange, player2ACSChange)
+            setHHTriviaACSChange(
+              game._id,
+              player1RoundedACSChange,
+              player2RoundedACSChange
+            )
           );
           let firstUpdateFunc = null;
           let secondUpdateFunc = null;
