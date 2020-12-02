@@ -45,3 +45,7 @@
   margin-bottom: 30px;
   width: 50%;
 }
+
+.user-profile-header .MuiCardHeader-content {
+  text-align: center;
+}

@@ -48,6 +48,10 @@
   align-items: flex-start;
 }
 
+.oc-timeline .post-view .oc-post-view-profile-link {
+  color: black;
+}
+
 .oc-create-post {
   width: 50%;
   height: 30%;
@@ -90,4 +94,8 @@
 .oc-create-comment {
   display: flex;
   flex-direction: row;
+}
+
+.oc-create-post .oc-create-post-profile-link {
+  color: black;
 }
