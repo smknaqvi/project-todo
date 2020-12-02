@@ -2,7 +2,9 @@ import {
   FETCH_COMPLETED_QUESTIONS_SUCCEEDED,
   FETCH_TRIVIA_QUESTIONS_SUCCEEDED,
   SET_TRIVIA_ANSWER,
+  TRIVIA_STARTED,
   UPDATE_QUESTIONS_COMPLETED_SUCCEEDED,
+  TRIVIA_ENDED,
 } from "../constants";
 import { Map } from "immutable";
 
@@ -12,6 +14,7 @@ const initState = Map({
   fetchTriviaQuestionsCompleted: false,
   fetchCompletedQuestionsCompleted: false,
   selectedAnswer: "",
+  triviaStarted: false,
 });
 
 export const trivia = (state = initState, action) => {
@@ -31,6 +34,10 @@ export const trivia = (state = initState, action) => {
         "questionsCompleted",
         state.get("questionsCompleted") + 1
       );
+    case TRIVIA_STARTED:
+      return state.set("triviaStarted", true);
+    case TRIVIA_ENDED:
+      return state.set("triviaStarted", false);
     default:
       return state;
   }

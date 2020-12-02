@@ -75,3 +75,26 @@
 .trivia-page-container {
   height: 100%;
 }
+.trivia-page-container .trivia-page-header.trivia-start-button {
+  background-color: green;
+}
+.questions-completed {
+  font-size: large;
+}
+.trivia-next-button-container {
+  align-items: right;
+  text-align: right;
+  margin: 1%;
+}
+
+.trivia-question .trivia-submit-button-container .trivia-submit-button {
+  margin-top: 1%;
+  color: white;
+  background-color: green;
+}
+
+.trivia-next-button-container .trivia-next-button {
+  align-items: left;
+  text-align: left;
+  margin: 1%;
+}

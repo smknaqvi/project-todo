@@ -2,58 +2,36 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Button, LinearProgress } from "@material-ui/core";
 
-export default class TriviaQuestion extends Component {
+export default class HHTriviaQuestion extends Component {
   constructor(props) {
     super(props);
-    this.state = { seconds: 10, questionSubmitted: false };
+    this.state = { seconds: 10 };
   }
 
   componentWillUnmount() {
-    if (!this.state.questionSubmitted) {
-      this.props.validateTriviaAnswer();
-    }
     clearInterval(this.timer);
   }
-
-  componentDidUpdate = (prevProps) => {
-    if (
-      this.props.currentQuestion.question !== prevProps.currentQuestion.question
-    ) {
-      this.setState({ questionSubmitted: false });
-    }
-  };
-
   tick = () => {
-    if (this.state.seconds > 0 && !this.state.questionSubmitted) {
+    if (this.state.seconds > 0) {
       this.setState((prevState) => {
         return { seconds: prevState.seconds - 1 };
       });
     } else {
-      if (!this.state.questionSubmitted) {
-        this.props.validateTriviaAnswer();
-        this.setState({ seconds: 10.0, questionSubmitted: true });
-      }
+      this.props.validateTriviaAnswer();
+      this.setState({ seconds: 10 });
     }
   };
-  normalise = (value) => (value * 100) / 10;
   submitButtonClicked = () => {
     this.props.validateTriviaAnswer();
-
-    this.setState({ seconds: 10, questionSubmitted: true });
+    this.setState({ seconds: 10 });
   };
 
   componentDidMount() {
-    if (!this.props.selectedAnswer) {
-      this.timer = setInterval(this.tick, 1000);
-    } else {
-      this.setState({ questionSubmitted: true });
-    }
+    this.timer = setInterval(this.tick, 1000);
   }
+  normalise = (value) => (value * 100) / 10;
 
   render() {
-    let submitButtonClass = this.state.questionSubmitted
-      ? "trivia-submit-button-clicked"
-      : "trivia-submit-button";
     return (
       <div className="trivia-question">
         <div className="question-header">
@@ -81,12 +59,11 @@ export default class TriviaQuestion extends Component {
             </Button>
           ))}
         </div>
-        <div className="trivia-submit-button-container">
+        <div className="trivia-buttons">
           <Button
             ref={(input) => (this.inputElement = input)}
-            className={submitButtonClass}
+            className="trivia-next-button"
             onClick={this.submitButtonClicked}
-            disabled={this.state.questionSubmitted}
           >
             Submit
           </Button>
@@ -95,7 +72,7 @@ export default class TriviaQuestion extends Component {
     );
   }
 }
-TriviaQuestion.propTypes = {
+HHTriviaQuestion.propTypes = {
   currentQuestion: PropTypes.object,
   getCurrentQuestion: PropTypes.func,
   completedQuestions: PropTypes.number,
