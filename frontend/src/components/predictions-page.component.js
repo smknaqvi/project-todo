@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Button from "@material-ui/core/Button";
 import { LoadingWrapper } from "./loading-wrapper.component";
+import Card from "@material-ui/core/Card";
 
 const rookieOTY = "rookieOTY";
 
@@ -41,7 +42,7 @@ class PredictionsPage extends Component {
   createAwardElements() {
     return AWARDS.map((award) => {
       return (
-        <div
+        <Card
           className={
             "award " +
             (this.props.isEvaluated
@@ -73,16 +74,12 @@ class PredictionsPage extends Component {
               getOptionSelected={(option, value) => option.name === value.name}
               getOptionLabel={(option) => option.name}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Select a Player"
-                  variant="outlined"
-                />
+                <TextField {...params} label="Select a Player" />
               )}
             />
           </div>
           <div className="winner-image">{this.createWinnerImage(award)}</div>
-        </div>
+        </Card>
       );
     });
   }
@@ -160,7 +157,7 @@ class PredictionsPage extends Component {
   };
 
   render() {
-    const { username, acsScore, isLoading } = this.props;
+    const { isLoading } = this.props;
     if (!isLoading) {
       return (
         <div className="predicts-page">
@@ -169,7 +166,6 @@ class PredictionsPage extends Component {
             color="primary.contrastText"
             className="user-acs"
           >
-            {username}: {acsScore}
             <Button
               disabled={this.props.isEvaluated}
               variant="contained"
@@ -184,7 +180,7 @@ class PredictionsPage extends Component {
           <Button
             disabled={this.props.isEvaluated}
             variant="contained"
-            color="primary"
+            color="secondary"
             onClick={this.submitPicks}
           >
             SUBMIT

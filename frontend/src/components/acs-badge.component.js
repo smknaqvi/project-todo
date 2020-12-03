@@ -13,6 +13,7 @@ import {
 import Tooltip from "@material-ui/core/Tooltip";
 import StarIcon from "@material-ui/icons/Star";
 import LockIcon from "@material-ui/icons/Lock";
+import fieldStyle from "../themes/field-style";
 
 const acsText = (use, acsLevel, acsScore) => {
   if (!acsScore) {
@@ -125,20 +126,43 @@ export default function AcsBadge({
   switch (type) {
     case "full":
       return (
-        <div className="full-badge">
+        <div
+          style={{
+            color: fieldStyle.palette.field.color,
+          }}
+          className="full-badge"
+        >
           <AcsTiers acsScore={acsScore} />
-          <strong>{acsText(use, acsLevel, acsScore)}</strong>
+          <strong
+            style={{
+              color: fieldStyle.palette.field.color,
+            }}
+          >
+            {acsText(use, acsLevel, acsScore)}
+          </strong>
         </div>
       );
     case "icon":
       return (
-        <span>
+        <span
+          style={{
+            color: fieldStyle.palette.field.color,
+          }}
+        >
           <AcsIcon acsLevel={acsLevel} /> {acsText(use, acsLevel, acsScore)}
         </span>
       );
     case "text":
     default:
-      return <span>{acsText(use, acsLevel, acsScore)}</span>;
+      return (
+        <span
+          style={{
+            color: fieldStyle.palette.field.color,
+          }}
+        >
+          {acsText(use, acsLevel, acsScore)}
+        </span>
+      );
   }
 }
 

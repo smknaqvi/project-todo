@@ -3,6 +3,7 @@ import DebateWritePage from "../containers/debate-write-page.js";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import DebateViewPage from "../containers/debate-view-page";
+import buttonStyle from "../themes/button-style";
 
 export default class DebatePage extends Component {
   componentDidMount() {
@@ -50,7 +51,14 @@ export default class DebatePage extends Component {
       return <Button onClick={this.changeDateToToday}>Today's Debate</Button>;
     } else {
       return (
-        <Button onClick={this.changeDateToYesterday}>
+        <Button
+          style={{
+            backgroundColor: buttonStyle.palette.button.backgroundColor,
+            color: buttonStyle.palette.button.color,
+            text: buttonStyle.palette.button.color,
+          }}
+          onClick={this.changeDateToYesterday}
+        >
           Yesterday's Results
         </Button>
       );

@@ -234,7 +234,6 @@ class DebateViewPage extends Component {
         <Button
           className="debate-evaluate-btn"
           variant="contained"
-          color="primary"
           onClick={() => this.handleEvaluate()}
           disabled={disable}
         >
