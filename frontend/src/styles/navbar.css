@@ -3,6 +3,11 @@
   flex-direction: row;
   justify-content: space-between;
   background-color: #333333;
+  flex-wrap: nowrap;
+}
+
+.navbar .right-navbar {
+  flex-grow: 1;
 }
 
 .navbar .left-navbar {
@@ -10,7 +15,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  flex-grow: 9;
 }
 
 .navbar a:hover {
@@ -98,4 +103,18 @@
 .navbar .trivia-dropdown-label:hover {
   color: white;
   text-transform: none;
+}
+.navbar .logo-image {
+  width: 200px;
+  display: inline-block;
+}
+
+.make-cool-flex {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navbar-item {
+  white-space: nowrap;
 }
