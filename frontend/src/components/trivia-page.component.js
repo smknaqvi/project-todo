@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import TriviaQuestion from "../containers/trivia-question";
 import PropTypes from "prop-types";
 import { LoadingWrapper } from "./loading-wrapper.component";
-
-import checkmarkgif from "../videos/checkmarkgif.mp4";
+import checkmarktransparent from "../images/checkmarktransparent.gif";
 import { Button } from "@material-ui/core";
 
 class TriviaPage extends Component {
@@ -127,11 +126,7 @@ class TriviaPage extends Component {
             <div className="trivia-page-header">Thanks for Playing</div>
             <div className="trivia-questions-complete-container">
               <div className="checkmark">
-                <video loop autoPlay muted>
-                  <source src={checkmarkgif} type="video/mp4" />
-                  Your browser does not support the video tag. Please upgrade
-                  your browser.
-                </video>
+                <img src={checkmarktransparent} alt="alternate" />
               </div>
               No more questions for now. Please check back later!
             </div>
