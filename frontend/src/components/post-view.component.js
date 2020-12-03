@@ -24,7 +24,6 @@ import {
   DELETE_POST,
   DELETE_POST_TITLE,
 } from "../constants";
-import { acsToAggregate } from "../utils/acsUtils";
 import { USER_PROFILE_LINKS } from "../constants";
 
 export default class PostView extends Component {
@@ -164,7 +163,7 @@ export default class PostView extends Component {
               </Link>
             }
             subheader={
-              <AcsBadge type="icon" acsScore={acsToAggregate(curUser.acs)} />
+              <AcsBadge type="icon" acsScore={curUser.acs} />
             }
             action={this.createHeaderButtons()}
           />
