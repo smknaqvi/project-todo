@@ -350,13 +350,13 @@ export function evaluateHHTriviaGame(games, users, gameNum, curUserId) {
     let player2ACSChange = 0;
     if (winner === 1) {
       player1ACSChange = Math.round(
-        (1 / 150000) * (player1ACS - player2ACS + 1000) ** 2.1
+        (1 / 75000) * (-1 * (player1ACS - player2ACS) + 1000) ** 2.1
       );
 
       player2ACSChange = -1 * player1ACSChange;
     } else if (winner === 2) {
       player2ACSChange = Math.round(
-        (1 / 150000) * (player2ACS - player1ACS + 1000) ** 2.1
+        (1 / 75000) * (-1 * (player2ACS - player1ACS) + 1000) ** 2.1
       );
 
       player1ACSChange = -1 * player2ACSChange;

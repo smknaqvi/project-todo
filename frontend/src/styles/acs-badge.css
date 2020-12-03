@@ -10,19 +10,19 @@
 }
 
 .fanalyst-icon {
-  color: #747474;
+  color: #905923;
 }
 
 .analyst-icon {
-  color: #272727;
+  color: #c0c0c0;
 }
 
 .pro-analyst-icon {
-  color: #ffe400;
+  color: #ffd700;
 }
 
 .expert-analyst-icon {
-  color: #14a76c;
+  color: #45aca5;
 }
 
 .triangle {
@@ -46,20 +46,20 @@
 
 .fanalyst:hover,
 .fanalyst {
-  background: #747474;
+  background: #905923;
 }
 
 .analyst:hover,
 .analyst {
-  background: #272727;
+  background: #c0c0c0;
 }
 
 .pro-analyst:hover,
 .pro-analyst {
-  background: #ffe400;
+  background: #ffd700;
 }
 
 .expert-analyst:hover,
 .expert-analyst {
-  background: #14a76c;
+  background: #45aca5;
 }
