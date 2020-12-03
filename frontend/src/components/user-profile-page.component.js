@@ -7,6 +7,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import AcsBadge from "../containers/acs-badge";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
+import { acsToAggregate } from "../utils/acsUtils";
 
 class UserProfilePage extends Component {
   componentDidMount() {
@@ -31,7 +32,9 @@ class UserProfilePage extends Component {
         <CardHeader
           className="user-profile-header"
           title={<Typography variant="h4">{header}</Typography>}
-          subheader={<AcsBadge type="icon" />}
+          subheader={
+            <AcsBadge type="icon" acsScore={acsToAggregate(profile.acs)} />
+          }
           avatar={
             <CardMedia
               component="img"

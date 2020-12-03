@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { CircularProgress } from "@material-ui/core";
-import checkmarkgif from "../videos/checkmarkgif.mp4";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionActions from "@material-ui/core/AccordionActions";
@@ -10,6 +9,7 @@ import Button from "@material-ui/core/Button";
 import { acsToAggregate } from "../utils/acsUtils";
 import HHTriviaQuestion from "./hh-trivia-question.component";
 import fieldStyle from "../themes/field-style";
+import checkmarktransparent from "../images/checkmarktransparent.gif";
 
 export default class HHTriviaPage extends Component {
   componentDidMount() {
@@ -50,10 +50,7 @@ export default class HHTriviaPage extends Component {
         <div className="trivia-questions-complete-container">
           Trivia Game Complete!
           <div className="checkmark">
-            <video loop autoPlay muted>
-              <source src={checkmarkgif} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            <img src={checkmarktransparent} alt="alternate" />
           </div>
           <Button
             className="hhtrivia-return-button"
