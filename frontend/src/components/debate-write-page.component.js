@@ -14,6 +14,7 @@ import {
   Button,
   Typography,
 } from "@material-ui/core";
+import buttonStyle from "../themes/button-style";
 
 class DebateWritePage extends Component {
   componentDidMount() {
@@ -100,7 +101,6 @@ class DebateWritePage extends Component {
             <CardContent className="debate-create-content">
               <TextField
                 id="outlined-textarea"
-                label="Create your Debate Response"
                 placeholder="Start your response..."
                 onChange={this.updateResponse}
                 value={this.props.response ? this.props.response : ""}
@@ -113,6 +113,10 @@ class DebateWritePage extends Component {
               {this.createInvalidLengthMsg()}
             </CardContent>
             <Button
+              style={{
+                backgroundColor: buttonStyle.palette.button.backgroundColor,
+                color: buttonStyle.palette.button.color,
+              }}
               className={submitClassName}
               variant="contained"
               onClick={this.submitResponse}

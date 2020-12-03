@@ -10,6 +10,7 @@ import PnPDropdown from "./pnp-dropdown.component";
 import TriviaDropdown from "./trivia-dropdown.component";
 import { Typography } from "@material-ui/core";
 import AcsBadge from "../containers/acs-badge";
+import word_logo_small from "../../src/images/word_logo_small.png";
 
 export default class Navbar extends Component {
   createNavElements(elementMap) {
@@ -62,11 +63,19 @@ export default class Navbar extends Component {
     return (
       <AppBar position="static">
         <Toolbar className="navbar">
-          <NavLink exact to="/" className="nav-brand active">
-            <Typography variant="h6">
-              SPORTCRED <AcsBadge type="text" use="score" />
-            </Typography>
+          <NavLink exact to="/" className="active">
+            <div className="make-cool-flex">
+              <img
+                className="logo-image"
+                src={word_logo_small}
+                alt="logo_word"
+              />
+              <Typography variant="h6">
+                <AcsBadge type="text" use="score" />
+              </Typography>
+            </div>
           </NavLink>
+
           <div className="left-navbar">
             {this.createNavElements(NAV_ELEMENTS)}
             {this.createTriviaDropdown()}

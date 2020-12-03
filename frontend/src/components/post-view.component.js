@@ -18,13 +18,14 @@ import CreateComment from "../containers/create-comment";
 import ConfirmationDialog from "../containers/confirmation-dialog";
 import AcsBadge from "../containers/acs-badge";
 import Link from "@material-ui/core/Link";
+import fieldStyle from "../themes/field-style";
+
 import {
   DELETE_COMMENT,
   DELETE_COMMENT_TITLE,
   DELETE_POST,
   DELETE_POST_TITLE,
 } from "../constants";
-import { acsToAggregate } from "../utils/acsUtils";
 import { USER_PROFILE_LINKS } from "../constants";
 
 export default class PostView extends Component {
@@ -85,7 +86,7 @@ export default class PostView extends Component {
               </div>
               <ListItemText
                 secondary={
-                  <>
+                  <span>
                     <Link
                       component={NavLink}
                       className="navbar-item"
@@ -102,11 +103,10 @@ export default class PostView extends Component {
                           commenter.acsLevel,
                           commenter.acs
                         )}
+                        {" - " + comment.content}
                       </Typography>
-                    </Link>
-
-                    {" - " + comment.content}
-                  </>
+                    </Link>{" "}
+                  </span>
                 }
               />
               {this.createCommentDelete(comment.origPoster, comment.commentId)}
@@ -156,6 +156,9 @@ export default class PostView extends Component {
           <CardHeader
             title={
               <Link
+                style={{
+                  color: fieldStyle.palette.field.white,
+                }}
                 component={NavLink}
                 to={profileLink}
                 className="oc-post-view-profile-link"
@@ -164,7 +167,7 @@ export default class PostView extends Component {
               </Link>
             }
             subheader={
-              <AcsBadge type="icon" acsScore={acsToAggregate(curUser.acs)} />
+              <AcsBadge type="icon" acsScore={curUser.acs} />
             }
             action={this.createHeaderButtons()}
           />

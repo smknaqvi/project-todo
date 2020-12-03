@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "./login-form.component";
 import PropTypes from "prop-types";
+import logo_transparent from "../../src/images/logo_transparent.png";
 
 export default class LoginPage extends Component {
   login = (values) => {
@@ -9,9 +10,18 @@ export default class LoginPage extends Component {
 
   render() {
     return (
-      <div className="login-page">
-        <LoginForm onSubmit={this.login} togglePage={this.props.togglePage} />
-      </div>
+      <>
+        <div className="image-container">
+          <img
+            className="logo-transparent"
+            src={logo_transparent}
+            alt="logo_word"
+          />
+        </div>
+        <div className="login-page">
+          <LoginForm onSubmit={this.login} togglePage={this.props.togglePage} />
+        </div>
+      </>
     );
   }
 }

@@ -4,6 +4,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import uniqueId from "@hs/transmute/uniqueId";
 import { SCORES } from "../constants";
+import bracketStyle from "../themes/bracket-style";
 
 export default function ScoreSelect({
   matchNumber,
@@ -22,7 +23,15 @@ export default function ScoreSelect({
       error={error}
       disabled={disabled}
     >
-      <MenuItem key={uniqueId("")} value={""}>
+      <MenuItem
+        style={{
+          backgroundColor: bracketStyle.palette.selector.backgroundColor,
+          color: bracketStyle.palette.selector.color,
+          text: bracketStyle.palette.selector.text,
+        }}
+        key={uniqueId("")}
+        value={""}
+      >
         Choose
       </MenuItem>
       {SCORES.map((score) => {
@@ -30,7 +39,15 @@ export default function ScoreSelect({
           return null;
         }
         return (
-          <MenuItem key={uniqueId(score)} value={score}>
+          <MenuItem
+            style={{
+              backgroundColor: bracketStyle.palette.selector.backgroundColor,
+              color: bracketStyle.palette.selector.color,
+              text: bracketStyle.palette.selector.text,
+            }}
+            key={uniqueId(score)}
+            value={score}
+          >
             {score}
           </MenuItem>
         );
