@@ -9,6 +9,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Button from "@material-ui/core/Button";
 import { acsToAggregate } from "../utils/acsUtils";
 import HHTriviaQuestion from "./hh-trivia-question.component";
+import fieldStyle from "../themes/field-style";
 
 export default class HHTriviaPage extends Component {
   componentDidMount() {
@@ -100,7 +101,10 @@ export default class HHTriviaPage extends Component {
       actionButtons = (
         <>
           <Typography>Waiting for an opponent...</Typography>
-          <Button onClick={() => this.props.deleteHHTriviaGame(game._id)}>
+          <Button
+            style={{ color: fieldStyle.palette.field.offcolor }}
+            onClick={() => this.props.deleteHHTriviaGame(game._id)}
+          >
             Cancel Game
           </Button>
         </>

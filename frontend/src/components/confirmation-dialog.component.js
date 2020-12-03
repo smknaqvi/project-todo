@@ -33,11 +33,17 @@ export default class ConfirmationDialog extends Component {
           <DialogContentText>{dialogMessage}</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={this.handleDecline}>No</Button>
+          <Button
+            onClick={this.handleDecline}
+            variant="contained"
+            color="secondary"
+          >
+            No
+          </Button>
           <Button
             onClick={this.handleAccept}
             variant="contained"
-            color="primary"
+            color="secondary"
           >
             Yes
           </Button>

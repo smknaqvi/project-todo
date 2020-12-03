@@ -10,6 +10,7 @@ import {
   validateFieldLengths,
   validateAge,
 } from "../utils/formValidators";
+import fieldStyle from "../themes/field-style";
 
 const renderTextField = ({
   label,
@@ -108,26 +109,66 @@ let SignupForm = ({ handleSubmit, togglePage }) => {
             name="favSport"
             component={renderTextField}
             type="text"
-            placeholder="Favorite Sport?"
+            label="Favorite Sport?"
           />
           <Field
             name="oddSport"
             component={renderTextField}
             type="text"
-            placeholder="Sport you're curious about?"
+            label="Sport you're curious about?"
           />
           <Field
             name="favTeam"
             component={renderTextField}
             type="text"
-            placeholder="Favorite Team?"
+            label="Favorite Team?"
           />
           <Field name="levelOfPlay" component={renderSelectField}>
-            <option value="invalid">Select your highest level of play</option>
-            <option value="viewer">Viewer</option>
-            <option value="amateur">Amateur</option>
-            <option value="proam">Pro-Am</option>
-            <option value="pro">Pro</option>
+            <option
+              style={{
+                background: fieldStyle.palette.field.offcolor,
+                color: fieldStyle.palette.field.white,
+              }}
+              value="invalid"
+            >
+              Select your highest level of play
+            </option>
+            <option
+              style={{
+                background: fieldStyle.palette.field.offcolor,
+                color: fieldStyle.palette.field.white,
+              }}
+              value="viewer"
+            >
+              Viewer
+            </option>
+            <option
+              style={{
+                background: fieldStyle.palette.field.offcolor,
+                color: fieldStyle.palette.field.white,
+              }}
+              value="amateur"
+            >
+              Amateur
+            </option>
+            <option
+              style={{
+                background: fieldStyle.palette.field.offcolor,
+                color: fieldStyle.palette.field.white,
+              }}
+              value="proam"
+            >
+              Pro-Am
+            </option>
+            <option
+              style={{
+                background: fieldStyle.palette.field.offcolor,
+                color: fieldStyle.palette.field.white,
+              }}
+              value="pro"
+            >
+              Pro
+            </option>
           </Field>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { dateToISO } from "../utils/dateUtils";
+import Card from "@material-ui/core/Card";
 
 export default function PicksCard({ gamePick, game, handlePicked }) {
   const isEvaluated = gamePick && gamePick.isEvaluated;
@@ -10,7 +11,7 @@ export default function PicksCard({ gamePick, game, handlePicked }) {
   const gameDate = new Date(game.date * 1000);
 
   return (
-    <div
+    <Card
       className={
         "game " +
         (gamePick
@@ -54,7 +55,7 @@ export default function PicksCard({ gamePick, game, handlePicked }) {
           PICK
         </Button>
       </div>
-    </div>
+    </Card>
   );
 }
 

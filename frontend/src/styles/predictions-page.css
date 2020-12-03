@@ -1,12 +1,12 @@
 .predicts-page {
   display: grid;
-  background-color: #6b6e70;
+  background-color: "#222629";
 }
 .award {
   display: flex;
   margin: 20px;
   min-height: 220px;
-  background-color: white;
+  background-color: "#111111";
 }
 .award-title {
   flex-grow: 1;

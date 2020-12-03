@@ -41,7 +41,9 @@ export default function BracketSelect({
 
   return (
     <Card className={cardClassNames}>
-      <Typography variant="h6">{matchName}</Typography>
+      <Typography style={{ textAlign: "center" }} variant="h6">
+        {matchName}
+      </Typography>
       <div className="select-container">
         <div>
           <img

@@ -17,6 +17,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import AcsBadge from "../containers/acs-badge";
 import { NavLink } from "react-router-dom";
 import { USER_PROFILE_LINKS } from "../constants";
+import fieldStyle from "../themes/field-style";
 
 export default function CreatePost({
   content,
@@ -63,6 +64,9 @@ export default function CreatePost({
       <CardHeader
         title={
           <Link
+            style={{
+              color: fieldStyle.palette.field.white,
+            }}
             component={NavLink}
             className="oc-create-post-profile-link"
             to={USER_PROFILE_LINKS[0].link}
@@ -97,11 +101,11 @@ export default function CreatePost({
       )}
       <CardContent>
         <TextField
+          style={{ color: fieldStyle.palette.field.offcolor }}
           id="outlined-textarea"
           value={content}
           onChange={handleSetContent}
           disabled={isPostUploading}
-          label="Create a post"
           placeholder="Start a post..."
           rows={4}
           multiline={true}
