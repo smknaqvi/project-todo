@@ -54,7 +54,7 @@ mongoimport --collection debatequestions --jsonArray --file backend/models/impor
 Atlas Instance:
 
 ```
-mongoimport --uri "<connection_uri>" --collection games --file backend/models/import_files/games.json
+mongoimport --uri "<connection_uri>" --collection games --jsonArray --file backend/models/import_files/games.json
 mongoimport --uri "<connection_uri>" --collection teams --jsonArray --file backend/models/import_files/teams.json
 mongoimport --uri "<connection_uri>" --collection winners --jsonArray --file backend/models/import_files/winners.json
 mongoimport --uri "<connection_uri>" --collection brackets --jsonArray --file backend/models/import_files/brackets.json
