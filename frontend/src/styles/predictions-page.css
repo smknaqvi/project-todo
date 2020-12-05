@@ -5,6 +5,8 @@
 .award {
   display: flex;
   margin: 20px;
+  margin-left: 300px;
+  margin-right: 300px;
   min-height: 220px;
   background-color: "#111111";
 }
