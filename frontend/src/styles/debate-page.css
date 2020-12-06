@@ -35,6 +35,11 @@
 
 .debate-page .debate-create {
   padding: 1%;
+  width: 50%;
+  align-items: center;
+  text-align: center;
+  align-self: center;
+  margin-top: 5%;
 }
 
 .error-msg {
