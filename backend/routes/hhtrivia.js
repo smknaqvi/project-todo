@@ -3,6 +3,15 @@ const { response } = require("express");
 const HHTriviaGame = require("../models/hh-trivia-game.model");
 const TriviaQuestion = require("../models/trivia-question.model");
 
+/**
+ * Update an HHTrivia game as started for a given player
+ * @route PUT /hhtrivia/{id}/start/{player}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of head to head trivia game
+ * @param {number} player.path.required - 1 or 2 representing the player that started the game
+ * @returns {object} 200 - JSON object of updated hhtrivia game
+ * @returns {Error}  404 - Error message "Head to Head Trivia game not found!"
+ */
 router.route("/:id/start/:player").put((req, res) => {
   const updateVal =
     req.params.player === "1"
@@ -23,6 +32,21 @@ router.route("/:id/start/:player").put((req, res) => {
   );
 });
 
+/**
+ * @typedef ACSChangeBody
+ * @property {number} acsChange.required - amount of acsChange
+ */
+
+/**
+ * Update an HHTrivia game with acsChange for a player2
+ * @route PUT /hhtrivia/{id}/acsChange/{player}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of head to head trivia game
+ * @param {number} player.path.required - 1 or 2 representing the player to update acsChange for
+ * @param {ACSChangeBody.model} body.body.required - ACSChangeBody
+ * @returns {object} 200 - JSON object of updated hhtrivia game
+ * @returns {Error}  404 - Error message "Head to Head Trivia game not found!"
+ */
 router.route("/:id/acsChange/:player").put((req, res) => {
   const updateVal =
     req.params.player === "1"
@@ -43,6 +67,14 @@ router.route("/:id/acsChange/:player").put((req, res) => {
   );
 });
 
+/**
+ * Set an HHTrivia game to evaluated
+ * @route PUT /hhtrivia/{id}/evaluate
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of head to head trivia game
+ * @returns {object} 200 - JSON object of updated hhtrivia game
+ * @returns {Error}  404 - Error message "Head to Head Trivia game not found!"
+ */
 router.route("/:id/evaluate").put((req, res) => {
   HHTriviaGame.findOneAndUpdate(
     { _id: req.params.id },
@@ -58,6 +90,15 @@ router.route("/:id/evaluate").put((req, res) => {
   );
 });
 
+/**
+ * Update an HHTrivia game to increment a player's correct answer count
+ * @route PUT /hhtrivia/{id}/increment-correct/{player}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of head to head trivia game
+ * @param {number} player.path.required - 1 or 2 representing the player that correctly answered another question
+ * @returns {object} 200 - JSON object of updated hhtrivia game
+ * @returns {Error}  404 - Error message "Head to Head Trivia game not found!"
+ */
 router.route("/:id/increment-correct/:player").put((req, res) => {
   const updateVal =
     req.params.player === "1"
@@ -78,6 +119,19 @@ router.route("/:id/increment-correct/:player").put((req, res) => {
   );
 });
 
+/**
+ * @typedef CreateHHTriviaGameBody
+ * @property {string} userId.required - userId of user that created the game
+ */
+
+/**
+ * Create a new HHTrivia game
+ * @route POST /hhtrivia/create-game
+ * @group Trivia - Operations related to Trivia
+ * @param {CreateHHTriviaGameBody.model} body.body.required - CreateHHTriviaGameBody
+ * @returns {object} 200 - JSON object of newly created game
+ * @returns {Error}  400 - Error message string
+ */
 router.route("/create-game").post((req, res) => {
   const userId = req.body.userId;
   const numQuestions = 3;
@@ -99,6 +153,19 @@ router.route("/create-game").post((req, res) => {
   );
 });
 
+/**
+ * @typedef JoinHHTriviaGameBody
+ * @property {string} userId.required - userId of user that created the game
+ */
+
+/**
+ * Join an HHTrivia Game
+ * @route PUT /hhtrivia/join-game
+ * @group Trivia - Operations related to Trivia
+ * @param {JoinHHTriviaGameBody.model} body.body.required - JoinHHTriviaGameBody
+ * @returns {object} 200 - JSON object of game user has joined
+ * @returns {Error}  404 - Error message "Could not find Head to Head Trivia game!"
+ */
 router.route("/join-game").put((req, res) => {
   const userId = req.body.userId;
   HHTriviaGame.findOneAndUpdate(
@@ -118,6 +185,15 @@ router.route("/join-game").put((req, res) => {
   );
 });
 
+/**
+ * Delete an HHTrivia Game
+ * @route DELETE /hhtrivia/{id}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of HHTrivia Game to delete
+ * @returns {object} 200 - JSON object of game that was deleted
+ * @returns {Error}  404 - Error message "Could not find Head to Head Trivia game!"
+ * @returns {Error}  400 - Error message string
+ */
 router.route("/:id").delete((req, res) => {
   HHTriviaGame.findOneAndDelete({ _id: req.params.id })
     .then((game) => {
@@ -130,6 +206,14 @@ router.route("/:id").delete((req, res) => {
     .catch((err) => res.status(400).json("Error" + err));
 });
 
+/**
+ * Get all HHTrivia Games for a user given a userId
+ * @route GET /hhtrivia/user-games/{id}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of user to get games for
+ * @returns {object} 200 - JSON array of HHTrivia Games a user is participating in
+ * @returns {Error}  400 - Error message string
+ */
 router.route("/user-games/:id").get((req, res) => {
   HHTriviaGame.find()
     .or([
@@ -144,6 +228,14 @@ router.route("/user-games/:id").get((req, res) => {
     });
 });
 
+/**
+ * Get an HHTrivia Game given the game's id
+ * @route GET /hhtrivia/{id}
+ * @group Trivia - Operations related to Trivia
+ * @param {string} id.path.required - id of HHTrivia Game to get
+ * @returns {object} 200 - JSON object of HHTrivia Game
+ * @returns {Error}  404 - Error message "Could not find game with given ID"
+ */
 router.route("/:id").get((req, res) => {
   HHTriviaGame.findById(req.params.id)
     .then((game) => {

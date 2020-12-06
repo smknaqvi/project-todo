@@ -64,6 +64,10 @@ mongoimport --uri "<connection_uri>" --collection debatequestions --jsonArray --
 # Ex: mongoimport --uri "mongodb+srv://username:password@cluster0.4n4cu.mongodb.net/mydb" --collection winners --jsonArray --file backend/models/import_files/winners.json
 ```
 
+### API Documentation
+
+After launching the API, you can visit /api-docs from where the API is hosted to see all possible API calls.
+
 **If you need help with this or would like to use a populated database instance please contact any of the contributors on discord.**
 
 ### Front End Setup

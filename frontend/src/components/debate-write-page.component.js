@@ -127,7 +127,12 @@ class DebateWritePage extends Component {
           </Card>
         );
       } else {
-        return <div>No debate</div>;
+        this.checkDebateUpdate(
+          this.props.curDebate,
+          this.props.tier,
+          this.props.userId
+        );
+        return null;
       }
     } else {
       if (!this.props.retrievedCurDebate) {
