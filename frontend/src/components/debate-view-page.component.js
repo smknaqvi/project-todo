@@ -140,7 +140,7 @@ class DebateViewPage extends Component {
     return (
       <Card>
         <CardContent>
-          <Typography className={"title"} color="textSecondary" gutterBottom>
+          <Typography className={"title"} gutterBottom>
             Congrats! You are one of the first responses. Please check back
             later to rate other people's responses.
           </Typography>

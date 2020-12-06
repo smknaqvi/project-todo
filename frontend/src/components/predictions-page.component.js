@@ -74,7 +74,13 @@ class PredictionsPage extends Component {
               getOptionSelected={(option, value) => option.name === value.name}
               getOptionLabel={(option) => option.name}
               renderInput={(params) => (
-                <TextField {...params} label="Select a Player" />
+                <TextField
+                  {...params}
+                  InputLabelProps={{
+                    style: { color: "#FFFFFF" },
+                  }}
+                  label="Select a Player"
+                />
               )}
             />
           </div>

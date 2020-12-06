@@ -20,8 +20,11 @@ const theme = createMuiTheme({
       root: {
         background: "#474B4F",
         color: "#FFFFFF",
-        "&$selected": {
-          background: "#474B4F",
+        "&$selected, &$selected:hover": {
+          background: "#86C232",
+        },
+        "&:hover": {
+          background: "#61892F",
         },
       },
     },
@@ -45,9 +48,17 @@ const theme = createMuiTheme({
         },
       },
     },
+    MuiFormHelperText: {
+      root: { color: "#FFFFFF" },
+    },
     MuiInputLabel: {
       root: {
         color: "#6B6E70",
+      },
+    },
+    MuiIconButton: {
+      root: {
+        color: "#FFFFFF",
       },
     },
   },
