@@ -10,6 +10,27 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json({ limit: "50mb" }));
 
+const expressSwagger = require('express-swagger-generator')(app);
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            description: 'Team TODO - SPORTCRED API Docs',
+            title: 'SPORTCRED API',
+            version: '1.0.0',
+        },
+        host: 'localhost:' + port,
+        basePath: '/',
+        produces: [
+            "application/json",
+            "application/xml"
+        ],
+        schemes: ['http', 'https'],
+    },
+    basedir: __dirname, //app absolute path
+    files: ['./routes/*.js'] //Path to the API handle folder
+};
+expressSwagger(swaggerOptions )
+
 const uri = process.env.DB_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
